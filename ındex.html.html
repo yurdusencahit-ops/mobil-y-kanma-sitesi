@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobil Wash | Kapıda Araç Temizliği</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+<div class="bg-blue-600 text-white text-center py-2 text-xs font-bold sticky top-0 z-50 shadow-lg">
+İstanbul Geneli Hizmet | 0530 736 69 45
+</div>
+<nav class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-[32px] z-40">
+<span class="font-black text-2xl text-blue-900 italic uppercase">Mobil Wash</span>
+<a href="tel:05307366945" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold text-sm">Hemen Ara</a>
+</nav>
+<div class="max-w-md mx-auto p-6 space-y-6">
+<div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border-t-8 border-blue-600">
+<h3 class="font-black text-xl mb-4 text-center italic">HIZLI RANDEVU</h3>
+<input type="text" id="ad" placeholder="Ad Soyad" class="w-full p-4 mb-3 rounded-2xl border bg-gray-50 outline-none focus:ring-2 focus:ring-blue-600">
+<input type="text" id="tel" placeholder="Telefon" class="w-full p-4 mb-4 rounded-2xl border bg-gray-50 outline-none focus:ring-2 focus:ring-blue-600">
+<button onclick="whatsapp()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black shadow-lg flex items-center justify-center text-lg">
+<i class="fab fa-whatsapp mr-2 text-2xl"></i> WHATSAPP GÖNDER
+</button>
+</div>
+<div class="bg-white p-8 rounded-[2.5rem] shadow-xl text-center border-b-4 border-blue-400">
+<h3 class="text-gray-400 font-bold uppercase text-xs tracking-widest">Ekonomik Paket</h3>
+<div class="text-5xl font-black text-blue-900 my-4">₺650</div>
+<button onclick="paket('Eko')" class="w-full py-3 bg-gray-100 rounded-xl font-bold italic">SEÇ</button>
+</div>
+<div class="bg-white p-8 rounded-[2.5rem] shadow-2xl text-center border-b-8 border-blue-600">
+<h3 class="text-gray-400 font-bold uppercase text-xs tracking-widest text-blue-600">Standart Hijyen</h3>
+<div class="text-5xl font-black text-blue-900 my-4">₺1.100</div>
+<button onclick="paket('Standart')" class="w-full py-4 bg-blue-600 text-white rounded-xl font-black shadow-lg italic">HEMEN AL</button>
+</div>
+</div>
+<script>
+function whatsapp() {
+const ad = document.getElementById('ad').value;
+const tel = document.getElementById('tel').value;
+if(!ad || !tel) return alert("Bilgileri giriniz");
+window.open(`https://wa.me/905307366945?text=*YENİ RANDEVU*%0Aİsim: ${ad}%0ATel: ${tel}`);
+}
+function paket(p) { window.open(`https://wa.me/905307366945?text=${p} paketi için randevu istiyorum.`); }
+</script>
+</body>
+</html>
+
+
+
