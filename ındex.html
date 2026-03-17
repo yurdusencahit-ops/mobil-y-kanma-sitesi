@@ -1,49 +1,125 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobil Wash | Kapıda Araç Temizliği</title>
+<title>Mobil Wash | Kapıda Araç Yıkama Hizmeti</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-gray-50 text-gray-900">
-<div class="bg-blue-600 text-white text-center py-2 text-xs font-bold sticky top-0 z-50 shadow-lg">
-İstanbul Geneli Hizmet | 0530 736 69 45
-</div>
-<nav class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-[32px] z-40">
-<span class="font-black text-2xl text-blue-900 italic uppercase">Mobil Wash</span>
-<a href="tel:05307366945" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold text-sm">Hemen Ara</a>
-</nav>
-<div class="max-w-md mx-auto p-6 space-y-6">
-<div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border-t-8 border-blue-600">
-<h3 class="font-black text-xl mb-4 text-center italic">HIZLI RANDEVU</h3>
-<input type="text" id="ad" placeholder="Ad Soyad" class="w-full p-4 mb-3 rounded-2xl border bg-gray-50 outline-none focus:ring-2 focus:ring-blue-600">
-<input type="text" id="tel" placeholder="Telefon" class="w-full p-4 mb-4 rounded-2xl border bg-gray-50 outline-none focus:ring-2 focus:ring-blue-600">
-<button onclick="whatsapp()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black shadow-lg flex items-center justify-center text-lg">
-<i class="fab fa-whatsapp mr-2 text-2xl"></i> WHATSAPP GÖNDER
-</button>
-</div>
-<div class="bg-white p-8 rounded-[2.5rem] shadow-xl text-center border-b-4 border-blue-400">
-<h3 class="text-gray-400 font-bold uppercase text-xs tracking-widest">Ekonomik Paket</h3>
-<div class="text-5xl font-black text-blue-900 my-4">₺650</div>
-<button onclick="paket('Eko')" class="w-full py-3 bg-gray-100 rounded-xl font-bold italic">SEÇ</button>
-</div>
-<div class="bg-white p-8 rounded-[2.5rem] shadow-2xl text-center border-b-8 border-blue-600">
-<h3 class="text-gray-400 font-bold uppercase text-xs tracking-widest text-blue-600">Standart Hijyen</h3>
-<div class="text-5xl font-black text-blue-900 my-4">₺1.100</div>
-<button onclick="paket('Standart')" class="w-full py-4 bg-blue-600 text-white rounded-xl font-black shadow-lg italic">HEMEN AL</button>
-</div>
-</div>
-<script>
-function whatsapp() {
-const ad = document.getElementById('ad').value;
-const tel = document.getElementById('tel').value;
-if(!ad || !tel) return alert("Bilgileri giriniz");
-window.open(`https://wa.me/905307366945?text=*YENİ RANDEVU*%0Aİsim: ${ad}%0ATel: ${tel}`);
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+body { font-family: 'Poppins', sans-serif; }
+.hero-bg {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=1200&q=80');
+background-size: cover; background-position: center; z-index: -1;
 }
-function paket(p) { window.open(`https://wa.me/905307366945?text=${p} paketi için randevu istiyorum.`); }
+#admin-panel {
+display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+background: white; padding: 25px; border-radius: 20px; box-shadow: 0 0 40px rgba(0,0,0,0.4);
+z-index: 9999; width: 320px; border-top: 5px solid #2563eb;
+}
+</style>
+</head>
+<body class="bg-gray-100">
+
+<div id="notification" class="fixed bottom-6 left-6 bg-white p-4 rounded-2xl shadow-2xl z-50 border-l-8 border-blue-600 flex items-center transition-all duration-500">
+<div class="bg-blue-100 p-2 rounded-full mr-3 text-blue-600">
+<i class="fa-solid fa-droplet"></i>
+</div>
+<p id="notif-text" class="text-sm font-bold text-gray-800 italic">Beşiktaş'ta bir araç yıkandı!</p>
+</div>
+
+<header class="relative text-white py-24 px-6 text-center">
+<div class="hero-bg"></div>
+<h1 class="text-5xl font-extrabold mb-4 uppercase tracking-tighter">MOBİL<span class="text-blue-400">WASH</span></h1>
+<h2 class="text-2xl font-bold mb-8">Aracınızı Kapınızda Yıkıyoruz!</h2>
+<a href="https://wa.me/905307366945" class="bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-2xl text-xl font-black transition-all flex items-center justify-center inline-flex shadow-xl">
+<i class="fa-brands fa-whatsapp text-3xl mr-3"></i> WHATSAPP RANDEVU
+</a>
+</header>
+
+<section class="py-16 max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+<div class="bg-white p-10 rounded-[40px] shadow-xl text-center border-b-8 border-blue-500">
+<i class="fa-solid fa-car text-6xl text-blue-500 mb-6"></i>
+<h3 class="text-2xl font-extrabold mb-2 uppercase">Binek Araç</h3>
+<p class="text-gray-400 mb-6 font-medium">Dış Yıkama ve Temizlik</p>
+<div id="price-binek-display" class="text-5xl font-black text-blue-600">550 TL</div>
+</div>
+<div class="bg-white p-10 rounded-[40px] shadow-xl text-center border-b-8 border-blue-900">
+<i class="fa-solid fa-truck-monster text-6xl text-blue-900 mb-6"></i>
+<h3 class="text-2xl font-extrabold mb-2 uppercase">SUV / VIP</h3>
+<p class="text-gray-400 mb-6 font-medium">Büyük Araç Dış Yıkama</p>
+<div id="price-suv-display" class="text-5xl font-black text-blue-600">750 TL</div>
+</div>
+</section>
+
+<footer class="bg-gray-900 text-white py-12 text-center">
+<p class="text-2xl font-bold mb-4 tracking-widest">0530 736 69 45</p>
+<p class="text-gray-500 text-sm">İstanbul geneli mobil hizmet.</p>
+<button onclick="adminGiris()" class="mt-10 text-gray-800 text-[10px] opacity-20 hover:opacity-100">Sistem Yönetimi</button>
+</footer>
+
+<div id="admin-panel">
+<h4 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Fiyat ve Bölge Ayarı</h4>
+<label class="text-xs font-bold text-gray-500">Binek Fiyat (TL)</label>
+<input id="input-binek" type="text" class="w-full border-2 border-gray-100 p-2 mb-3 rounded-lg focus:border-blue-500 outline-none">
+
+<label class="text-xs font-bold text-gray-500">SUV Fiyat (TL)</label>
+<input id="input-suv" type="text" class="w-full border-2 border-gray-100 p-2 mb-3 rounded-lg focus:border-blue-500 outline-none">
+
+<label class="text-xs font-bold text-gray-500">İlçeler (Virgülle Ayır)</label>
+<textarea id="input-cities" class="w-full border-2 border-gray-100 p-2 mb-4 rounded-lg focus:border-blue-500 outline-none h-20 text-sm"></textarea>
+
+<button onclick="verileriKaydet()" class="bg-blue-600 text-white w-full py-3 rounded-xl font-bold hover:bg-blue-700 shadow-lg">AYARLARI KAYDET</button>
+<button onclick="document.getElementById('admin-panel').style.display='none'" class="w-full mt-3 text-red-400 text-xs font-bold uppercase tracking-widest">Kapat</button>
+</div>
+
+<script>
+// Verileri Tarayıcı Hafızasından Al veya Başlangıç Değerlerini Ata
+let veriBinek = localStorage.getItem('wash_binek') || "550 TL";
+let veriSuv = localStorage.getItem('wash_suv') || "750 TL";
+let veriCities = (localStorage.getItem('wash_cities') || "Beşiktaş, Şişli, Kadıköy, Sarıyer, Üsküdar, Ataşehir, Bakırköy").split(',');
+
+// Sayfadaki Fiyatları Yazdır
+document.getElementById('price-binek-display').innerText = veriBinek;
+document.getElementById('price-suv-display').innerText = veriSuv;
+
+// Gizli Yönetim Paneline Giriş (Şifre: 1234)
+function adminGiris() {
+let sifre = prompt("Yönetici Şifresini Giriniz:");
+if(sifre === "1234") {
+document.getElementById('admin-panel').style.display = 'block';
+document.getElementById('input-binek').value = veriBinek;
+document.getElementById('input-suv').value = veriSuv;
+document.getElementById('input-cities').value = veriCities.join(', ');
+} else {
+alert("Hatalı Şifre!");
+}
+}
+
+// Değişiklikleri Kaydet
+function verileriKaydet() {
+veriBinek = document.getElementById('input-binek').value;
+veriSuv = document.getElementById('input-suv').value;
+veriCities = document.getElementById('input-cities').value.split(',');
+
+localStorage.setItem('wash_binek', veriBinek);
+localStorage.setItem('wash_suv', veriSuv);
+localStorage.setItem('wash_cities', veriCities.join(','));
+
+alert("Fiyatlar ve Bölgeler Başarıyla Güncellendi!");
+location.reload(); // Sayfayı yenile ki yeni fiyatlar görünsün
+}
+
+// Canlı Bildirim Döngüsü
+setInterval(() => {
+const city = veriCities[Math.floor(Math.random() * veriCities.length)];
+const araclar = ["bir SUV", "bir Binek Araç", "bir VIP Araç"];
+const secilenArac = araclar[Math.floor(Math.random() * araclar.length)];
+
+document.getElementById('notif-text').innerText = `${city.trim()}'ta ${secilenArac} yıkandı!`;
+}, 6000);
 </script>
 </body>
 </html>
