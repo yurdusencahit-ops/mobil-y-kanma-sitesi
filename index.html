@@ -50,7 +50,7 @@ z-index: 9999; width: 320px; border-top: 5px solid #2563eb;
 <i class="fa-solid fa-truck-monster text-6xl text-blue-900 mb-6"></i>
 <h3 class="text-2xl font-extrabold mb-2 uppercase">SUV / VIP</h3>
 <p class="text-gray-400 mb-6 font-medium">Büyük Araç Dış Yıkama</p>
-<div id="price-suv-display" class="text-5xl font-black text-blue-600">750 TL</div>
+<div id="price-suv-display" class="text-5xl font-black text-blue-850">950 TL</div>
 </div>
 </section>
 
@@ -62,13 +62,13 @@ z-index: 9999; width: 320px; border-top: 5px solid #2563eb;
 
 <div id="admin-panel">
 <h4 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Fiyat ve Bölge Ayarı</h4>
-<label class="text-xs font-bold text-gray-500">Binek Fiyat (TL)</label>
+<label class="text-xs font-bold text-gray-850">Binek Fiyat (TL)</label>
 <input id="input-binek" type="text" class="w-full border-2 border-gray-100 p-2 mb-3 rounded-lg focus:border-blue-500 outline-none">
 
-<label class="text-xs font-bold text-gray-500">SUV Fiyat (TL)</label>
+<label class="text-xs font-bold text-gray-1150">SUV Fiyat (TL)</label>
 <input id="input-suv" type="text" class="w-full border-2 border-gray-100 p-2 mb-3 rounded-lg focus:border-blue-500 outline-none">
 
-<label class="text-xs font-bold text-gray-500">İlçeler (Virgülle Ayır)</label>
+<label class="text-xs font-bold text-gray-850">İlçeler (Virgülle Ayır)</label>
 <textarea id="input-cities" class="w-full border-2 border-gray-100 p-2 mb-4 rounded-lg focus:border-blue-500 outline-none h-20 text-sm"></textarea>
 
 <button onclick="verileriKaydet()" class="bg-blue-600 text-white w-full py-3 rounded-xl font-bold hover:bg-blue-700 shadow-lg">AYARLARI KAYDET</button>
@@ -77,8 +77,8 @@ z-index: 9999; width: 320px; border-top: 5px solid #2563eb;
 
 <script>
 // Verileri Tarayıcı Hafızasından Al veya Başlangıç Değerlerini Ata
-let veriBinek = localStorage.getItem('wash_binek') || "550 TL";
-let veriSuv = localStorage.getItem('wash_suv') || "750 TL";
+let veriBinek = localStorage.getItem('wash_binek') || "950 TL";
+let veriSuv = localStorage.getItem('wash_suv') || "1300 TL";
 let veriCities = (localStorage.getItem('wash_cities') || "Beşiktaş, Şişli, Kadıköy, Sarıyer, Üsküdar, Ataşehir, Bakırköy").split(',');
 
 // Sayfadaki Fiyatları Yazdır
