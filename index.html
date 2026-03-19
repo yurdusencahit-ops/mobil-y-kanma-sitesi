@@ -1,82 +1,114 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MobilWash İstanbul | Kapınızda Araç Yıkama</title>
+<title>MobilWash İstanbul | Meric Yurduşen</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-.bg-custom { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center; }
-.card { transition: transform 0.3s; }
+/* Kayan Resimler İçin Stil */
+.slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+.slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
+.slide.active { opacity: 1; }
+.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); z-index: 0; }
+.card { transition: transform 0.3s; border-radius: 2rem; }
 .card:hover { transform: translateY(-10px); }
 </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-50 font-sans leading-relaxed">
 
-<header class="bg-custom h-[50vh] flex flex-col items-center justify-center text-white text-center px-4">
-<h1 class="text-5xl font-bold mb-4 tracking-tighter">MOBİL<span class="text-blue-400">WASH</span></h1>
-<p class="text-xl mb-6 font-light">Aracınızı Kapınızda Profesyonelce Yıkıyoruz!</p>
-<div id="gece-uyari" class="hidden bg-yellow-500 text-black px-6 py-2 rounded-full font-bold animate-bounce shadow-lg">
-🌙 Gece Tarifesi Aktif (+%30)
+<header class="relative h-[55vh] flex flex-col items-center justify-center text-white text-center px-4 shadow-2xl overflow-hidden">
+<div class="slider-container">
+<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1500');"></div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1500');"></div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=1500');"></div>
+</div>
+<div class="overlay"></div>
+
+<div class="relative z-10">
+<h1 class="text-6xl font-black mb-2 tracking-tighter italic drop-shadow-2xl">MOBİL<span class="text-blue-400">WASH</span></h1>
+<p class="text-xl mb-6 font-light italic opacity-95">Meric Yurduşen Güvencesiyle Kapınızda!</p>
+<div id="gece-uyari" class="hidden bg-yellow-400 text-black px-8 py-2 rounded-full font-black animate-pulse shadow-xl text-sm uppercase">
+🌙 GECE TARİFESİ AKTİF (+%30)
+</div>
 </div>
 </header>
 
-<section class="max-w-4xl mx-auto -mt-10 bg-white p-8 rounded-2xl shadow-2xl relative z-10 border-t-8 border-blue-500">
+<section class="max-w-4xl mx-auto -mt-16 bg-white p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative z-20 mx-4 border-b-8 border-blue-500">
 <div class="grid md:grid-cols-2 gap-8">
 <div>
-<label class="block font-bold mb-2 text-gray-700"><i class="fas fa-map-marker-alt text-red-500 mr-2"></i>Bölgenizi Seçin</label>
-<select id="bolge" class="w-full border-2 border-gray-100 p-4 rounded-xl focus:border-blue-500 outline-none transition" onchange="hesapla()">
-<option value="0">Merkezi İlçeler (Ücretsiz Ulaşım)</option>
+<label class="block text-xs font-black text-gray-400 uppercase mb-3 ml-2 tracking-widest text-center md:text-left">📍 Hizmet Bölgesi</label>
+<select id="bolge" class="w-full bg-gray-50 border-2 border-gray-100 p-5 rounded-2xl focus:border-blue-500 outline-none transition font-bold text-lg" onchange="hesapla()">
+<option value="0">Merkezi İlçeler (Ücretsiz)</option>
 <option value="350">Uzak İlçeler (+350 TL Mobil Ücret)</option>
 </select>
-<p class="text-[10px] text-gray-400 mt-2 uppercase tracking-widest">Beylikdüzü, Silivri, Pendik vb. uzak bölgeler</p>
 </div>
 <div>
-<label class="block font-bold mb-2 text-gray-700"><i class="fas fa-car text-blue-500 mr-2"></i>Araç Tipi</label>
-<select id="arac" class="w-full border-2 border-gray-100 p-4 rounded-xl focus:border-blue-500 outline-none transition" onchange="hesapla()">
+<label class="block text-xs font-black text-gray-400 uppercase mb-3 ml-2 tracking-widest text-center md:text-left">🚗 Araç Tipi</label>
+<select id="arac" class="w-full bg-gray-50 border-2 border-gray-100 p-5 rounded-2xl focus:border-blue-500 outline-none transition font-bold text-lg" onchange="hesapla()">
 <option value="binek">Binek Araç</option>
-<option value="suv">SUV / VIP Araç / Büyük Araç</option>
+<option value="suv">SUV / VIP / Büyük Araç</option>
 </select>
 </div>
 </div>
 </section>
 
-<section class="max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-3 gap-8">
-<div class="card bg-white p-8 rounded-3xl shadow-xl text-center border-t-4 border-blue-400">
-<h3 class="text-2xl font-bold mb-2 text-gray-800">Standart</h3>
-<p class="text-gray-400 mb-4 text-sm">Dış Yıkama ve Temizlik</p>
-<div class="text-4xl font-black text-blue-600 mb-8"><span id="price-standart">950</span> TL</div>
-<button onclick="whatsapp('Standart')" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-200 transition">
-<i class="fab fa-whatsapp mr-2"></i>Randevu Al
+<section class="max-w-6xl mx-auto py-20 px-4 grid md:grid-cols-3 gap-10">
+<div class="card bg-white p-10 shadow-xl border-t-8 border-blue-400 text-center">
+<h3 class="text-2xl font-black text-gray-800 mb-2">STANDART</h3>
+<p class="text-gray-400 text-sm mb-6 uppercase font-bold tracking-tighter">Dış Yıkama + Jant Bakımı</p>
+<div class="text-5xl font-black text-blue-600 mb-10"><span id="price-standart">950</span> TL</div>
+<button onclick="whatsapp('Standart')" class="bg-green-500 hover:bg-green-600 text-white w-full py-5 rounded-3xl font-black shadow-lg transition-all flex items-center justify-center text-xl">
+<i class="fab fa-whatsapp mr-3 text-3xl"></i> Randevu Al
 </button>
 </div>
 
-<div class="card bg-white p-8 rounded-3xl shadow-2xl text-center border-t-4 border-purple-500 scale-105 ring-8 ring-purple-50 ring-opacity-50">
-<div class="bg-purple-500 text-white text-[10px] py-1 px-4 rounded-full inline-block mb-3 uppercase font-black tracking-widest">En Çok Tercih Edilen</div>
-<h3 class="text-2xl font-bold mb-2 text-gray-800">VIP Paket</h3>
-<p class="text-gray-400 mb-4 text-sm">İç-Dış + Hızlı Cila + Lastik Parlatıcı</p>
-<div class="text-4xl font-black text-purple-600 mb-8"><span id="price-vip">1600</span> TL</div>
-<button onclick="whatsapp('VIP Paket')" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-200 transition">
-<i class="fab fa-whatsapp mr-2"></i>Randevu Al
+<div class="card bg-white p-10 shadow-2xl border-t-8 border-purple-600 text-center scale-110 ring-[15px] ring-purple-50">
+<span class="bg-purple-600 text-white text-[10px] px-5 py-1.5 rounded-full font-black uppercase tracking-widest mb-4 inline-block">Meric'in Favorisi</span>
+<h3 class="text-2xl font-black text-gray-800">VIP PAKET</h3>
+<p class="text-gray-400 text-sm mb-6 uppercase font-bold tracking-tighter">İç-Dış + Hızlı Cila + Parlatıcı</p>
+<div class="text-5xl font-black text-purple-600 mb-10"><span id="price-vip">1600</span> TL</div>
+<button onclick="whatsapp('VIP Paket')" class="bg-green-500 hover:bg-green-600 text-white w-full py-5 rounded-3xl font-black shadow-lg transition-all flex items-center justify-center text-xl">
+<i class="fab fa-whatsapp mr-3 text-3xl"></i> Randevu Al
 </button>
 </div>
 
-<div class="card bg-white p-8 rounded-3xl shadow-xl text-center border-t-4 border-gray-900">
-<h3 class="text-2xl font-bold mb-2 text-gray-800">Ultra Detay</h3>
-<p class="text-gray-400 mb-4 text-sm">Motor + Detaylı İç + Koruma</p>
-<div class="text-4xl font-black text-gray-900 mb-8"><span id="price-ultra">2400</span> TL</div>
-<button onclick="whatsapp('Ultra Detay')" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-200 transition">
-<i class="fab fa-whatsapp mr-2"></i>Randevu Al
+<div class="card bg-white p-10 shadow-xl border-t-8 border-black text-center">
+<h3 class="text-2xl font-black text-gray-800 mb-2">ULTRA DETAY</h3>
+<p class="text-gray-400 text-sm mb-6 uppercase font-bold tracking-tighter">Motor + Detaylı İç + Koruma</p>
+<div class="text-5xl font-black text-gray-900 mb-10"><span id="price-ultra">2400</span> TL</div>
+<button onclick="whatsapp('Ultra Detay')" class="bg-green-500 hover:bg-green-600 text-white w-full py-5 rounded-3xl font-black shadow-lg transition-all flex items-center justify-center text-xl">
+<i class="fab fa-whatsapp mr-3 text-3xl"></i> Randevu Al
 </button>
 </div>
 </section>
 
-<footer class="text-center py-12 text-gray-400 text-xs tracking-widest uppercase">
-© 2026 Moto Wash Mobil İstanbul | Profesyonel Kapıda Hizmet
+<footer class="text-center py-20 bg-white mt-12 border-t border-gray-100">
+<h4 class="font-black text-gray-700 mb-6 uppercase tracking-widest">Bizi Takip Edin</h4>
+<div class="flex justify-center gap-10 mb-10">
+<a href="https://www.instagram.com/mericyurdusen" target="_blank" class="text-5xl text-pink-600 hover:scale-125 transition duration-300">
+<i class="fab fa-instagram"></i>
+</a>
+<a href="https://wa.me/905307366945" class="text-5xl text-green-500 hover:scale-125 transition duration-300">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+<p class="text-gray-400 text-xs uppercase tracking-[6px] font-black">© 2026 MERIC YURDUŞEN | MOBİL WASH</p>
 </footer>
 
 <script>
+// KAYAN RESİMLER (SLIDER) SİSTEMİ
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+function nextSlide() {
+slides[currentSlide].classList.remove('active');
+currentSlide = (currentSlide + 1) % slides.length;
+slides[currentSlide].classList.add('active');
+}
+setInterval(nextSlide, 5000); // 5 Saniyede bir değişir
+
+// FİYAT HESAPLAMA SİSTEMİ
 const fiyatlar = {
 binek: { standart: 950, vip: 1600, ultra: 2400 },
 suv: { standart: 1250, vip: 1950, ultra: 2900 }
@@ -109,7 +141,8 @@ if(paket === 'Standart') fiyat = document.getElementById('price-standart').inner
 if(paket === 'VIP Paket') fiyat = document.getElementById('price-vip').innerText;
 if(paket === 'Ultra Detay') fiyat = document.getElementById('price-ultra').innerText;
 
-const mesaj = `Merhaba MobilWash! %0A%0A🚗 Araç: ${arac}%0A📦 Paket: ${paket}%0A📍 Bölge: ${bolge}%0A💰 Toplam Tutar: ${fiyat} TL %0A%0ARandevu almak istiyorum.`;
+const mesaj = `Merhaba MobilWash Hoşgeldiniz! 👋 %0AMeriç Yurduşen profesyonel mobil yıkama hizmeti hakkında bilgi almak istiyorum. %0ASize nasıl yardımcı olabilirim? %0A%0A--- RANDEVU DETAYLARI ---%0A🚗 Araç Tipi: ${arac}%0A📦 Seçilen Paket: ${paket}%0A📍 Bölge: ${bolge}%0A💰 Hesaplanan Tutar: ${fiyat} TL`;
+
 window.open(`https://wa.me/905307366945?text=${mesaj}`, '_blank');
 }
 
@@ -118,5 +151,3 @@ hesapla();
 </body>
 </html>
 
-
- 
