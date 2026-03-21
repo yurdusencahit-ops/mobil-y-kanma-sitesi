@@ -1,233 +1,62 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MobilWash İstanbul | Kapınızda Araç Yıkama</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
-body { font-family: 'Inter', sans-serif; }
-.slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
-.slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
-.slide.active { opacity: 1; }
-.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4)); z-index: 0; }
-
-.card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 2.5rem; overflow: hidden; }
-.card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
-
-/* VIP Kart Parlama Efekti */
-.vip-glow { position: relative; overflow: hidden; }
-.vip-glow::before {
-content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-transform: rotate(45deg); animation: shine 4s infinite;
+.clock {
+width: 80px; height: 80px; /* Boyut küçültüldü */
+border: 4px solid #1a1a1a; /* Siyah dış çerçeve */
+border-radius: 50%;
+position: relative;
+margin: 0 auto;
+background: white; /* Beyaz zemin */
+box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
-@keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
-
-/* Bildirim */
-#notification-toast {
-position: fixed; bottom: 20px; left: -400px;
-background: white; padding: 15px 25px; border-radius: 20px;
-box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-z-index: 9999; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-display: flex; align-items: center; border-left: 6px solid #3b82f6;
+.clock::after {
+content: ''; width: 4px; height: 4px; background: #ef4444; /* Kırmızı merkez nokta */
+border-radius: 50%; position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%); z-index: 10;
 }
-#notification-toast.show { left: 20px; }
+.hand {
+position: absolute; bottom: 50%; left: 50%;
+transform-origin: bottom; border-radius: 5px;
+z-index: 5;
+}
+.hour-hand { width: 3px; height: 20px; background: #1a1a1a; } /* Siyah Akrep */
+.min-hand { width: 2px; height: 28px; background: #1a1a1a; } /* Siyah Yelkovan */
+.sec-hand { width: 1px; height: 32px; background: #ef4444; } /* Kırmızı Saniye */
 
-/* Saat Stili */
-.clock { width: 110px; height: 110px; border: 4px solid rgba(255,255,255,0.5); border-radius: 50%; position: relative; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
-.hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; border-radius: 10px; }
-.hour-hand { width: 4px; height: 28px; background: #fff; }
-.min-hand { width: 3px; height: 38px; background: #3b82f6; }
-.sec-hand { width: 1px; height: 42px; background: #ef4444; }
-.number { position: absolute; color: rgba(255,255,255,0.8); font-size: 11px; font-weight: 900; }
-
-.btn-active:active { transform: scale(0.95); }
+/* Saat Rakamları (Paylaştığın görseldeki gibi siyah ve net) */
+.number {
+position: absolute; color: #1a1a1a;
+font-size: 9px; font-weight: 900;
+font-family: 'Inter', sans-serif;
+}
+.n1 { top: 8%; left: 68%; }
+.n2 { top: 22%; left: 85%; }
+.n3 { top: 42%; left: 90%; }
+.n4 { top: 62%; left: 85%; }
+.n5 { top: 78%; left: 68%; }
+.n6 { top: 85%; left: 45%; }
+.n7 { top: 78%; left: 22%; }
+.n8 { top: 62%; left: 8%; }
+.n9 { top: 42%; left: 4%; }
+.n10 { top: 22%; left: 8%; }
+.n11 { top: 8%; left: 22%; }
+.n12 { top: 2%; left: 42%; }
 </style>
-</head>
-<body class="bg-slate-50 text-slate-900 leading-tight">
 
-<div id="notification-toast">
-<div class="bg-blue-50 p-3 rounded-full mr-4 text-blue-600">
-<i class="fas fa-bolt"></i>
-</div>
-<div>
-<p id="notif-text" class="text-sm font-bold"></p>
-<p class="text-[10px] text-slate-400 uppercase tracking-widest font-black">Yeni Sipariş Tamamlandı</p>
-</div>
-</div>
-
-<header class="relative h-[75vh] flex flex-col items-center justify-center text-white px-6 overflow-hidden">
-<div class="slider-container">
-<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1500');"></div>
-<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1500');"></div>
-<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=1500');"></div>
-</div>
-<div class="overlay"></div>
-
-<div class="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-12">
-<div class="calendar-box w-32 rotate-[-2deg]">
-<div id="cal-month" class="text-[12px] bg-red-600 text-white rounded-t-xl py-2 uppercase font-black tracking-tighter">MART</div>
-<div id="cal-day" class="text-5xl py-4 font-black text-slate-800">19</div>
-<div id="cal-year" class="text-[12px] text-slate-400 pb-2 font-bold">2026</div>
-</div>
-
-<div class="text-center">
-<h1 class="text-8xl md:text-[10rem] font-black tracking-tighter italic drop-shadow-2xl uppercase leading-none">Mobil<span class="text-blue-500">Wash</span></h1>
-<div id="gece-uyari" class="hidden bg-yellow-400 text-black px-8 py-2 rounded-full font-black animate-bounce shadow-2xl text-xs uppercase mt-4">
-🌙 Gece Tarifesi Aktif (+%30)
-</div>
-</div>
-
-<div class="clock scale-125 rotate-[2deg] hidden lg:block">
-<div class="number" style="top: 5px; left: 45%;">12</div>
-<div class="number" style="top: 45px; left: 90%;">3</div>
-<div class="number" style="top: 85px; left: 45%;">6</div>
-<div class="number" style="top: 45px; left: 5%;">9</div>
+<div class="clock">
+<div class="number n1">1</div>
+<div class="number n2">2</div>
+<div class="number n3">3</div>
+<div class="number n4">4</div>
+<div class="number n5">5</div>
+<div class="number n6">6</div>
+<div class="number n7">7</div>
+<div class="number n8">8</div>
+<div class="number n9">9</div>
+<div class="number n10">10</div>
+<div class="number n11">11</div>
+<div class="number n12">12</div>
 <div class="hand hour-hand" id="hour-hand"></div>
 <div class="hand min-hand" id="min-hand"></div>
 <div class="hand sec-hand" id="sec-hand"></div>
 </div>
-</div>
-</header>
-
-<section class="max-w-4xl mx-auto -mt-16 mb-20 px-6 relative z-30">
-<button onclick="konumAt()" class="btn-active group bg-blue-600 hover:bg-blue-700 text-white px-10 py-8 rounded-[2.5rem] font-black text-2xl shadow-[0_20px_50px_rgba(59,130,246,0.5)] flex items-center justify-center mx-auto w-full transition-all border-b-8 border-blue-900">
-<i class="fas fa-location-arrow mr-4 text-3xl group-hover:translate-x-2 transition-transform"></i> KONUM AT, HEMEN GELELİM!
-</button>
-</section>
-
-<section class="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-3 gap-10">
-<div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 hover:border-blue-200 transition-colors">
-<div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fas fa-shield-alt"></i></div>
-<h2 class="text-2xl font-black italic mb-4">PROFESYONEL</h2>
-<p class="text-slate-500 leading-relaxed text-sm font-medium">İstanbul'un her noktasında uzman ekip ve ekipmanlarla aracınıza hak ettiği değeri veriyoruz.</p>
-</div>
-<div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 hover:border-green-200 transition-colors">
-<div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fas fa-clock"></i></div>
-<h2 class="text-2xl font-black italic mb-4">HIZLI SERVİS</h2>
-<p class="text-slate-500 leading-relaxed text-sm font-medium">Zamanınız size kalsın. Siz kahvenizi içerken biz aracınızı ilk günkü parlaklığına kavuşturalım.</p>
-</div>
-<div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 hover:border-purple-200 transition-colors">
-<div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fas fa-tint"></i></div>
-<h2 class="text-2xl font-black italic mb-4">%100 HİJYEN</h2>
-<p class="text-slate-500 leading-relaxed text-sm font-medium">Özel solüsyonlar ve mikro-fiber teknolojisi ile hem iç hem dış temizlikte kusursuz sonuç.</p>
-</div>
-</section>
-
-<section class="max-w-5xl mx-auto bg-slate-900 p-12 rounded-[4rem] shadow-2xl relative z-20 mx-6 mb-20 text-white">
-<h3 class="text-center mb-10 font-black text-blue-400 tracking-[5px] uppercase text-sm">Hizmet Ayarları</h3>
-<div class="grid md:grid-cols-2 gap-12">
-<div>
-<label class="block text-xs font-black text-slate-500 uppercase mb-4 tracking-widest italic">📍 BÖLGE SEÇİMİ</label>
-<select id="bolge" class="w-full bg-slate-800 border-2 border-slate-700 p-6 rounded-3xl focus:border-blue-500 outline-none transition font-bold text-lg appearance-none cursor-pointer" onchange="hesapla()">
-<option value="0">Merkezi İlçeler (Ücretsiz Mobil)</option>
-<option value="350">Uzak İlçeler (+350 TL Ekstra)</option>
-</select>
-</div>
-<div>
-<label class="block text-xs font-black text-slate-500 uppercase mb-4 tracking-widest italic">🚗 ARAÇ KATEGORİSİ</label>
-<select id="arac" class="w-full bg-slate-800 border-2 border-slate-700 p-6 rounded-3xl focus:border-blue-500 outline-none transition font-bold text-lg appearance-none cursor-pointer" onchange="hesapla()">
-<option value="binek">Binek Araç</option>
-<option value="suv">SUV / VIP / Büyük Araç</option>
-</select>
-</div>
-</div>
-</section>
-
-<section class="max-w-7xl mx-auto py-12 px-6 grid lg:grid-cols-3 gap-12">
-<div class="card bg-white p-12 text-center border-t-[12px] border-blue-500">
-<h3 class="text-3xl font-black text-slate-800 mb-2">STANDART</h3>
-<p class="text-slate-400 text-xs font-black mb-10 uppercase tracking-tighter">DIŞ YIKAMA + LASTİK PARLATMA</p>
-<div class="text-6xl font-black text-blue-600 mb-12 tabular-nums tracking-tighter"><span id="price-standart">950</span><span class="text-2xl ml-1">TL</span></div>
-<button onclick="whatsapp('Standart')" class="btn-active bg-slate-900 hover:bg-blue-600 text-white w-full py-6 rounded-[2rem] font-black shadow-xl flex items-center justify-center text-xl transition-all">
-<i class="fab fa-whatsapp mr-3 text-2xl"></i> HEMEN AL
-</button>
-</div>
-
-<div class="card bg-white p-12 text-center border-t-[12px] border-purple-600 scale-110 shadow-2xl vip-glow z-10 ring-8 ring-purple-50">
-<div class="bg-purple-600 text-white text-[10px] px-6 py-2 rounded-full font-black uppercase tracking-widest mb-8 inline-block italic">En Çok Tercih Edilen</div>
-<h3 class="text-3xl font-black text-slate-800 mb-2 italic">VIP PAKET</h3>
-<p class="text-slate-400 text-xs font-black mb-10 uppercase tracking-tighter">İÇ-DIŞ + SIVI CİLA + OZON</p>
-<div class="text-6xl font-black text-purple-600 mb-12 tabular-nums tracking-tighter"><span id="price-vip">1600</span><span class="text-2xl ml-1">TL</span></div>
-<button onclick="whatsapp('VIP Paket')" class="btn-active bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2rem] font-black shadow-xl flex items-center justify-center text-xl transition-all">
-<i class="fab fa-whatsapp mr-3 text-2xl"></i> PAKETİ SEÇ
-</button>
-</div>
-
-<div class="card bg-white p-12 text-center border-t-[12px] border-slate-900">
-<h3 class="text-3xl font-black text-slate-800 mb-2">ULTRA</h3>
-<p class="text-slate-400 text-xs font-black mb-10 uppercase tracking-tighter">DETAYLI TEMİZLİK + MOTOR</p>
-<div class="text-6xl font-black text-slate-900 mb-12 tabular-nums tracking-tighter"><span id="price-ultra">2400</span><span class="text-2xl ml-1">TL</span></div>
-<button onclick="whatsapp('Ultra Detay')" class="btn-active bg-slate-900 hover:bg-slate-700 text-white w-full py-6 rounded-[2rem] font-black shadow-xl flex items-center justify-center text-xl transition-all">
-<i class="fab fa-whatsapp mr-3 text-2xl"></i> DETAYLI İNCELE
-</button>
-</div>
-</section>
-
-<footer class="text-center py-24 bg-white border-t border-slate-100">
-<a href="https://www.instagram.com/mericyurdusen" target="_blank" class="w-20 h-20 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white flex items-center justify-center rounded-3xl mx-auto mb-10 text-4xl shadow-xl hover:scale-110 transition duration-500">
-<i class="fab fa-instagram"></i>
-</a>
-<p class="text-slate-300 text-[10px] uppercase tracking-[10px] font-black mb-2">Premium Mobile Service</p>
-<p class="text-slate-900 text-sm font-black italic uppercase">© 2026 MERİÇ YURDUŞEN | MOBİL WASH</p>
-</footer>
-
-<script>
-function updateClock() {
-const now = new Date();
-const h = now.getHours(); const m = now.getMinutes(); const s = now.getSeconds();
-document.getElementById('hour-hand').style.transform = `translateX(-50%) rotate(${(h%12)*30 + m/2}deg)`;
-document.getElementById('min-hand').style.transform = `translateX(-50%) rotate(${m*6}deg)`;
-document.getElementById('sec-hand').style.transform = `translateX(-50%) rotate(${s*6}deg)`;
-const months = ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"];
-document.getElementById('cal-month').innerText = months[now.getMonth()];
-document.getElementById('cal-day').innerText = now.getDate();
-}
-setInterval(updateClock, 1000); updateClock();
-
-const ilceler = ["Beşiktaş'ta", "Ataköy'de", "Kadıköy'de", "Florya'da", "Nişantaşı'nda", "Etiler'de", "Ataşehir'de", "Bebek'te"];
-const araclar = ["Porsche", "Range Rover", "BMW M4", "Mercedes G-Serisi", "Audi RS", "Tesla Model Y"];
-function showNotification() {
-const ilce = ilceler[Math.floor(Math.random() * ilceler.length)];
-const arac = araclar[Math.floor(Math.random() * araclar.length)];
-document.getElementById('notif-text').innerText = `${ilce} ${arac} parlatıldı! ✨`;
-document.getElementById('notification-toast').classList.add('show');
-setTimeout(() => { document.getElementById('notification-toast').classList.remove('show'); }, 5000);
-}
-setInterval(showNotification, 20000); setTimeout(showNotification, 3000);
-
-let cur = 0; const slides = document.querySelectorAll('.slide');
-setInterval(() => { slides[cur].classList.remove('active'); cur = (cur+1)%slides.length; slides[cur].classList.add('active'); }, 5000);
-
-const fiyatlar = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
-function hesapla() {
-const a = document.getElementById('arac').value;
-const b = parseInt(document.getElementById('bolge').value);
-const h = new Date().getHours();
-let mult = (h >= 21 || h < 7) ? 1.30 : 1;
-document.getElementById('gece-uyari').style.display = (mult > 1) ? 'inline-block' : 'none';
-document.getElementById('price-standart').innerText = Math.round((fiyatlar[a].s * mult) + b);
-document.getElementById('price-vip').innerText = Math.round((fiyatlar[a].v * mult) + b);
-document.getElementById('price-ultra').innerText = Math.round((fiyatlar[a].u * mult) + b);
-}
-
-function whatsapp(p) {
-const a = document.getElementById('arac').selectedOptions[0].text;
-const b = document.getElementById('bolge').selectedOptions[0].text;
-let f = (p==='Standart') ? document.getElementById('price-standart').innerText : (p==='VIP Paket' ? document.getElementById('price-vip').innerText : document.getElementById('price-ultra').innerText);
-const msg = `Merhaba MobilWash! 👋 %0A%0A--- RANDEVU TALEBİ ---%0A📦 Paket: ${p}%0A🚗 Araç: ${a}%0A📍 Bölge: ${b}%0A💰 Tutar: ${f} TL%0A%0AUygunluk durumunuzu öğrenebilir miyim?`;
-window.open(`https://wa.me/905307366945?text=${msg}`, '_blank');
-}
-
-function konumAt() {
-window.open(`https://wa.me/905307366945?text=Merhaba MobilWash! 👋 Aracımı yıkatmak istiyorum, konumumu iletiyorum.`, '_blank');
-}
-hesapla();
-</script>
-</body>
-</html>
 
