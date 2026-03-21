@@ -7,77 +7,18 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* YENİ RENK PALETİ: Derin Okyanus & Platin */
-:root {
---ocean-blue: #003366;
---electric-blue: #0077ff;
---platin: #e0e0e0;
---premium-black: #050505;
-}
-
-body {
-background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%);
-font-family: 'Georgia', serif;
-overflow-x: hidden;
-}
-
-/* Platin Metin Gradyanı */
-.platin-text {
-background: linear-gradient(to right, #ffffff 0%, #a0a0a0 50%, #ffffff 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
-
-/* Mavi Çerçeve Efekti */
-.ocean-border {
-border: 2px solid transparent;
-border-image: linear-gradient(to right, var(--electric-blue), #00c3ff, var(--electric-blue));
-border-image-slice: 1;
-}
-
-/* Canlı Mavi Buton */
-.ocean-button {
-background: linear-gradient(45deg, var(--electric-blue), #00c3ff, var(--electric-blue));
-color: white;
-font-weight: 900;
-transition: all 0.3s ease;
-box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);
-}
-
-.ocean-button:hover {
-box-shadow: 0 0 25px rgba(0, 195, 255, 0.7);
-transform: scale(1.03);
-}
-
-.header-widget {
-backdrop-filter: blur(15px);
-background: rgba(255, 255, 255, 0.03);
-border: 1px solid rgba(0, 119, 255, 0.2);
-}
-
+:root { --ocean-blue: #003366; --electric-blue: #0077ff; --platin: #e0e0e0; --premium-black: #050505; }
+body { background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%); font-family: 'Georgia', serif; overflow-x: hidden; }
+.platin-text { background: linear-gradient(to right, #ffffff 0%, #a0a0a0 50%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.ocean-border { border: 2px solid transparent; border-image: linear-gradient(to right, var(--electric-blue), #00c3ff, var(--electric-blue)); border-image-slice: 1; }
+.ocean-button { background: linear-gradient(45deg, var(--electric-blue), #00c3ff, var(--electric-blue)); color: white; font-weight: 900; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4); }
+.ocean-button:hover { box-shadow: 0 0 25px rgba(0, 195, 255, 0.7); transform: scale(1.03); }
+.header-widget { backdrop-filter: blur(15px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 119, 255, 0.2); }
 .slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s; background-size: cover; background-position: center; }
-
-/* EKLEDİĞİM: Araç Yıkayan Adam Görselleri (Hareketli Slider) */
-.slide:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500'); } /* Porsche Taycan */
-.slide:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500'); } /* Spor Araç */
-.slide:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1560172908-ff994146f8ca?q=80&w=1500'); } /* Yıkayan Adam 1 */
-.slide:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=1500'); } /* Yıkayan Adam 2 */
-
 .slide.active { opacity: 0.35; }
-
-/* VIP Bildirim Kutusu (Mavi Tema) */
-#vip-popup {
-position: fixed; bottom: 30px; right: 30px; background: rgba(5, 5, 5, 0.95); border: 1px solid var(--electric-blue);
-padding: 15px 25px; border-radius: 20px; z-index: 1000; display: flex; align-items: center; gap: 12px;
-transform: translateX(120%); transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-}
+#vip-popup { position: fixed; bottom: 30px; right: 30px; background: rgba(5, 5, 5, 0.95); border: 1px solid var(--electric-blue); padding: 15px 25px; border-radius: 20px; z-index: 1000; display: flex; align-items: center; gap: 12px; transform: translateX(120%); transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px); }
 #vip-popup.active { transform: translateX(0); }
-
-/* Select Menü Mavi Odak */
-select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 195, 255, 0.3); }
-
 </style>
 </head>
 <body class="text-white">
@@ -93,12 +34,10 @@ select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 19
 <div id="cal-day" class="text-3xl font-black platin-text">21</div>
 <div class="text-[9px] text-gray-500 font-bold">2026</div>
 </div>
-
 <div class="header-widget rounded-full px-4 py-2 mt-4 flex items-center gap-3">
 <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
 <span class="text-[10px] font-bold platin-text tracking-widest uppercase italic">Saha Ekibi Aktif</span>
 </div>
-
 <div class="header-widget rounded-2xl px-6 py-4 text-right border-r-4 border-[#00c3ff]">
 <div id="digital-clock" class="text-4xl font-black platin-text tracking-tighter">00:00</div>
 <div class="text-[9px] font-bold text-gray-500 uppercase tracking-[3px]">VIP Servis</div>
@@ -107,17 +46,11 @@ select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 19
 
 <main class="relative h-[70vh] flex flex-col items-center justify-center text-center px-4">
 <div class="slider-container">
-<div class="slide active"></div>
-<div class="slide"></div>
-<div class="slide"></div>
-<div class="slide"></div>
-</div>
+<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500');"></div> <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1500');"></div> <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500');"></div> <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=1500');"></div> </div>
 
 <h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4 platin-text">MOTO<span class="platin-text">WASH</span></h1>
 <p class="text-gray-400 tracking-[10px] uppercase text-[10px] mb-10">Ultra Premium Detailing At Your Door</p>
-
 <div id="gece-uyari" class="hidden bg-red-950/40 border border-red-500 text-red-300 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">🌙 GECE TARİFESİ AKTİF</div>
-
 <button onclick="konumAt()" class="ocean-button px-12 py-6 rounded-full text-xl flex items-center gap-4 italic font-black uppercase tracking-widest">
 <i class="fas fa-motorcycle"></i> KONUM AT GELELİM!
 </button>
@@ -227,7 +160,6 @@ document.getElementById('cal-day').innerText = now.getDate();
 setInterval(updateClock, 1000); updateClock();
 
 let sIdx = 0; const slides = document.querySelectorAll('.slide');
-// EKLEDİĞİM: Slider süresini 4 saniyeye (4000ms) düşürdüm (daha hareketli olması için)
 setInterval(() => { slides[sIdx].classList.remove('active'); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 4000);
 
 const prices = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
@@ -242,7 +174,7 @@ document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b)
 document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
 }
 
-const notifications = ["Beşiktaş'ta VIP hizmet bitti", "Porsche Taycan teslim edildi", "Nişantaşı'nda showroom parlaklığı sağlandı", "Porsche Taycan işlemi bitti"];
+const notifications = ["Beşiktaş'ta VIP hizmet bitti", "Porsche Taycan teslim edildi", "Nişantaşı'nda showroom parlaklığı sağlandı", "Florya'da lüks araç işlemi bitti"];
 function showPopup() {
 const popup = document.getElementById('vip-popup');
 const msg = document.getElementById('vip-msg');
@@ -250,8 +182,7 @@ msg.innerText = notifications[Math.floor(Math.random() * notifications.length)];
 popup.classList.add('active');
 setTimeout(() => popup.classList.remove('active'), 5000);
 }
-setInterval(showPopup, 15000);
-setTimeout(showPopup, 3000);
+setInterval(showPopup, 15000); setTimeout(showPopup, 3000);
 
 function whatsapp(p) { window.open(`https://wa.me/905307366945?text=Merhaba, ${p} için randevu istiyorum.`, '_blank'); }
 function konumAt() { window.open(`https://wa.me/905307366945?text=Konum paylaşıyorum, servis bekliyorum.`, '_blank'); }
