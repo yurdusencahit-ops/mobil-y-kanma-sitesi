@@ -8,107 +8,105 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
 
-body { font-family: 'Inter', sans-serif; }
+/* Slider & Overlay */
 .slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
 .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
 .slide.active { opacity: 1; }
 .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4)); z-index: 0; }
 
-.card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 2.5rem; overflow: hidden; }
-.card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
-
-/* ANALOG SAAT (Görseldeki Tasarım) */
+/* Saat Tasarımı (Görseldeki Gibi) */
 .clock {
-width: 90px; height: 90px;
-border: 5px solid #1a1a1a;
-border-radius: 50%;
-position: relative;
-background: white;
-box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+width: 85px; height: 85px; border: 5px solid #1a1a1a; border-radius: 50%;
+position: relative; background: white; shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
-.clock::after {
-content: ''; width: 4px; height: 4px; background: #ef4444;
-border-radius: 50%; position: absolute; top: 50%; left: 50%;
-transform: translate(-50%, -50%); z-index: 10;
-}
+.clock::after { content: ''; width: 4px; height: 4px; background: #ef4444; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; }
 .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; border-radius: 5px; z-index: 5; }
-.hour-hand { width: 3.5px; height: 22px; background: #1a1a1a; }
-.min-hand { width: 2.5px; height: 32px; background: #1a1a1a; }
-.sec-hand { width: 1.5px; height: 36px; background: #ef4444; }
-
+.hour-hand { width: 3.5px; height: 20px; background: #1a1a1a; }
+.min-hand { width: 2.5px; height: 30px; background: #1a1a1a; }
+.sec-hand { width: 1px; height: 35px; background: #ef4444; }
 .number { position: absolute; color: #1a1a1a; font-size: 10px; font-weight: 900; }
 .n12 { top: 2%; left: 42%; } .n3 { top: 42%; left: 88%; } .n6 { top: 85%; left: 45%; } .n9 { top: 42%; left: 5%; }
 
-/* Bildirim */
+/* Kartlar & Animasyonlar */
+.card { transition: all 0.4s ease; border-radius: 2.5rem; }
+.card:hover { transform: translateY(-10px); }
+.faq-item { border-bottom: 1px solid #f1f5f9; }
 #notification-toast {
-position: fixed; bottom: 20px; left: -400px;
-background: white; padding: 15px 25px; border-radius: 20px;
-box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-z-index: 9999; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-display: flex; align-items: center; border-left: 6px solid #3b82f6;
+position: fixed; bottom: 20px; left: -400px; background: white; padding: 15px 25px;
+border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); z-index: 9999;
+transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); border-left: 6px solid #3b82f6;
 }
 #notification-toast.show { left: 20px; }
-
-.btn-active:active { transform: scale(0.95); }
 </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body>
 
 <div id="notification-toast">
-<div class="bg-blue-50 p-3 rounded-full mr-4 text-blue-600"><i class="fas fa-bolt"></i></div>
+<div class="bg-blue-50 p-3 rounded-full mr-4 text-blue-600"><i class="fas fa-check"></i></div>
 <div>
 <p id="notif-text" class="text-sm font-bold"></p>
-<p class="text-[10px] text-slate-400 uppercase font-black">Yeni Hizmet Tamamlandı</p>
+<p class="text-[10px] text-slate-400 uppercase font-black">Az Önce Tamamlandı</p>
 </div>
 </div>
 
-<header class="relative h-[70vh] flex flex-col items-center justify-center text-white px-6 overflow-hidden">
+<header class="relative h-[60vh] flex flex-col items-center justify-center text-white text-center px-6 overflow-hidden">
 <div class="slider-container">
 <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1500');"></div>
 <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1500');"></div>
 </div>
 <div class="overlay"></div>
 
-<div class="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-8">
-<div class="bg-white text-black p-3 rounded-2xl text-center shadow-xl w-28">
-<div id="cal-month" class="text-[10px] bg-red-600 text-white rounded-t-lg py-1 font-black">MART</div>
-<div id="cal-day" class="text-4xl font-black py-2">19</div>
-<div id="cal-year" class="text-[10px] text-slate-400">2026</div>
+<div class="relative z-10 w-full max-w-5xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="bg-white text-black p-3 rounded-2xl shadow-xl w-24">
+<div id="cal-month" class="text-[9px] bg-red-600 text-white rounded-t-lg py-1 font-black uppercase">MART</div>
+<div id="cal-day" class="text-3xl font-black py-1">19</div>
+<div id="cal-year" class="text-[9px] text-slate-400">2026</div>
 </div>
-
 <div class="text-center">
-<h1 class="text-7xl md:text-9xl font-black tracking-tighter italic drop-shadow-2xl uppercase leading-none">Mobil<span class="text-blue-500">Wash</span></h1>
-<div id="gece-uyari" class="hidden bg-yellow-400 text-black px-6 py-2 rounded-full font-black animate-pulse text-xs mt-4">🌙 Gece Tarifesi Aktif (+%30)</div>
+<h1 class="text-7xl md:text-8xl font-black italic uppercase leading-none tracking-tighter">Mobil<span class="text-blue-500">Wash</span></h1>
+<div id="gece-uyari" class="hidden bg-yellow-400 text-black px-5 py-1.5 rounded-full font-black text-[10px] mt-4 uppercase">🌙 GECE TARİFESİ (+%30)</div>
 </div>
-
-<div class="clock scale-110">
+<div class="clock">
 <div class="number n12">12</div><div class="number n3">3</div><div class="number n6">6</div><div class="number n9">9</div>
-<div class="hand hour-hand" id="hour-hand"></div>
-<div class="hand min-hand" id="min-hand"></div>
-<div class="hand sec-hand" id="sec-hand"></div>
+<div id="hour-hand" class="hand hour-hand"></div><div id="min-hand" class="hand min-hand"></div><div id="sec-hand" class="hand sec-hand"></div>
 </div>
 </div>
 </header>
 
-<section class="max-w-4xl mx-auto -mt-12 mb-16 px-6 relative z-30">
-<button onclick="konumAt()" class="btn-active bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-[2rem] font-black text-xl shadow-2xl flex items-center justify-center mx-auto w-full transition-all border-b-4 border-blue-900">
-<i class="fas fa-map-marker-alt mr-3"></i> KONUM AT GELELİM!
-</button>
+<section class="max-w-6xl mx-auto -mt-10 mb-20 px-6 relative z-30">
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white p-8 rounded-[2rem] shadow-xl text-center border-b-4 border-blue-500">
+<div class="text-4xl mb-4 text-blue-600"><i class="fab fa-whatsapp"></i></div>
+<h4 class="font-black italic mb-2">1. KONUM AT</h4>
+<p class="text-slate-500 text-xs">WhatsApp'tan konumunuzu ve araç tipinizi bize iletin.</p>
+</div>
+<div class="bg-white p-8 rounded-[2rem] shadow-xl text-center border-b-4 border-green-500">
+<div class="text-4xl mb-4 text-green-500"><i class="fas fa-motorcycle"></i></div>
+<h4 class="font-black italic mb-2">2. EKİBİMİZ GELSİN</h4>
+<p class="text-slate-500 text-xs">Motorize ekibimiz 30-45 dk içinde kapınızda olsun.</p>
+</div>
+<div class="bg-white p-8 rounded-[2rem] shadow-xl text-center border-b-4 border-yellow-500">
+<div class="text-4xl mb-4 text-yellow-500"><i class="fas fa-star"></i></div>
+<h4 class="font-black italic mb-2">3. PIRIL PIRIL</h4>
+<p class="text-slate-500 text-xs">Aracınız yerinden kıpırdamadan tertemiz teslim edilsin.</p>
+</div>
+</div>
 </section>
 
-<section class="max-w-5xl mx-auto bg-white p-8 rounded-[3rem] shadow-xl relative z-20 mx-6 mb-16 border-b-8 border-blue-500">
-<div class="grid md:grid-cols-2 gap-8">
+<section class="max-w-5xl mx-auto bg-slate-900 p-10 rounded-[3rem] shadow-2xl mb-16 text-white mx-6">
+<div class="grid md:grid-cols-2 gap-10">
 <div>
-<label class="block text-[10px] font-black text-slate-400 uppercase mb-3 tracking-widest italic text-center md:text-left">📍 Hizmet Bölgesi</label>
-<select id="bolge" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:border-blue-500 outline-none transition font-bold" onchange="hesapla()">
+<label class="block text-[10px] font-black text-slate-500 uppercase mb-3 italic">📍 BÖLGE SEÇİMİ</label>
+<select id="bolge" class="w-full bg-slate-800 p-4 rounded-2xl outline-none font-bold text-sm" onchange="hesapla()">
 <option value="0">Merkezi İlçeler (Ücretsiz)</option>
 <option value="350">Uzak İlçeler (+350 TL Ekstra)</option>
 </select>
 </div>
 <div>
-<label class="block text-[10px] font-black text-slate-400 uppercase mb-3 tracking-widest italic text-center md:text-left">🚗 Araç Tipi</label>
-<select id="arac" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:border-blue-500 outline-none transition font-bold" onchange="hesapla()">
+<label class="block text-[10px] font-black text-slate-500 uppercase mb-3 italic">🚗 ARAÇ KATEGORİSİ</label>
+<select id="arac" class="w-full bg-slate-800 p-4 rounded-2xl outline-none font-bold text-sm" onchange="hesapla()">
 <option value="binek">Binek Araç</option>
 <option value="suv">SUV / VIP / Büyük Araç</option>
 </select>
@@ -116,47 +114,75 @@ display: flex; align-items: center; border-left: 6px solid #3b82f6;
 </div>
 </section>
 
-<section class="max-w-7xl mx-auto py-8 px-6 grid md:grid-cols-3 gap-10">
-<div class="card bg-white p-10 text-center border-t-8 border-blue-400 shadow-lg">
-<h3 class="text-2xl font-black text-slate-800 mb-1">STANDART</h3>
-<p class="text-slate-400 text-[10px] font-black mb-8 uppercase italic">DIŞ YIKAMA + JANT BAKIMI</p>
+<section class="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-10 mb-20">
+<div class="card bg-white p-10 text-center shadow-lg border-t-8 border-blue-500">
+<h3 class="text-xl font-black mb-1">STANDART</h3>
+<p class="text-[9px] text-slate-400 font-black mb-8 italic">DIŞ YIKAMA + JANT</p>
 <div class="text-5xl font-black text-blue-600 mb-10"><span id="price-standart">950</span> TL</div>
-<button onclick="whatsapp('Standart')" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded-3xl font-black shadow-lg flex items-center justify-center text-lg transition-all">
-<i class="fab fa-whatsapp mr-2 text-2xl"></i> Paket Seç
-</button>
+<button onclick="whatsapp('Standart')" class="bg-green-500 text-white w-full py-4 rounded-2xl font-black flex items-center justify-center"><i class="fab fa-whatsapp mr-2"></i> SEÇ</button>
 </div>
-
-<div class="card bg-white p-10 text-center border-t-8 border-purple-600 scale-105 shadow-2xl ring-8 ring-purple-50">
-<span class="bg-purple-600 text-white text-[10px] px-4 py-1.5 rounded-full font-black uppercase mb-6 inline-block italic">Popüler Seçim</span>
-<h3 class="text-2xl font-black text-slate-800 mb-1 italic">VIP PAKET</h3>
-<p class="text-slate-400 text-[10px] font-black mb-8 uppercase italic">İÇ-DIŞ + CİLA + PARLATICI</p>
+<div class="card bg-white p-10 text-center shadow-2xl border-t-8 border-purple-600 scale-105 z-10 ring-4 ring-purple-50">
+<span class="bg-purple-600 text-white text-[8px] px-3 py-1 rounded-full font-black uppercase mb-4 inline-block italic tracking-widest">En Çok Tercih Edilen</span>
+<h3 class="text-xl font-black mb-1 italic">VIP PAKET</h3>
+<p class="text-[9px] text-slate-400 font-black mb-8 italic">İÇ-DIŞ + SIVI CİLA</p>
 <div class="text-5xl font-black text-purple-600 mb-10"><span id="price-vip">1600</span> TL</div>
-<button onclick="whatsapp('VIP Paket')" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded-3xl font-black shadow-lg flex items-center justify-center text-lg transition-all">
-<i class="fab fa-whatsapp mr-2 text-2xl"></i> Paket Seç
-</button>
+<button onclick="whatsapp('VIP Paket')" class="bg-green-500 text-white w-full py-4 rounded-2xl font-black flex items-center justify-center"><i class="fab fa-whatsapp mr-2"></i> SEÇ</button>
 </div>
-
-<div class="card bg-white p-10 text-center border-t-8 border-slate-900 shadow-lg">
-<h3 class="text-2xl font-black text-slate-800 mb-1 uppercase">Ultra Detay</h3>
-<p class="text-slate-400 text-[10px] font-black mb-8 uppercase italic">MOTOR + DETAYLI İÇ TEMİZLİK</p>
+<div class="card bg-white p-10 text-center shadow-lg border-t-8 border-slate-900">
+<h3 class="text-xl font-black mb-1">ULTRA DETAY</h3>
+<p class="text-[9px] text-slate-400 font-black mb-8 italic">MOTOR + DETAYLI İÇ</p>
 <div class="text-5xl font-black text-slate-900 mb-10"><span id="price-ultra">2400</span> TL</div>
-<button onclick="whatsapp('Ultra Detay')" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded-3xl font-black shadow-lg flex items-center justify-center text-lg transition-all">
-<i class="fab fa-whatsapp mr-2 text-2xl"></i> Paket Seç
-</button>
+<button onclick="whatsapp('Ultra Detay')" class="bg-green-500 text-white w-full py-4 rounded-2xl font-black flex items-center justify-center"><i class="fab fa-whatsapp mr-2"></i> SEÇ</button>
 </div>
 </section>
 
-<footer class="text-center py-20 bg-white border-t border-slate-100">
-<a href="https://www.instagram.com/mericyurdusen" target="_blank" class="text-5xl text-pink-600 inline-block mb-6 hover:scale-110 transition duration-300">
-<i class="fab fa-instagram"></i>
-</a>
+<section class="max-w-4xl mx-auto bg-blue-600 text-white p-12 rounded-[3rem] shadow-2xl mb-20 text-center mx-6">
+<h2 class="text-3xl font-black italic mb-4 uppercase">ABONELİK SİSTEMİ</h2>
+<p class="text-blue-100 mb-8 font-medium">Ayda 4 Yıkama Paketi Alın, %20 Daha Az Ödeyin! Aracınız her zaman yeni kalsın.</p>
+<button onclick="whatsapp('Abonelik Hakkında')" class="bg-white text-blue-600 px-10 py-4 rounded-full font-black shadow-lg hover:scale-105 transition">DETAYLI BİLGİ AL</button>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 mb-20 text-center">
+<h2 class="text-2xl font-black italic mb-10 tracking-widest uppercase text-slate-800">MÜŞTERİLERİMİZ NE DİYOR?</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white p-8 rounded-3xl shadow-sm italic text-slate-600 relative border border-slate-100">
+<i class="fas fa-quote-left absolute top-4 left-4 text-slate-100 text-4xl"></i>
+"İş yerimin otoparkında toplantıdayken aracım yıkandı, zaman kaybım sıfır! Harika bir hizmet."
+<div class="mt-4 font-black not-italic text-slate-900 text-xs">— Kerem B. (Audi A4)</div>
+</div>
+<div class="bg-white p-8 rounded-3xl shadow-sm italic text-slate-600 relative border border-slate-100">
+<i class="fas fa-quote-left absolute top-4 left-4 text-slate-100 text-4xl"></i>
+"Pazar günü evde dinlenirken kapıma kadar gelip pırıl pırıl yaptılar. Gece tarifesi de çok pratik."
+<div class="mt-4 font-black not-italic text-slate-900 text-xs">— Selin T. (BMW X1)</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-3xl mx-auto px-6 mb-20">
+<h2 class="text-xl font-black italic mb-8 text-center uppercase tracking-widest">SIKÇA SORULAN SORULAR</h2>
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
+<div class="faq-item py-4">
+<div class="font-black text-sm text-slate-800 mb-1 italic">Su ve elektrik gerekiyor mu?</div>
+<div class="text-xs text-slate-500">Hayır, tüm donanımımız mobil aracımızda mevcuttur; hiçbir kaynağınızı kullanmayız.</div>
+</div>
+<div class="faq-item py-4">
+<div class="font-black text-sm text-slate-800 mb-1 italic">Hangi bölgelere geliyorsunuz?</div>
+<div class="text-xs text-slate-500">İstanbul genelinde hizmet vermekteyiz. Uzak ilçeler için ek mobil ücret uygulanmaktadır.</div>
+</div>
+</div>
+</section>
+
+<footer class="text-center py-20 bg-white border-t">
+<div class="flex justify-center gap-6 mb-8">
+<a href="https://www.instagram.com/mericyurdusen" target="_blank" class="text-4xl text-pink-600 hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+<a href="tel:+905307366945" class="text-4xl text-blue-600 hover:scale-110 transition"><i class="fas fa-phone-alt"></i></a>
+</div>
 <p class="text-slate-400 text-[10px] uppercase tracking-[8px] font-black italic">© 2026 MERIC YURDUŞEN | MOBİL WASH</p>
 </footer>
 
 <script>
 function updateClock() {
-const now = new Date();
-const h = now.getHours(); const m = now.getMinutes(); const s = now.getSeconds();
+const now = new Date(); const h = now.getHours(); const m = now.getMinutes(); const s = now.getSeconds();
 document.getElementById('hour-hand').style.transform = `translateX(-50%) rotate(${(h%12)*30 + m/2}deg)`;
 document.getElementById('min-hand').style.transform = `translateX(-50%) rotate(${m*6}deg)`;
 document.getElementById('sec-hand').style.transform = `translateX(-50%) rotate(${s*6}deg)`;
@@ -166,8 +192,8 @@ document.getElementById('cal-day').innerText = now.getDate();
 }
 setInterval(updateClock, 1000); updateClock();
 
-const ilceler = ["Beşiktaş'ta", "Ataköy'de", "Kadıköy'de", "Florya'da", "Nişantaşı'nda", "Etiler'de"];
-const araclar = ["Porsche", "Mercedes", "BMW", "Audi", "Tesla"];
+const ilceler = ["Beşiktaş'ta", "Ataköy'de", "Kadıköy'de", "Florya'da", "Nişantaşı'nda"];
+const araclar = ["Porsche", "Mercedes", "BMW", "Tesla"];
 function showNotification() {
 const ilce = ilceler[Math.floor(Math.random() * ilceler.length)];
 const arac = araclar[Math.floor(Math.random() * araclar.length)];
@@ -175,7 +201,7 @@ document.getElementById('notif-text').innerText = `${ilce} ${arac} parlatıldı!
 document.getElementById('notification-toast').classList.add('show');
 setTimeout(() => { document.getElementById('notification-toast').classList.remove('show'); }, 5000);
 }
-setInterval(showNotification, 18000); setTimeout(showNotification, 3000);
+setInterval(showNotification, 20000); setTimeout(showNotification, 3000);
 
 let cur = 0; const slides = document.querySelectorAll('.slide');
 setInterval(() => { slides[cur].classList.remove('active'); cur = (cur+1)%slides.length; slides[cur].classList.add('active'); }, 5000);
@@ -196,11 +222,9 @@ function whatsapp(p) {
 const a = document.getElementById('arac').selectedOptions[0].text;
 const b = document.getElementById('bolge').selectedOptions[0].text;
 let f = (p==='Standart') ? document.getElementById('price-standart').innerText : (p==='VIP Paket' ? document.getElementById('price-vip').innerText : document.getElementById('price-ultra').innerText);
-const msg = `Merhaba MobilWash! 👋 %0A📦 Paket: ${p}%0A🚗 Araç: ${a}%0A📍 Bölge: ${b}%0A💰 Tutar: ${f} TL%0ARandevu almak istiyorum.`;
+const msg = `Merhaba MobilWash! 👋 %0A%0A--- TALEP DETAYI ---%0A📦 Paket: ${p}%0A🚗 Araç: ${a}%0A📍 Bölge: ${b}%0A💰 Tutar: ${f} TL%0A%0AMüsaitlik durumunuzu öğrenebilir miyim?`;
 window.open(`https://wa.me/905307366945?text=${msg}`, '_blank');
 }
-
-function konumAt() { window.open(`https://wa.me/905307366945?text=Merhaba MobilWash! 👋 Aracımı yıkatmak istiyorum, konumumu paylaşıyorum.`, '_blank'); }
 hesapla();
 </script>
 </body>
