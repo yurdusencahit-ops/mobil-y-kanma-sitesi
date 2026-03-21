@@ -9,14 +9,14 @@
 <style>
 /* YENİ RENK PALETİ: Derin Okyanus & Platin */
 :root {
---ocean-blue: #003366; /* Derin Mavi Arka Plan için */
---electric-blue: #0077ff; /* Canlı Detaylar için */
---platin: #e0e0e0; /* Platin Gümüş Metinler için */
---premium-black: #050505; /* Siyahlık hala var ama yumuşak */
+--ocean-blue: #003366;
+--electric-blue: #0077ff;
+--platin: #e0e0e0;
+--premium-black: #050505;
 }
 
 body {
-background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%); /* Hafif Maviye Kayma */
+background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%);
 font-family: 'Georgia', serif;
 overflow-x: hidden;
 }
@@ -57,7 +57,14 @@ border: 1px solid rgba(0, 119, 255, 0.2);
 
 .slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s; background-size: cover; background-position: center; }
-.slide.active { opacity: 0.35; } /* Mavi fonda daha net görünmesi için opaklık biraz daha düşük */
+
+/* EKLEDİĞİM: Araç Yıkayan Adam Görselleri (Hareketli Slider) */
+.slide:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500'); } /* Porsche Taycan */
+.slide:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500'); } /* Spor Araç */
+.slide:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1560172908-ff994146f8ca?q=80&w=1500'); } /* Yıkayan Adam 1 */
+.slide:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=1500'); } /* Yıkayan Adam 2 */
+
+.slide.active { opacity: 0.35; }
 
 /* VIP Bildirim Kutusu (Mavi Tema) */
 #vip-popup {
@@ -103,8 +110,10 @@ select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 19
 
 <main class="relative h-[70vh] flex flex-col items-center justify-center text-center px-4">
 <div class="slider-container">
-<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500');"></div>
-<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500');"></div>
+<div class="slide active"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
 </div>
 
 <h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4 platin-text">MOTO<span class="platin-text">WASH</span></h1>
@@ -221,7 +230,8 @@ document.getElementById('cal-day').innerText = now.getDate();
 setInterval(updateClock, 1000); updateClock();
 
 let sIdx = 0; const slides = document.querySelectorAll('.slide');
-setInterval(() => { slides[sIdx].classList.remove('active'); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 5000);
+// EKLEDİĞİM: Slider süresini 4 saniyeye (4000ms) düşürdüm (daha hareketli olması için)
+setInterval(() => { slides[sIdx].classList.remove('active'); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 4000);
 
 const prices = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
 function hesapla() {
@@ -235,7 +245,7 @@ document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b)
 document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
 }
 
-const notifications = ["Beşiktaş'ta VIP hizmet tamamlandı", "Nişantaşı'nda lüks araç teslim edildi", "Showroom parlaklığı sağlandı", "Porsche Taycan işlemi bitti"];
+const notifications = ["Beşiktaş'ta VIP hizmet bitti", "Porsche Taycan teslim edildi", "Nişantaşı'nda showroom parlaklığı sağlandı", "Florya'da lüks araç işlemi bitti"];
 function showPopup() {
 const popup = document.getElementById('vip-popup');
 const msg = document.getElementById('vip-msg');
