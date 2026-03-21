@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* Senin Mevcut Stillerin */
 :root {
 --gold: #d4af37;
 --dark-gold: #aa841e;
@@ -50,18 +49,34 @@ border: 1px solid rgba(212, 175, 55, 0.3);
 .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s; background-size: cover; background-position: center; }
 .slide.active { opacity: 0.4; }
 
-/* YENİ: Canlı VIP Akışı Stili */
-.live-stream { background: rgba(212, 175, 55, 0.1); border-bottom: 1px solid var(--gold); padding: 8px 0; overflow: hidden; white-space: nowrap; position: relative; z-index: 50; }
-.stream-text { display: inline-block; animation: scroll 35s linear infinite; font-weight: bold; font-size: 12px; color: var(--gold); text-transform: uppercase; }
-@keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+/* YENİ: Otomatik VIP Yazı Bildirim Stili (Şerit değil, küçük bir bildirim) */
+#vip-notification {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: rgba(212, 175, 55, 0.15);
+border: 1px solid var(--gold);
+color: var(--gold);
+padding: 15px 25px;
+border-radius: 15px;
+font-size: 13px;
+font-weight: bold;
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.5s, transform 0.5s;
+z-index: 100;
+backdrop-filter: blur(5px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#vip-notification.show {
+opacity: 1;
+transform: translateY(0);
+}
 </style>
 </head>
 <body class="text-white">
 
-<div class="live-stream">
-<div class="stream-text">
-Etiler'de Range Rover temizlendi... Bebek'te Porsche Taycan teslim edildi... Florya'da Mercedes G63 yıkandı... Zekeriyaköy'de Ferrari F8 Detaylı Temizlik tamamlandı... Nişantaşı'nda BMW M8 işlemi bitti...
-</div>
+<div id="vip-notification">
 </div>
 
 <header class="flex justify-between items-start p-6 md:p-10 relative z-20">
@@ -97,105 +112,6 @@ MOTO<span class="gold-text">WASH</span>
 </button>
 </main>
 
-<section class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-20 relative z-30">
-<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
-<h3 class="gold-text font-bold mb-2 italic">BİZ KİMİZ?</h3>
-<p class="text-gray-400 text-xs leading-relaxed">İstanbul'un en seçkin noktalarında, Meriç Yurduşen güvencesiyle lüks araç sahiplerine yerinde profesyonel hizmet sunan butik bir ekibiz.</p>
-</div>
-<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
-<h3 class="gold-text font-bold mb-2 italic">VİZYONUMUZ</h3>
-<p class="text-gray-400 text-xs leading-relaxed">Mobil yıkama standartlarını VIP seviyeye taşıyarak, Türkiye'nin en prestijli mobil detailing markası olmak.</p>
-</div>
-<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
-<h3 class="gold-text font-bold mb-2 italic">MİSYONUMUZ</h3>
-<p class="text-gray-400 text-xs leading-relaxed">Müşterilerimizin zamanına değer vererek, en kaliteli ekipmanlarla araçlarını showroom parlaklığına ulaştırmak.</p>
-</div>
-</section>
-
-<section class="max-w-4xl mx-auto -mt-10 mb-20 px-6 relative z-30">
-<div class="bg-[#111] p-8 rounded-[3rem] gold-border shadow-2xl">
-<div class="grid md:grid-cols-2 gap-8">
-<div>
-<label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Hizmet Bölgesi</label>
-<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none">
-<option value="0">Merkezi Bölgeler</option>
-<option value="350">Uzak Bölgeler (+350 TL)</option>
-</select>
-</div>
-<div>
-<label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Araç Tipi</label>
-<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none">
-<option value="binek">Premium Binek</option>
-<option value="suv">Luxury SUV / VIP</option>
-</select>
-</div>
-</div>
-</div>
-</section>
-
-<section class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-24">
-<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
-<h3 class="text-xl font-bold mb-2">Silver Detay</h3>
-<div class="text-4xl font-black gold-text mb-8"><span id="price-standart">950</span> TL</div>
-<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition">RANDEVU</button>
-</div>
-<div class="bg-black p-10 rounded-[2.5rem] gold-border text-center transform scale-110 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
-<div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black">EN ÇOK TERCİH EDİLEN</div>
-<h3 class="text-2xl font-bold mb-2 gold-text">GOLD VIP</h3>
-<div class="text-5xl font-black gold-text mb-8"><span id="price-vip">1600</span> TL</div>
-<button onclick="whatsapp('Gold VIP')" class="gold-button w-full py-4 rounded-xl shadow-lg">WHATSAPP RANDEVU</button>
-</div>
-<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
-<h3 class="text-xl font-bold mb-2">Platinum</h3>
-<div class="text-4xl font-black gold-text mb-8"><span id="price-ultra">2400</span> TL</div>
-<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition">RANDEVU</button>
-</div>
-</section>
-
-<section class="max-w-4xl mx-auto px-6 mb-24 text-center">
-<div class="bg-[#111] p-10 rounded-[3rem] border border-[#d4af37]">
-<h2 class="gold-text text-2xl font-bold mb-8 italic uppercase">ÖDEME NOKTASI</h2>
-<div class="flex flex-col md:flex-row items-center justify-center gap-10">
-<div class="bg-white p-3 rounded-2xl border-4 border-[#d4af37]">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" alt="QR Kod">
-</div>
-<div class="text-left">
-<p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">HESAP SAHİBİ</p>
-<p class="text-xl font-bold gold-text mb-4">MURAT CAHİT YURDUŞEN</p>
-<p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">IBAN</p>
-<p class="text-sm font-mono tracking-tighter mb-4">TR65 0006 2000 7650 0006 8705 04</p>
-<button onclick="navigator.clipboard.writeText('TR650006200076500006870504'); alert('IBAN Kopyalandı');" class="bg-gray-800 text-[10px] px-4 py-2 rounded-full hover:bg-[#d4af37] hover:text-black transition uppercase font-bold">IBAN Kopyala</button>
-</div>
-</div>
-</div>
-</section>
-
-<section class="max-w-6xl mx-auto px-6 mb-24 text-center">
-<h2 class="gold-text text-2xl font-bold mb-10 italic uppercase">VIP MÜŞTERİ YORUMLARI</h2>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="bg-[#151515] p-6 rounded-2xl italic">
-<p class="text-gray-400 text-sm mb-4">"Etiler'deki ofisime geldiler, Range Rover aracım sıfır gibi oldu. Harika hizmet."</p>
-<span class="gold-text font-bold text-xs">- Kerem B.</span>
-</div>
-<div class="bg-[#151515] p-6 rounded-2xl italic">
-<p class="text-gray-400 text-sm mb-4">"Zamanım çok kıymetli, Bebek'te otoparkta işi bitirdiler. Meriç Bey'e teşekkürler."</p>
-<span class="gold-text font-bold text-xs">- Selin A.</span>
-</div>
-<div class="bg-[#151515] p-6 rounded-2xl italic">
-<p class="text-gray-400 text-sm mb-4">"Profesyonel malzeme, güler yüzlü hizmet. Gerçekten premium hissettiriyor."</p>
-<span class="gold-text font-bold text-xs">- Murat E.</span>
-</div>
-</div>
-</section>
-
-<footer class="bg-black py-20 text-center border-t border-gray-900">
-<div class="flex justify-center gap-10 mb-10">
-<a href="https://www.instagram.com/mericyurdusen" class="text-4xl gold-text"><i class="fab fa-instagram"></i></a>
-<a href="https://wa.me/905307366945" class="text-4xl text-green-600"><i class="fab fa-whatsapp"></i></a>
-</div>
-<p class="text-[10px] tracking-[5px] text-gray-600 font-bold uppercase italic">© 2026 MERIC YURDUŞEN | MOTO WASH MOBIL</p>
-</footer>
-
 <script>
 function updateClock() {
 const now = new Date();
@@ -209,28 +125,41 @@ setInterval(updateClock, 1000); updateClock();
 let sIdx = 0; const slides = document.querySelectorAll('.slide');
 setInterval(() => { slides[sIdx].classList.remove('active'); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 5000);
 
-const prices = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
-function hesapla() {
-const a = document.getElementById('arac').value;
-const b = parseInt(document.getElementById('bolge').value);
-const h = new Date().getHours();
-let m = (h >= 21 || h < 7) ? 1.3 : 1;
-h >= 21 || h < 7 ? document.getElementById('gece-uyari').classList.remove('hidden') : document.getElementById('gece-uyari').classList.add('hidden');
-document.getElementById('price-standart').innerText = Math.round(prices[a].s * m + b);
-document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b);
-document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
-}
-
-function whatsapp(p) {
-const a = document.getElementById('arac').options[document.getElementById('arac').selectedIndex].text;
-const msg = `Merhaba, ${p} için randevu oluşturmak istiyorum. Araç: ${a}`;
-window.open(`https://wa.me/905307366945?text=${msg}`, '_blank');
-}
-
 function konumAt() {
-window.open(`https://wa.me/905307366945?text=Merhaba, konumumu paylaşıyorum. Araç yıkama için bekliyorum.`, '_blank');
+window.open(`https://wa.me/905307366945?text=Merhaba, konumumu paylaşıyorum. Servis bekliyorum.`, '_blank');
 }
-hesapla();
+
+// --- YENİ YAZILIM: OTOMATİK VIP BİLDİRİM SİSTEMİ ---
+const vipMessages = [
+"Beşiktaş otoparkında lüks araç teslim edildi.",
+"Nişantaşı rezidansında premium hizmet tamamlandı.",
+"Ulus'ta showroom parlaklığı kapınıza geldi.",
+"Zekeriyaköy'de detaylı iç temizlik bitti.",
+"Etiler ofisinizde VIP paket uygulandı.", // Etiler yazısı kalktı, genel VIP bir hale geldi
+"Sarıyer'de yerinde profesyonel detailing yapıldı.",
+"Bahçeşehir'de bir lüks araç showroom parlaklığına ulaştı."
+];
+
+const notificationEl = document.getElementById('vip-notification');
+
+function showNextVipMessage() {
+// Rastgele bir mesaj seç
+const randomMsg = vipMessages[Math.floor(Math.random() * vipMessages.length)];
+notificationEl.innerText = randomMsg;
+
+// Bildirimi göster
+notificationEl.classList.add('show');
+
+// 5 saniye sonra gizle
+setTimeout(() => {
+notificationEl.classList.remove('show');
+}, 5000);
+}
+
+// Sayfa yüklendikten 3 saniye sonra başla, her 15 saniyede bir yeni mesaj göster
+setTimeout(showNextVipMessage, 3000);
+setInterval(showNextVipMessage, 15000);
+
 </script>
 </body>
 </html>
