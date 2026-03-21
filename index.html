@@ -75,9 +75,6 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 }
 #vip-popup.active { transform: translateX(0); }
 
-/* Mavi Yıldızlar */
-.fa-star { color: #00c3ff; }
-
 /* Select Menü Mavi Odak */
 select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 195, 255, 0.3); }
 
@@ -185,17 +182,17 @@ select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 19
 <h2 class="platin-text text-3xl font-black italic uppercase mb-12 tracking-widest">Müşteri Deneyimleri</h2>
 <div class="grid md:grid-cols-3 gap-8 text-left">
 <div class="bg-[#111]/70 backdrop-blur-sm p-8 rounded-[2rem] border border-gray-900 transition hover:border-[#00c3ff]">
-<div class="flex gap-1 mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<div class="flex gap-1 mb-4 text-[#00c3ff] text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
 <p class="text-gray-400 italic text-sm mb-4">"İş yerimin otoparkında tertemiz yaptılar. Çok memnumum."</p>
 <div class="font-bold text-[10px] platin-text uppercase tracking-widest">Ahmet Y. / Nişantaşı</div>
 </div>
 <div class="bg-[#111]/70 backdrop-blur-sm p-8 rounded-[2rem] border border-gray-900 scale-105 ocean-border shadow-lg">
-<div class="flex gap-1 mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<div class="flex gap-1 mb-4 text-[#00c3ff] text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
 <p class="text-gray-400 italic text-sm mb-4">"Motosikletle gelip bu profesyonellikte çalışmak müthiş!"</p>
 <div class="font-bold text-[10px] platin-text uppercase tracking-widest">Selin K. / Beşiktaş</div>
 </div>
 <div class="bg-[#111]/70 backdrop-blur-sm p-8 rounded-[2rem] border border-gray-900 transition hover:border-[#00c3ff]">
-<div class="flex gap-1 mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<div class="flex gap-1 mb-4 text-[#00c3ff] text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
 <p class="text-gray-400 italic text-sm mb-4">"Gece tarifesiyle acil temizlik yaptırdım, sonuç harika."</p>
 <div class="font-bold text-[10px] platin-text uppercase tracking-widest">Murat E. / Etiler</div>
 </div>
@@ -211,7 +208,7 @@ select:focus { border-color: #00c3ff !important; box-shadow: 0 0 10px rgba(0, 19
 </div>
 </section>
 
-<footer class="bg-black py-20 text-center border-t border-gray-900">
+<footer class="bg-black py-20 text-center border-t border-gray-900 relative z-30">
 <div class="flex justify-center gap-10 mb-10">
 <a href="https://www.instagram.com/mericyurdusen" class="text-4xl platin-text transition hover:scale-110"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/905307366945" class="text-4xl text-green-500 transition hover:scale-110"><i class="fab fa-whatsapp"></i></a>
@@ -245,7 +242,7 @@ document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b)
 document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
 }
 
-const notifications = ["Beşiktaş'ta VIP hizmet bitti", "Porsche Taycan teslim edildi", "Nişantaşı'nda showroom parlaklığı sağlandı", "Florya'da lüks araç işlemi bitti"];
+const notifications = ["Beşiktaş'ta VIP hizmet bitti", "Porsche Taycan teslim edildi", "Nişantaşı'nda showroom parlaklığı sağlandı", "Porsche Taycan işlemi bitti"];
 function showPopup() {
 const popup = document.getElementById('vip-popup');
 const msg = document.getElementById('vip-msg');
@@ -253,7 +250,8 @@ msg.innerText = notifications[Math.floor(Math.random() * notifications.length)];
 popup.classList.add('active');
 setTimeout(() => popup.classList.remove('active'), 5000);
 }
-setInterval(showPopup, 15000); setTimeout(showPopup, 3000);
+setInterval(showPopup, 15000);
+setTimeout(showPopup, 3000);
 
 function whatsapp(p) { window.open(`https://wa.me/905307366945?text=Merhaba, ${p} için randevu istiyorum.`, '_blank'); }
 function konumAt() { window.open(`https://wa.me/905307366945?text=Konum paylaşıyorum, servis bekliyorum.`, '_blank'); }
