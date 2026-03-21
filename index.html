@@ -50,7 +50,10 @@ z-index: 5;
 .min-hand { width: 3px; height: 35px; background: red; }
 .sec-hand { width: 2px; height: 40px; background: #3b82f6; }
 
-.number { position: absolute; color: white; font-size: 10px; font-weight: bold; }
+.number {
+position: absolute; color: white;
+font-size: 10px; font-weight: bold;
+}
 .n1 { top: 5%; left: 65%; } .n2 { top: 20%; left: 85%; } .n3 { top: 40%; left: 90%; } .n4 { top: 60%; left: 85%; }
 .n5 { top: 75%; left: 65%; } .n6 { top: 85%; left: 45%; } .n7 { top: 75%; left: 25%; } .n8 { top: 60%; left: 10%; }
 .n9 { top: 40%; left: 5%; } .n10 { top: 20%; left: 10%; } .n11 { top: 5%; left: 25%; } .n12 { top: -5%; left: 45%; }
@@ -189,7 +192,6 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 </footer>
 
 <script>
-// Saat ve Takvim
 function updateClock() {
 const now = new Date();
 const hours = now.getHours(); const minutes = now.getMinutes(); const seconds = now.getSeconds();
@@ -205,7 +207,6 @@ document.getElementById('cal-year').innerText = now.getFullYear();
 }
 setInterval(updateClock, 1000); updateClock();
 
-// Bildirim Sistemi
 const ilceler = ["Beşiktaş'ta", "Beylikdüzü'nde", "Kadıköy'de", "Bakırköy'de", "Şişli'de", "Sarıyer'de", "Bahçeşehir'de", "Üsküdar'da"];
 const araclar = ["Mercedes", "BMW", "Audi", "SUV", "Binek Araç", "Volvo", "Tesla"];
 function showNotification() {
@@ -217,15 +218,14 @@ setTimeout(() => { document.getElementById('notification-toast').classList.remov
 }
 setInterval(showNotification, 18000); setTimeout(showNotification, 4000);
 
-// Kayan Resimler
 let currentSlide = 0; const slides = document.querySelectorAll('.slide');
 function nextSlide() { slides[currentSlide].classList.remove('active'); currentSlide = (currentSlide + 1) % slides.length; slides[currentSlide].classList.add('active'); }
 setInterval(nextSlide, 5000);
 
-// --- GÜNCELLENMİŞ FİYATLAR ---
+// --- GÜNCELLENMİŞ STRATEJİK FİYATLAR ---
 const fiyatlar = {
 binek: { standart: 1250, vip: 1850, ultra: 2850 },
-suv: { standart: 1550, vip: 2150, ultra: 3250 }
+suv: { standart: 1550, vip: 2250, ultra: 3450 }
 };
 
 function hesapla() {
@@ -252,7 +252,7 @@ window.open(`https://wa.me/905307366945?text=${mesaj}`, '_blank');
 }
 
 function konumAt() {
-const mesaj = `Merhaba MobilWash! 👋 Aracımı yıkatmak istiyorum, konumumu paylaşıyorum.`;
+const mesaj = `Merhaba MobilWash! 👋 Aracımı yıkatmak istiyorum, konumumu aşağıda paylaşıyorum.`;
 window.open(`https://wa.me/905307366945?text=${mesaj}`, '_blank');
 }
 hesapla();
