@@ -3,202 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moto Wash Mobil | Ultra Luxury Service</title>
+<title>Moto Wash Mobil | Gold Edition VIP</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-:root { --gold: #d4af37; --black: #0a0a0a; }
-body { background-color: var(--black); font-family: 'Times New Roman', serif; color: white; overflow-x: hidden; }
-.gold-text { background: linear-gradient(to right, #bf953f, #fcf6ba, #aa841e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.gold-border { border: 1px solid transparent; border-image: linear-gradient(to right, #bf953f, #aa841e); border-image-slice: 1; }
-.gold-btn { background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa841e); color: black; font-weight: 900; transition: 0.3s; }
-.gold-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(212, 175, 55, 0.5); }
+/* Senin Mevcut Stillerin */
+:root {
+--gold: #d4af37;
+--dark-gold: #aa841e;
+--premium-black: #0a0a0a;
+}
 
-/* Canlı VIP Akışı */
-.live-stream { background: rgba(212, 175, 55, 0.1); border-bottom: 1px solid var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; }
-.stream-text { display: inline-block; animation: scroll 40s linear infinite; font-weight: bold; font-size: 14px; color: var(--gold); letter-spacing: 1px; }
+body { background-color: var(--premium-black); font-family: 'Georgia', serif; overflow-x: hidden; }
+
+.gold-text {
+background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa841e);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+border: 2px solid transparent;
+border-image: linear-gradient(to right, #bf953f, #fcf6ba, #aa841e);
+border-image-slice: 1;
+}
+
+.gold-button {
+background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa841e);
+color: black;
+font-weight: 900;
+transition: all 0.3s ease;
+}
+
+.gold-button:hover {
+box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+transform: scale(1.02);
+}
+
+.header-widget {
+backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s; background-size: cover; background-position: center; }
+.slide.active { opacity: 0.4; }
+
+/* YENİ: Canlı VIP Akışı Stili */
+.live-stream { background: rgba(212, 175, 55, 0.1); border-bottom: 1px solid var(--gold); padding: 8px 0; overflow: hidden; white-space: nowrap; position: relative; z-index: 50; }
+.stream-text { display: inline-block; animation: scroll 35s linear infinite; font-weight: bold; font-size: 12px; color: var(--gold); text-transform: uppercase; }
 @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
-
-.section-card { background: #111; padding: 40px; border-radius: 30px; }
-
-/* Ödeme Bölümü */
-.payment-container { background: linear-gradient(145deg, #151515, #0a0a0a); border: 1px solid rgba(212, 175, 55, 0.2); }
-.qr-frame { background: white; width: 160px; height: 160px; margin: 0 auto; border-radius: 20px; padding: 10px; border: 4px solid var(--gold); shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
 </style>
 </head>
-<body>
+<body class="text-white">
 
 <div class="live-stream">
 <div class="stream-text">
-Etiler'de bir Range Rover temizlendi... Bebek'te Porsche Taycan teslim edildi... Florya'da Mercedes G63 yıkandı... Zekeriyaköy'de Ferrari F8 Detaylı Temizlik tamamlandı... Nişantaşı'nda BMW M8 işlemi bitti... Ulus'ta Tesla Model S teslim edildi...
+Etiler'de Range Rover temizlendi... Bebek'te Porsche Taycan teslim edildi... Florya'da Mercedes G63 yıkandı... Zekeriyaköy'de Ferrari F8 Detaylı Temizlik tamamlandı... Nişantaşı'nda BMW M8 işlemi bitti...
 </div>
 </div>
 
-<header class="flex justify-between items-start p-8 relative z-20">
-<div class="text-center w-24 border-b-2 border-[#d4af37] pb-2">
-<div id="cal-month" class="text-[11px] text-gray-500 uppercase font-bold">MART</div>
-<div id="cal-day" class="text-4xl font-black gold-text">21</div>
-<div class="text-[10px] text-gray-600">2026</div>
+<header class="flex justify-between items-start p-6 md:p-10 relative z-20">
+<div class="header-widget rounded-2xl p-4 text-center w-24 border-b-4 border-[#d4af37]">
+<div id="cal-month" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">MART</div>
+<div id="cal-day" class="text-3xl font-black gold-text">21</div>
+<div class="text-[9px] text-gray-500 font-bold">2026</div>
 </div>
-<div class="text-right border-r-2 border-[#d4af37] pr-5">
-<div id="digital-clock" class="text-5xl font-black gold-text tracking-tighter">00:00</div>
-<div class="text-[10px] text-gray-500 tracking-[4px] font-bold uppercase">Live Tracking</div>
+
+<div class="header-widget rounded-2xl px-6 py-4 text-right border-r-4 border-[#d4af37]">
+<div id="digital-clock" class="text-4xl font-black gold-text tracking-tighter">00:00</div>
+<div class="text-[9px] font-bold text-gray-500 uppercase tracking-[3px]">VIP Servis</div>
 </div>
 </header>
 
-<main class="text-center py-12 px-4">
-<h1 class="text-7xl md:text-9xl font-black italic gold-text mb-4 uppercase tracking-tighter">MOTO WASH</h1>
-<p class="text-gray-500 tracking-[15px] text-[11px] uppercase mb-16 font-bold">Meriç Yurduşen Premium Detailing</p>
-
-<div id="gece-uyari" class="hidden bg-red-950/40 border border-red-500 text-red-400 px-10 py-3 rounded-full text-xs font-black animate-pulse mb-10 inline-block uppercase">
-🌙 Gece Tarifesi Aktif (+%30)
+<main class="relative h-[60vh] flex flex-col items-center justify-center text-center px-4">
+<div class="slider-container">
+<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500');"></div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500');"></div>
 </div>
 
-<br>
-<button onclick="konumAt()" class="gold-btn px-16 py-8 rounded-full text-2xl shadow-2xl mb-24 uppercase tracking-widest italic">
-<i class="fas fa-location-arrow mr-4"></i> Konum At Gelelim!
+<h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4">
+MOTO<span class="gold-text">WASH</span>
+</h1>
+<p class="text-gray-400 tracking-[10px] uppercase text-xs mb-10">Ultra Premium Detailing</p>
+
+<div id="gece-uyari" class="hidden bg-red-900/50 border border-red-500 text-red-200 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">
+🌙 GECE TARİFESİ AKTİF
+</div>
+
+<button onclick="konumAt()" class="gold-button px-10 py-6 rounded-full text-xl flex items-center gap-4 shadow-2xl">
+<i class="fas fa-map-marker-alt"></i> KONUM AT GELELİM!
 </button>
 </main>
 
-<section class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 mb-28">
-<div class="section-card gold-border text-center">
-<i class="fas fa-history gold-text text-3xl mb-6"></i>
-<h2 class="gold-text font-black mb-4 uppercase italic tracking-widest text-lg">Biz Kimiz?</h2>
-<p class="text-gray-400 text-sm leading-relaxed font-medium">İstanbul'un en elit noktalarında, lüks araç sahiplerine özel yerinde detailing sunan uzman bir markayız. Meriç Yurduşen vizyonuyla hizmet veriyoruz.</p>
+<section class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-20 relative z-30">
+<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
+<h3 class="gold-text font-bold mb-2 italic">BİZ KİMİZ?</h3>
+<p class="text-gray-400 text-xs leading-relaxed">İstanbul'un en seçkin noktalarında, Meriç Yurduşen güvencesiyle lüks araç sahiplerine yerinde profesyonel hizmet sunan butik bir ekibiz.</p>
 </div>
-<div class="section-card gold-border text-center">
-<i class="fas fa-eye gold-text text-3xl mb-6"></i>
-<h2 class="gold-text font-black mb-4 uppercase italic tracking-widest text-lg">Vizyonumuz</h2>
-<p class="text-gray-400 text-sm leading-relaxed font-medium">Mobil araç temizliğini bir sanat dalına dönüştürerek, Türkiye'nin en prestijli ve güvenilir mobil servis ağına liderlik etmek.</p>
+<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
+<h3 class="gold-text font-bold mb-2 italic">VİZYONUMUZ</h3>
+<p class="text-gray-400 text-xs leading-relaxed">Mobil yıkama standartlarını VIP seviyeye taşıyarak, Türkiye'nin en prestijli mobil detailing markası olmak.</p>
 </div>
-<div class="section-card gold-border text-center">
-<i class="fas fa-bullseye gold-text text-3xl mb-6"></i>
-<h2 class="gold-text font-black mb-4 uppercase italic tracking-widest text-lg">Misyonumuz</h2>
-<p class="text-gray-400 text-sm leading-relaxed font-medium">Müşterilerimizin prestijine uygun, en kaliteli ekipmanlarla araçlarını bulundukları yerde showroom parlaklığına kavuşturmak.</p>
+<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
+<h3 class="gold-text font-bold mb-2 italic">MİSYONUMUZ</h3>
+<p class="text-gray-400 text-xs leading-relaxed">Müşterilerimizin zamanına değer vererek, en kaliteli ekipmanlarla araçlarını showroom parlaklığına ulaştırmak.</p>
 </div>
 </section>
 
-<section class="max-w-4xl mx-auto px-6 mb-28 text-center">
-<div class="bg-[#111] p-10 rounded-[3rem] border-b-8 border-[#d4af37] shadow-2xl">
-<h2 class="gold-text text-3xl font-black mb-10 italic uppercase tracking-tighter">Hizmet Ve Fiyatlandırma</h2>
-<div class="grid md:grid-cols-2 gap-10 mb-12 text-left">
-<div class="space-y-4">
-<label class="text-[11px] font-bold text-gray-500 uppercase ml-4 tracking-[3px]">Bölge Seçimi</label>
-<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-5 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none appearance-none">
-<option value="0">Merkezi İlçeler (Ücretsiz Mobil)</option>
-<option value="350">Uzak Bölgeler (+350 TL Mobil)</option>
+<section class="max-w-4xl mx-auto -mt-10 mb-20 px-6 relative z-30">
+<div class="bg-[#111] p-8 rounded-[3rem] gold-border shadow-2xl">
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Hizmet Bölgesi</label>
+<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none">
+<option value="0">Merkezi Bölgeler</option>
+<option value="350">Uzak Bölgeler (+350 TL)</option>
 </select>
 </div>
-<div class="space-y-4">
-<label class="text-[11px] font-bold text-gray-500 uppercase ml-4 tracking-[3px]">Araç Segmenti</label>
-<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-5 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none appearance-none">
-<option value="binek">Premium Binek Araç</option>
-<option value="suv">Luxury SUV / VIP Araç</option>
+<div>
+<label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Araç Tipi</label>
+<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none">
+<option value="binek">Premium Binek</option>
+<option value="suv">Luxury SUV / VIP</option>
 </select>
 </div>
 </div>
-<div class="text-5xl font-black gold-text mb-4 tracking-tighter"><span id="price-display">1600</span> TL</div>
-<p class="text-[10px] text-gray-600 font-bold uppercase tracking-[4px]">Gold VIP Paket Baz Alınmıştır</p>
 </div>
 </section>
 
-<section class="max-w-3xl mx-auto px-6 mb-28">
-<div class="payment-container p-12 rounded-[3.5rem] text-center shadow-2xl">
-<i class="fas fa-wallet gold-text text-4xl mb-6"></i>
-<h2 class="gold-text text-3xl font-black mb-8 uppercase italic tracking-tighter">Ödeme Noktası</h2>
-
-<div class="mb-10">
-<div class="qr-frame mb-5">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=TR650006200076500006870504" alt="IBAN QR">
+<section class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-24">
+<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
+<h3 class="text-xl font-bold mb-2">Silver Detay</h3>
+<div class="text-4xl font-black gold-text mb-8"><span id="price-standart">950</span> TL</div>
+<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition">RANDEVU</button>
 </div>
-<p class="text-[11px] text-gray-500 font-bold uppercase tracking-widest">Hızlı Transfer İçin QR Okutun</p>
+<div class="bg-black p-10 rounded-[2.5rem] gold-border text-center transform scale-110 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
+<div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black">EN ÇOK TERCİH EDİLEN</div>
+<h3 class="text-2xl font-bold mb-2 gold-text">GOLD VIP</h3>
+<div class="text-5xl font-black gold-text mb-8"><span id="price-vip">1600</span> TL</div>
+<button onclick="whatsapp('Gold VIP')" class="gold-button w-full py-4 rounded-xl shadow-lg">WHATSAPP RANDEVU</button>
 </div>
-
-<div class="bg-black/80 p-8 rounded-3xl border border-gray-900 w-full">
-<p class="text-gray-600 text-[10px] uppercase font-bold mb-2 tracking-widest">Hesap Sahibi</p>
-<p class="text-2xl font-black gold-text mb-6 uppercase tracking-tight">Murat Cahit Yurduşen</p>
-
-<p class="text-gray-600 text-[10px] uppercase font-bold mb-2 tracking-widest">IBAN Numarası</p>
-<p id="iban-val" class="text-lg md:text-xl font-mono text-white mb-6 select-all">TR65 0006 2000 7650 0006 8705 04</p>
-
-<button onclick="copyIban()" class="gold-btn px-8 py-3 rounded-full text-xs uppercase tracking-tighter">
-<i class="far fa-copy mr-2"></i> IBAN'ı Kopyala
-</button>
-</div>
+<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
+<h3 class="text-xl font-bold mb-2">Platinum</h3>
+<div class="text-4xl font-black gold-text mb-8"><span id="price-ultra">2400</span> TL</div>
+<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition">RANDEVU</button>
 </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 mb-32 text-center">
-<h2 class="gold-text text-4xl font-black italic mb-16 uppercase tracking-widest">Seçkin Referanslar</h2>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="bg-[#0f0f0f] p-10 rounded-3xl border-b-4 border-[#d4af37]">
-<p class="text-gray-400 text-sm mb-6 leading-relaxed italic">"Etiler'deki rezidansımda Porsche aracımı kusursuz temizlediler. Profesyonellik üst düzey."</p>
-<div class="gold-text font-black text-xs uppercase tracking-widest">- Kerem B. (Yönetici)</div>
+<section class="max-w-4xl mx-auto px-6 mb-24 text-center">
+<div class="bg-[#111] p-10 rounded-[3rem] border border-[#d4af37]">
+<h2 class="gold-text text-2xl font-bold mb-8 italic uppercase">ÖDEME NOKTASI</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-10">
+<div class="bg-white p-3 rounded-2xl border-4 border-[#d4af37]">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" alt="QR Kod">
 </div>
-<div class="bg-[#0f0f0f] p-10 rounded-3xl border-b-4 border-[#d4af37]">
-<p class="text-gray-400 text-sm mb-6 leading-relaxed italic">"Bebek'teki ofisime gelip tüm gün uğraştılar, Range Rover aracım sıfır gibi oldu."</p>
-<div class="gold-text font-black text-xs uppercase tracking-widest">- Esra T. (Mimar)</div>
+<div class="text-left">
+<p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">HESAP SAHİBİ</p>
+<p class="text-xl font-bold gold-text mb-4">MURAT CAHİT YURDUŞEN</p>
+<p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">IBAN</p>
+<p class="text-sm font-mono tracking-tighter mb-4">TR65 0006 2000 7650 0006 8705 04</p>
+<button onclick="navigator.clipboard.writeText('TR650006200076500006870504'); alert('IBAN Kopyalandı');" class="bg-gray-800 text-[10px] px-4 py-2 rounded-full hover:bg-[#d4af37] hover:text-black transition uppercase font-bold">IBAN Kopyala</button>
 </div>
-<div class="bg-[#0f0f0f] p-10 rounded-3xl border-b-4 border-[#d4af37]">
-<p class="text-gray-400 text-sm mb-6 leading-relaxed italic">"Zamanım kıymetli, otoparkımda Ferrari'mi pırıl pırıl yaptılar. Meriç beye güven tam."</p>
-<div class="gold-text font-black text-xs uppercase tracking-widest">- Can A. (Yatırımcı)</div>
 </div>
 </div>
 </section>
 
-<footer class="bg-black py-24 text-center border-t border-gray-900">
-<div class="flex justify-center gap-14 mb-12">
-<a href="https://www.instagram.com/mericyurdusen" target="_blank" class="text-6xl gold-text hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
-<a href="https://wa.me/905307366945" target="_blank" class="text-6xl text-green-600 hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
+<section class="max-w-6xl mx-auto px-6 mb-24 text-center">
+<h2 class="gold-text text-2xl font-bold mb-10 italic uppercase">VIP MÜŞTERİ YORUMLARI</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-[#151515] p-6 rounded-2xl italic">
+<p class="text-gray-400 text-sm mb-4">"Etiler'deki ofisime geldiler, Range Rover aracım sıfır gibi oldu. Harika hizmet."</p>
+<span class="gold-text font-bold text-xs">- Kerem B.</span>
 </div>
-<p class="text-[10px] tracking-[8px] text-gray-700 font-black uppercase italic mb-4">Meric Yurduşen | Moto Wash Mobil</p>
-<p class="text-[11px] text-gray-500 font-black uppercase">📞 0530 736 69 45</p>
+<div class="bg-[#151515] p-6 rounded-2xl italic">
+<p class="text-gray-400 text-sm mb-4">"Zamanım çok kıymetli, Bebek'te otoparkta işi bitirdiler. Meriç Bey'e teşekkürler."</p>
+<span class="gold-text font-bold text-xs">- Selin A.</span>
+</div>
+<div class="bg-[#151515] p-6 rounded-2xl italic">
+<p class="text-gray-400 text-sm mb-4">"Profesyonel malzeme, güler yüzlü hizmet. Gerçekten premium hissettiriyor."</p>
+<span class="gold-text font-bold text-xs">- Murat E.</span>
+</div>
+</div>
+</section>
+
+<footer class="bg-black py-20 text-center border-t border-gray-900">
+<div class="flex justify-center gap-10 mb-10">
+<a href="https://www.instagram.com/mericyurdusen" class="text-4xl gold-text"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/905307366945" class="text-4xl text-green-600"><i class="fab fa-whatsapp"></i></a>
+</div>
+<p class="text-[10px] tracking-[5px] text-gray-600 font-bold uppercase italic">© 2026 MERIC YURDUŞEN | MOTO WASH MOBIL</p>
 </footer>
 
 <script>
-// Saat ve Takvim Sistemleri
-function startLiveClock() {
-const timeEl = document.getElementById('digital-clock');
-const dayEl = document.getElementById('cal-day');
-const monthEl = document.getElementById('cal-month');
-const months = ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"];
-
-function tick() {
+function updateClock() {
 const now = new Date();
-timeEl.innerText = String(now.getHours()).padStart(2, '0') + ":" + String(now.getMinutes()).padStart(2, '0');
-dayEl.innerText = now.getDate();
-monthEl.innerText = months[now.getMonth()];
+document.getElementById('digital-clock').innerText = String(now.getHours()).padStart(2, '0') + ":" + String(now.getMinutes()).padStart(2, '0');
+const months = ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"];
+document.getElementById('cal-month').innerText = months[now.getMonth()];
+document.getElementById('cal-day').innerText = now.getDate();
 }
-setInterval(tick, 1000); tick();
-}
+setInterval(updateClock, 1000); updateClock();
 
-// Fiyatlandırma ve Gece Tarifesi Mantığı
-const baseVip = { binek: 1600, suv: 1950 };
+let sIdx = 0; const slides = document.querySelectorAll('.slide');
+setInterval(() => { slides[sIdx].classList.remove('active'); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 5000);
+
+const prices = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
 function hesapla() {
 const a = document.getElementById('arac').value;
 const b = parseInt(document.getElementById('bolge').value);
 const h = new Date().getHours();
 let m = (h >= 21 || h < 7) ? 1.3 : 1;
-
-// Gece uyarısını göster/gizle
 h >= 21 || h < 7 ? document.getElementById('gece-uyari').classList.remove('hidden') : document.getElementById('gece-uyari').classList.add('hidden');
-
-const total = Math.round(baseVip[a] * m + b);
-document.getElementById('price-display').innerText = total;
+document.getElementById('price-standart').innerText = Math.round(prices[a].s * m + b);
+document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b);
+document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
 }
 
-function copyIban() {
-const iban = "TR650006200076500006870504";
-navigator.clipboard.writeText(iban).then(() => {
-alert("IBAN Numarası Kopyalandı. Murat Cahit Yurduşen adına transfer yapabilirsiniz.");
-});
+function whatsapp(p) {
+const a = document.getElementById('arac').options[document.getElementById('arac').selectedIndex].text;
+const msg = `Merhaba, ${p} için randevu oluşturmak istiyorum. Araç: ${a}`;
+window.open(`https://wa.me/905307366945?text=${msg}`, '_blank');
 }
 
 function konumAt() {
-window.open("https://wa.me/905307366945?text=Merhaba, konumumu paylaşıyorum. VIP Mobil yıkama hizmeti için randevu almak istiyorum.", "_blank");
+window.open(`https://wa.me/905307366945?text=Merhaba, konumumu paylaşıyorum. Araç yıkama için bekliyorum.`, '_blank');
 }
-
-window.onload = () => { startLiveClock(); hesapla(); };
+hesapla();
 </script>
 </body>
 </html>
