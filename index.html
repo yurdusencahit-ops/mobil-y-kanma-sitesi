@@ -7,22 +7,64 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-:root { --gold: #d4af37; --dark-gold: #aa841e; --premium-black: #0a0a0a; }
+:root {
+--gold: #d4af37;
+--dark-gold: #aa841e;
+--premium-black: #0a0a0a;
+}
+
 body { background-color: var(--premium-black); font-family: 'Georgia', serif; overflow-x: hidden; }
-.gold-text { background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa841e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.gold-border { border: 2px solid transparent; border-image: linear-gradient(to right, #bf953f, #fcf6ba, #aa841e); border-image-slice: 1; }
-.gold-button { background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa841e); color: black; font-weight: 900; transition: all 0.3s ease; }
-.gold-button:hover { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); transform: scale(1.02); }
-.header-widget { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); }
+
+.gold-text {
+background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa841e);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+border: 2px solid transparent;
+border-image: linear-gradient(to right, #bf953f, #fcf6ba, #aa841e);
+border-image-slice: 1;
+}
+
+.gold-button {
+background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa841e);
+color: black;
+font-weight: 900;
+transition: all 0.3s ease;
+}
+
+.gold-button:hover {
+box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+transform: scale(1.02);
+}
+
+.header-widget {
+backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
 .slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s; background-size: cover; background-position: center; }
 .slide.active { opacity: 0.4; }
 
 #vip-popup {
-position: fixed; bottom: 30px; right: 30px; background: rgba(17, 17, 17, 0.9); border: 1px solid var(--gold);
-padding: 15px 25px; border-radius: 20px; z-index: 1000; display: flex; align-items: center; gap: 12px;
-transform: translateX(120%); transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+position: fixed;
+bottom: 30px;
+right: 30px;
+background: rgba(17, 17, 17, 0.9);
+border: 1px solid var(--gold);
+padding: 15px 25px;
+border-radius: 20px;
+z-index: 1000;
+display: flex;
+align-items: center;
+gap: 12px;
+transform: translateX(120%);
+transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+backdrop-filter: blur(10px);
 }
 #vip-popup.active { transform: translateX(0); }
 </style>
@@ -40,6 +82,7 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 <div id="cal-day" class="text-3xl font-black gold-text">21</div>
 <div class="text-[9px] text-gray-500 font-bold">2026</div>
 </div>
+
 <div class="header-widget rounded-2xl px-6 py-4 text-right border-r-4 border-[#d4af37]">
 <div id="digital-clock" class="text-4xl font-black gold-text tracking-tighter">00:00</div>
 <div class="text-[9px] font-bold text-gray-500 uppercase tracking-[3px]">VIP Servis</div>
@@ -51,10 +94,19 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500');"></div>
 <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500');"></div>
 </div>
-<h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4">MOTO<span class="gold-text">WASH</span></h1>
+
+<h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4">
+MOTO<span class="gold-text">WASH</span>
+</h1>
 <p class="text-gray-400 tracking-[10px] uppercase text-xs mb-10">Ultra Premium Detailing</p>
-<div id="gece-uyari" class="hidden bg-red-900/50 border border-red-500 text-red-200 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">🌙 GECE TARİFESİ AKTİF</div>
-<button onclick="konumAt()" class="gold-button px-10 py-6 rounded-full text-xl flex items-center gap-4 shadow-2xl uppercase tracking-widest italic"><i class="fas fa-map-marker-alt"></i> Konum At Gelelim!</button>
+
+<div id="gece-uyari" class="hidden bg-red-900/50 border border-red-500 text-red-200 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">
+🌙 GECE TARİFESİ AKTİF
+</div>
+
+<button onclick="konumAt()" class="gold-button px-10 py-6 rounded-full text-xl flex items-center gap-4 shadow-2xl">
+<i class="fas fa-map-marker-alt"></i> KONUM AT GELELİM!
+</button>
 </main>
 
 <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-20 relative z-30">
@@ -64,11 +116,11 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 </div>
 <div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
 <h3 class="gold-text font-bold mb-2 italic uppercase">Vizyonumuz</h3>
-<p class="text-gray-400 text-xs leading-relaxed">Mobil araç bakımında teknoloji ve kaliteyi birleştirerek en üst düzey müşteri memnuniyetini sağlamak.</p>
+<p class="text-gray-400 text-xs leading-relaxed">Mobil araç bakımında kaliteyi kapınıza getirerek en üst düzey prestiji sağlamak.</p>
 </div>
 <div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
 <h3 class="gold-text font-bold mb-2 italic uppercase">Misyonumuz</h3>
-<p class="text-gray-400 text-xs leading-relaxed">Aracınıza değer veriyoruz. Showroom parlaklığını kapınıza kadar getiriyoruz.</p>
+<p class="text-gray-400 text-xs leading-relaxed">Showroom parlaklığını profesyonel ekipmanlarla olduğunuz her yere taşımak.</p>
 </div>
 </section>
 
@@ -95,9 +147,9 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 
 <section class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-24 relative z-30">
 <div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
-<h3 class="text-xl font-bold mb-2 text-gray-300">Silver Detay</h3>
+<h3 class="text-xl font-bold mb-2">Silver Detay</h3>
 <div class="text-4xl font-black gold-text mb-8"><span id="price-standart">950</span> TL</div>
-<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu Al</button>
+<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu</button>
 </div>
 <div class="bg-black p-10 rounded-[2.5rem] gold-border text-center transform scale-110 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
 <div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black">EN ÇOK TERCİH EDİLEN</div>
@@ -106,18 +158,18 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 <button onclick="whatsapp('Gold VIP')" class="gold-button w-full py-4 rounded-xl shadow-lg uppercase text-xs">WhatsApp Randevu</button>
 </div>
 <div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
-<h3 class="text-xl font-bold mb-2 text-gray-300">Platinum</h3>
+<h3 class="text-xl font-bold mb-2">Platinum</h3>
 <div class="text-4xl font-black gold-text mb-8"><span id="price-ultra">2400</span> TL</div>
-<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu Al</button>
+<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu</button>
 </div>
 </section>
 
-<section class="max-w-4xl mx-auto px-6 mb-24 text-center relative z-30">
+<section class="max-w-3xl mx-auto px-6 mb-24 text-center relative z-30">
 <div class="bg-[#111] p-10 rounded-[3rem] border border-[#d4af37] shadow-2xl">
 <h2 class="gold-text text-2xl font-bold mb-4 italic uppercase">VIP Dijital Menü</h2>
-<p class="text-gray-500 text-[10px] uppercase tracking-widest mb-8 font-bold italic">Hizmetlerimizi cebinizde saklayın</p>
-<div class="inline-block bg-white p-4 rounded-3xl border-4 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)]">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=MOTO%20WASH%20VIP%20MENU%0A--------------------%0ASilver:%20950%20TL%0AGold:%201600%20TL%0APlatinum:%202400%20TL%0A--------------------%0A0530%20736%2069%2045" alt="QR Menü">
+<p class="text-gray-500 text-[10px] uppercase tracking-widest mb-8 font-bold italic">Hizmet listesini telefonunuzda görüntüleyin</p>
+<div class="inline-block bg-white p-4 rounded-3xl border-4 border-[#d4af37]">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=MOTO%20WASH%20VIP%20SERVICES%0A-------------------%0ASilver:%20950%20TL%0AGold:%201600%20TL%0APlatinum:%202400%20TL%0A-------------------%0ATel:%200530%20736%2069%2045" alt="VIP Menü">
 </div>
 </div>
 </section>
@@ -155,7 +207,13 @@ document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b)
 document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
 }
 
-const notifications = ["Beşiktaş'ta VIP hizmet tamamlandı", "Yeni bir Range Rover temizliği bitti", "Nişantaşı'nda showroom parlaklığı sağlandı", "Porsche Taycan işlemi başarıyla bitti"];
+const notifications = [
+"Beşiktaş'ta VIP hizmet tamamlandı",
+"Yeni bir Range Rover temizliği bitti",
+"Nişantaşı'nda showroom parlaklığı sağlandı",
+"Porsche Taycan işlemi başarıyla bitti",
+"Ulus'ta lüks araç teslim edildi"
+];
 function showPopup() {
 const popup = document.getElementById('vip-popup');
 const msg = document.getElementById('vip-msg');
@@ -163,7 +221,8 @@ msg.innerText = notifications[Math.floor(Math.random() * notifications.length)];
 popup.classList.add('active');
 setTimeout(() => popup.classList.remove('active'), 5000);
 }
-setInterval(showPopup, 15000); setTimeout(showPopup, 3000);
+setInterval(showPopup, 15000);
+setTimeout(showPopup, 3000);
 
 function whatsapp(p) { window.open(`https://wa.me/905307366945?text=Merhaba, ${p} için randevu istiyorum.`, '_blank'); }
 function konumAt() { window.open(`https://wa.me/905307366945?text=Konum paylaşıyorum, servis bekliyorum.`, '_blank'); }
