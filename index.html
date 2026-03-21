@@ -3,28 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moto Wash Mobil | Gold Edition</title>
+<title>Moto Wash Mobil | Ultra Premium</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-:root { --gold: #d4af37; --dark-gold: #aa841e; --premium-black: #0a0a0a; }
+:root { --gold: #d4af37; --premium-black: #0a0a0a; }
 body { background-color: var(--premium-black); font-family: 'Georgia', serif; overflow-x: hidden; }
 .gold-text { background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa841e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .gold-border { border: 2px solid transparent; border-image: linear-gradient(to right, #bf953f, #fcf6ba, #aa841e); border-image-slice: 1; }
 .gold-button { background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa841e); color: black; font-weight: 900; transition: all 0.3s ease; }
 .gold-button:hover { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); transform: scale(1.02); }
 .header-widget { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); }
+.slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s; background-size: cover; background-position: center; }
+.slide.active { opacity: 0.4; }
 
-/* Önce/Sonra Alanı Efekti */
-.ba-container { position: relative; width: 100%; max-width: 500px; height: 300px; overflow: hidden; border-radius: 20px; margin: auto; }
+/* Önce/Sonra Görsel Efekti */
+.ba-container { position: relative; width: 100%; max-width: 600px; height: 350px; overflow: hidden; border-radius: 30px; margin: auto; }
 .ba-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; }
 .ba-after { z-index: 1; width: 50%; border-right: 3px solid var(--gold); }
 
+/* Bildirim Kutusu */
 #vip-popup {
 position: fixed; bottom: 30px; right: 30px; background: rgba(17, 17, 17, 0.9); border: 1px solid var(--gold);
 padding: 15px 25px; border-radius: 20px; z-index: 1000; display: flex; align-items: center; gap: 12px;
 transform: translateX(120%); transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 }
 #vip-popup.active { transform: translateX(0); }
 </style>
@@ -45,7 +48,7 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 
 <div class="header-widget rounded-full px-4 py-2 mt-4 flex items-center gap-3">
 <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
-<span class="text-[10px] font-bold gold-text tracking-widest uppercase">Saha Ekibi Aktif</span>
+<span class="text-[10px] font-bold gold-text tracking-widest uppercase italic">Saha Ekibi Aktif</span>
 </div>
 
 <div class="header-widget rounded-2xl px-6 py-4 text-right border-r-4 border-[#d4af37]">
@@ -54,38 +57,44 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 </div>
 </header>
 
-<main class="relative h-[60vh] flex flex-col items-center justify-center text-center px-4">
-<h1 class="text-7xl md:text-9xl font-black italic tracking-tighter uppercase mb-4">MOTO<span class="gold-text">WASH</span></h1>
-<p class="text-gray-400 tracking-[10px] uppercase text-xs mb-10">Ultra Premium Detailing</p>
-<button onclick="konumAt()" class="gold-button px-12 py-6 rounded-full text-xl flex items-center gap-4 shadow-2xl italic uppercase font-black tracking-widest">
-<i class="fas fa-motorcycle"></i> Hemen Çağır!
+<main class="relative h-[70vh] flex flex-col items-center justify-center text-center px-4">
+<div class="slider-container">
+<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500');"></div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500');"></div>
+</div>
+
+<h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4">MOTO<span class="gold-text">WASH</span></h1>
+<p class="text-gray-400 tracking-[10px] uppercase text-[10px] mb-10">Ultra Premium Detailing At Your Door</p>
+
+<div id="gece-uyari" class="hidden bg-red-900/50 border border-red-500 text-red-200 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">🌙 GECE TARİFESİ AKTİF</div>
+
+<button onclick="konumAt()" class="gold-button px-12 py-6 rounded-full text-xl flex items-center gap-4 shadow-2xl italic font-black uppercase tracking-widest">
+<i class="fas fa-motorcycle"></i> KONUM AT GELELİM!
 </button>
 </main>
 
 <section class="max-w-6xl mx-auto px-6 mb-24 text-center relative z-30">
 <h2 class="gold-text text-2xl font-black italic uppercase mb-8">Showroom Etkisi</h2>
 <div class="ba-container gold-border shadow-2xl">
-<div class="ba-image" style="background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1000'); filter: grayscale(1);"></div> <div class="ba-image ba-after" style="background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1000');"></div> <div class="absolute bottom-4 left-4 bg-black/70 px-4 py-1 rounded text-[10px] font-bold z-10">SONRA</div>
+<div class="ba-image" style="background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1000'); filter: grayscale(1);"></div>
+<div class="ba-image ba-after" style="background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1000');"></div>
+<div class="absolute bottom-4 left-4 bg-black/70 px-4 py-1 rounded text-[10px] font-bold z-10">SONRA</div>
 <div class="absolute bottom-4 right-4 bg-black/70 px-4 py-1 rounded text-[10px] font-bold z-10">ÖNCE</div>
 </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 mb-24 text-center relative z-30">
-<div class="p-6 bg-[#111] rounded-3xl border border-gray-900">
-<i class="fas fa-bolt text-2xl gold-text mb-4"></i>
-<h4 class="text-[10px] font-bold uppercase tracking-widest">Trafik Engeli Yok</h4>
+<section class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-20 relative z-30">
+<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
+<h3 class="gold-text font-bold mb-2 italic uppercase">Vizyonumuz</h3>
+<p class="text-gray-400 text-xs leading-relaxed">İstanbul'un her noktasında lüks araçlara showroom parlaklığı sağlıyoruz.</p>
 </div>
-<div class="p-6 bg-[#111] rounded-3xl border border-gray-900">
-<i class="fas fa-vial text-2xl gold-text mb-4"></i>
-<h4 class="text-[10px] font-bold uppercase tracking-widest">Premium Kimyasallar</h4>
+<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
+<h3 class="gold-text font-bold mb-2 italic uppercase">Hızlı Servis</h3>
+<p class="text-gray-400 text-xs leading-relaxed">Motosikletli ekiplerimizle trafikte zaman kaybetmeden kapınızdayız.</p>
 </div>
-<div class="p-6 bg-[#111] rounded-3xl border border-gray-900">
-<i class="fas fa-shield-alt text-2xl gold-text mb-4"></i>
-<h4 class="text-[10px] font-bold uppercase tracking-widest">%100 Güvenli</h4>
-</div>
-<div class="p-6 bg-[#111] rounded-3xl border border-gray-900">
-<i class="fas fa-clock text-2xl gold-text mb-4"></i>
-<h4 class="text-[10px] font-bold uppercase tracking-widest">45 Dakikada Hazır</h4>
+<div class="bg-[#111] p-8 rounded-3xl border-l-4 border-[#d4af37]">
+<h3 class="gold-text font-bold mb-2 italic uppercase">Kalite</h3>
+<p class="text-gray-400 text-xs leading-relaxed">PH nötr şampuanlar ve mikrofiber teknolojiyle kusursuz temizlik.</p>
 </div>
 </section>
 
@@ -94,14 +103,14 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 <div class="grid md:grid-cols-2 gap-8">
 <div>
 <label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Hizmet Bölgesi</label>
-<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none">
+<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold outline-none">
 <option value="0">Merkezi Bölgeler</option>
 <option value="350">Uzak Bölgeler (+350 TL)</option>
 </select>
 </div>
 <div>
 <label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Araç Tipi</label>
-<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold focus:border-[#d4af37] outline-none">
+<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold outline-none">
 <option value="binek">Premium Binek</option>
 <option value="suv">Luxury SUV / VIP</option>
 </select>
@@ -111,26 +120,47 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 </section>
 
 <section class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-24 relative z-30">
-<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
+<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center">
 <h3 class="text-xl font-bold mb-2">Silver Detay</h3>
 <div class="text-4xl font-black gold-text mb-8"><span id="price-standart">950</span> TL</div>
-<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu</button>
+<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold uppercase text-xs tracking-widest">Randevu</button>
 </div>
 <div class="bg-black p-10 rounded-[2.5rem] gold-border text-center transform scale-110 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
-<div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black font-bold">EN ÇOK TERCİH EDİLEN</div>
+<div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black font-bold uppercase tracking-widest">EN ÇOK TERCİH EDİLEN</div>
 <h3 class="text-2xl font-bold mb-2 gold-text italic">GOLD VIP</h3>
 <div class="text-5xl font-black gold-text mb-8"><span id="price-vip">1600</span> TL</div>
-<button onclick="whatsapp('Gold VIP')" class="gold-button w-full py-4 rounded-xl shadow-lg uppercase text-xs">WhatsApp Randevu</button>
+<button onclick="whatsapp('Gold VIP')" class="gold-button w-full py-4 rounded-xl shadow-lg uppercase text-xs tracking-widest">WhatsApp Randevu</button>
 </div>
-<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center hover:border-[#d4af37] transition duration-500">
+<div class="bg-[#111] p-10 rounded-[2rem] border-t-4 border-gray-800 text-center">
 <h3 class="text-xl font-bold mb-2">Platinum</h3>
 <div class="text-4xl font-black gold-text mb-8"><span id="price-ultra">2400</span> TL</div>
-<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu</button>
+<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold uppercase text-xs tracking-widest">Randevu</button>
+</div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 mb-24 relative z-30 text-center">
+<h2 class="gold-text text-3xl font-black italic uppercase mb-12 tracking-widest">Müşteri Deneyimleri</h2>
+<div class="grid md:grid-cols-3 gap-8 text-left">
+<div class="bg-[#111] p-8 rounded-[2rem] border border-gray-900">
+<div class="flex gap-1 mb-4 text-[#d4af37] text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="text-gray-400 italic text-sm mb-4">"İş yerimin otoparkında tertemiz yaptılar. Çok memnumum."</p>
+<div class="font-bold text-[10px] gold-text uppercase tracking-widest">Ahmet Y. / Nişantaşı</div>
+</div>
+<div class="bg-[#111] p-8 rounded-[2rem] border border-gray-900 scale-105 border-gold shadow-lg">
+<div class="flex gap-1 mb-4 text-[#d4af37] text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="text-gray-400 italic text-sm mb-4">"Motosikletle gelip bu profesyonellikte çalışmak müthiş!"</p>
+<div class="font-bold text-[10px] gold-text uppercase tracking-widest">Selin K. / Beşiktaş</div>
+</div>
+<div class="bg-[#111] p-8 rounded-[2rem] border border-gray-900">
+<div class="flex gap-1 mb-4 text-[#d4af37] text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="text-gray-400 italic text-sm mb-4">"Gece tarifesiyle acil temizlik yaptırdım, sonuç harika."</p>
+<div class="font-bold text-[10px] gold-text uppercase tracking-widest">Murat E. / Etiler</div>
+</div>
 </div>
 </section>
 
 <section class="max-w-3xl mx-auto px-6 mb-24 text-center relative z-30">
-<div class="bg-[#111] p-10 rounded-[3rem] border border-[#d4af37]">
+<div class="bg-[#111] p-10 rounded-[3rem] border border-[#d4af37] shadow-2xl">
 <h2 class="gold-text text-xl font-bold mb-4 italic uppercase">VIP Dijital Menü</h2>
 <div class="inline-block bg-white p-4 rounded-3xl border-4 border-[#d4af37]">
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=MOTO%20WASH%20MENU%0ASilver:%20950%0AGold:%201600%0APlatinum:%202400%0A0530%20736%2069%2045" alt="VIP Menü">
@@ -150,8 +180,14 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 function updateClock() {
 const now = new Date();
 document.getElementById('digital-clock').innerText = String(now.getHours()).padStart(2, '0') + ":" + String(now.getMinutes()).padStart(2, '0');
+const months = ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"];
+document.getElementById('cal-month').innerText = months[now.getMonth()];
+document.getElementById('cal-day').innerText = now.getDate();
 }
 setInterval(updateClock, 1000); updateClock();
+
+let sIdx = 0; const slides = document.querySelectorAll('.slide');
+setInterval(() => { slides[sIdx].classList.remove('active'); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 5000);
 
 const prices = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
 function hesapla() {
@@ -159,6 +195,7 @@ const a = document.getElementById('arac').value;
 const b = parseInt(document.getElementById('bolge').value);
 const h = new Date().getHours();
 let m = (h >= 21 || h < 7) ? 1.3 : 1;
+h >= 21 || h < 7 ? document.getElementById('gece-uyari').classList.remove('hidden') : document.getElementById('gece-uyari').classList.add('hidden');
 document.getElementById('price-standart').innerText = Math.round(prices[a].s * m + b);
 document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b);
 document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
