@@ -67,6 +67,11 @@ box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 backdrop-filter: blur(10px);
 }
 #vip-popup.active { transform: translateX(0); }
+
+.comment-card {
+background: linear-gradient(145deg, #111, #050505);
+border: 1px solid rgba(212, 175, 55, 0.1);
+}
 </style>
 </head>
 <body class="text-white">
@@ -152,7 +157,7 @@ MOTO<span class="gold-text">WASH</span>
 <button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#d4af37] text-[#d4af37] font-bold hover:bg-[#d4af37] hover:text-black transition uppercase text-xs">Randevu</button>
 </div>
 <div class="bg-black p-10 rounded-[2.5rem] gold-border text-center transform scale-110 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
-<div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black">EN ÇOK TERCİH EDİLEN</div>
+<div class="gold-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-black font-bold">EN ÇOK TERCİH EDİLEN</div>
 <h3 class="text-2xl font-bold mb-2 gold-text italic">GOLD VIP</h3>
 <div class="text-5xl font-black gold-text mb-8"><span id="price-vip">1600</span> TL</div>
 <button onclick="whatsapp('Gold VIP')" class="gold-button w-full py-4 rounded-xl shadow-lg uppercase text-xs">WhatsApp Randevu</button>
@@ -164,11 +169,38 @@ MOTO<span class="gold-text">WASH</span>
 </div>
 </section>
 
-<section class="max-w-3xl mx-auto px-6 mb-24 text-center relative z-30">
+<section class="max-w-6xl mx-auto px-6 mb-24 relative z-30 text-center">
+<h2 class="gold-text text-3xl font-black italic uppercase mb-12 tracking-widest">Müşteri Deneyimleri</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="comment-card p-8 rounded-[2rem] text-left">
+<div class="flex gap-1 mb-4 text-[#d4af37] text-xs">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+</div>
+<p class="text-gray-400 italic text-sm mb-6">"İş yerimin otoparkında Range Rover aracımı tertemiz yaptılar. Kapıma kadar gelen bu kalite inanılmaz. Kesinlikle VIP hizmet."</p>
+<div class="font-bold text-xs uppercase tracking-widest gold-text">Ahmet Y. <span class="text-gray-600 font-normal ml-2">/ Nişantaşı</span></div>
+</div>
+<div class="comment-card p-8 rounded-[2rem] text-left scale-105 border-gold">
+<div class="flex gap-1 mb-4 text-[#d4af37] text-xs">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+</div>
+<p class="text-gray-400 italic text-sm mb-6">"Motosiklet ile gelip bu kadar kapsamlı ekipman kullanmalarına şaşırdım. Showroom parlaklığına ulaştık. Teşekkürler Moto Wash!"</p>
+<div class="font-bold text-xs uppercase tracking-widest gold-text">Selin K. <span class="text-gray-600 font-normal ml-2">/ Beşiktaş</span></div>
+</div>
+<div class="comment-card p-8 rounded-[2rem] text-left">
+<div class="flex gap-1 mb-4 text-[#d4af37] text-xs">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+</div>
+<p class="text-gray-400 italic text-sm mb-6">"Gece tarifesiyle acil temizlik yaptırdım, sonuç harika. Ekip çok titiz çalışıyor. Herkese tavsiye ederim."</p>
+<div class="font-bold text-xs uppercase tracking-widest gold-text">Murat E. <span class="text-gray-600 font-normal ml-2">/ Etiler</span></div>
+</div>
+</div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 mb-24 text-center relative z-30">
 <div class="bg-[#111] p-10 rounded-[3rem] border border-[#d4af37] shadow-2xl">
 <h2 class="gold-text text-2xl font-bold mb-4 italic uppercase">VIP Dijital Menü</h2>
 <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-8 font-bold italic">Hizmet listesini telefonunuzda görüntüleyin</p>
-<div class="inline-block bg-white p-4 rounded-3xl border-4 border-[#d4af37]">
+<div class="inline-block bg-white p-4 rounded-3xl border-4 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)]">
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=MOTO%20WASH%20VIP%20SERVICES%0A-------------------%0ASilver:%20950%20TL%0AGold:%201600%20TL%0APlatinum:%202400%20TL%0A-------------------%0ATel:%200530%20736%2069%2045" alt="VIP Menü">
 </div>
 </div>
