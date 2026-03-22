@@ -1,154 +1,26 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MotoWash İstanbul | Mobil Lüks Araç Temizliği</title>
-<style>
-/* GENEL TASARIM */
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
-.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-
-/* PREMIUM SLIDER */
-.slider-container { width: 100%; height: 550px; position: relative; overflow: hidden; border-bottom: 4px solid #004e92; }
-.slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; background-size: cover; background-position: center; }
-.slide.active { opacity: 1; }
-.slide-overlay { background: rgba(0,0,0,0.6); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
-.slide-overlay h2 { font-size: 3.5rem; text-transform: uppercase; margin: 0; color: #fff; text-shadow: 2px 2px 15px #004e92; letter-spacing: 2px; }
-.slide-overlay p { font-size: 1.2rem; color: #ccc; margin-top: 10px; }
-
-/* ANALOG SAAT */
-.clock-container { position: absolute; top: 30px; left: 30px; z-index: 100; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 50%; border: 2px solid #004e92; box-shadow: 0 0 20px rgba(0,78,146,0.5); }
-#clock { width: 110px; height: 110px; border: 2px solid #fff; border-radius: 50%; position: relative; }
-.hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; background: #fff; border-radius: 5px; }
-.hour { width: 5px; height: 35px; }
-.minute { width: 3px; height: 45px; }
-.second { width: 2px; height: 50px; background: #ff0000; }
-
-/* FİYAT HESAPLAYICI */
-.calculator { background: linear-gradient(145deg, #111, #000); padding: 40px; border-radius: 20px; margin-top: -50px; position: relative; z-index: 10; border: 1px solid #004e92; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-.calculator h3 { color: #004e92; font-size: 1.8rem; margin-top: 0; border-left: 5px solid #004e92; padding-left: 15px; }
-select, button { width: 100%; padding: 18px; margin: 12px 0; border-radius: 10px; border: none; font-size: 1rem; outline: none; }
-select { background: #1a1a1a; color: #fff; border: 1px solid #333; }
-button { background: linear-gradient(to right, #004e92, #000428); color: #fff; font-weight: bold; cursor: pointer; transition: 0.4s; text-transform: uppercase; letter-spacing: 1px; }
-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,78,146,0.4); }
-#total-price { font-size: 1.8rem; text-align: center; color: #25d366; margin-top: 15px; font-weight: bold; }
-</style>
-</head>
-<body>
-
-<div class="slider-container">
-<div class="clock-container">
-<div id="clock">
-<div id="hour" class="hand hour"></div>
-<div id="min" class="hand minute"></div>
-<div id="sec" class="hand second"></div>
+<div id="ai-assistant" style="position: fixed; bottom: 25px; right: 25px; z-index: 9999;">
+<div id="ai-chat-window" style="display: none; width: 300px; height: 400px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; margin-bottom: 15px; border: 1px solid #ddd; font-family: sans-serif; color: #333;">
+<div style="background: linear-gradient(135deg, #004e92, #000428); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+<span>MotoWash Asistan</span>
+<button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-size: 20px;">✕</button>
 </div>
-</div>
-
-<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1920');">
-<div class="slide-overlay">
-<h2>Vip Detaylı Temizlik</h2>
-<p>Aracınızın Değerini Uzman Ellerle Koruyun</p>
-</div>
-</div>
-<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1920');">
-<div class="slide-overlay">
-<h2>Seramik Kaplama & Koruma</h2>
-<p>İlk Günkü Parlaklık, Kalıcı Koruma</p>
+<div id="chat-content" style="flex: 1; padding: 15px; overflow-y: auto; font-size: 14px; background: #f9f9f9;">
+Merhaba! 🚗 Size nasıl yardımcı olabilirim?
+<div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+<button onclick="alert('Fiyatlar: Binek 600 TL, SUV 900 TL')" style="background: #fff; border: 1px solid #004e92; color: #004e92; padding: 10px; border-radius: 10px; cursor: pointer;">💰 Fiyat Listesi</button>
+<button onclick="window.open('https://wa.me/905XXXXXXXXX')" style="background: #25d366; border: none; color: white; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold;">🟢 WhatsApp Randevu</button>
 </div>
 </div>
 </div>
-
-<div class="container">
-<div class="calculator">
-<h3>Hemen Fiyat Alın</h3>
-<label>Araç Segmenti:</label>
-<select id="carType">
-<option value="600">Sedan / Hatchback</option>
-<option value="900">SUV / 4x4 Jeep</option>
-<option value="1200">Lüks / Spor Araç</option>
-</select>
-
-<label>Uygulanacak Hizmet:</label>
-<select id="serviceType">
-<option value="0">Sadece Dış Yıkama</option>
-<option value="600">Detaylı İç Temizlik (+600 TL)</option>
-<option value="1200">Pasta Cila & Boya Koruma (+1200 TL)</option>
-<option value="3000">Seramik Kaplama Paketi (+3000 TL)</option>
-</select>
-
-<button onclick="calculate()">HESAPLAMAYI GÖR</button>
-<div id="total-price">Tahmini Tutar: 600 TL</div>
-</div>
-</div>
-
-<div id="ai-assistant" style="position: fixed; bottom: 25px; right: 25px; z-index: 9999; font-family: sans-serif;">
-<div id="ai-chat-window" style="display: none; width: 320px; height: 460px; background: #fff; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; margin-bottom: 20px; border: 1px solid #ddd;">
-<div style="background: linear-gradient(135deg, #004e92, #000428); color: white; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-<div>
-<div style="font-size: 16px;">MotoWash Akıllı Asistan</div>
-<div style="font-size: 11px; font-weight: normal; opacity: 0.8;">● Çevrimiçi - Yardımcı Olabilirim</div>
-</div>
-<button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-size: 22px;">✕</button>
-</div>
-<div id="chat-content" style="flex: 1; padding: 15px; overflow-y: auto; background: #fdfdfd; font-size: 14px; color: #333;">
-<div style="background: #eee; padding: 12px; border-radius: 15px 15px 15px 0; margin-bottom: 15px; line-height: 1.5;">
-Hoş geldiniz! 🚗✨ <br>Size nasıl yardımcı olabilirim? Aşağıdan seçim yapabilirsiniz:
-</div>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<button onclick="aiReply('fiyat')" style="background: #fff; border: 1px solid #004e92; color: #004e92; padding: 12px; border-radius: 12px; cursor: pointer; text-align: left; font-size: 13px;">💰 Fiyat Listesi</button>
-<button onclick="aiReply('konum')" style="background: #fff; border: 1px solid #004e92; color: #004e92; padding: 12px; border-radius: 12px; cursor: pointer; text-align: left; font-size: 13px;">📍 Mobil Konum Bilgisi</button>
-<button onclick="window.open('https://wa.me/905XXXXXXXXX')" style="background: #25d366; border: none; color: white; padding: 12px; border-radius: 12px; cursor: pointer; text-align: left; font-weight: bold; font-size: 13px;">🟢 WhatsApp Randevu Al</button>
-</div>
-</div>
-</div>
-<button onclick="toggleChat()" style="background: linear-gradient(135deg, #004e92, #000428); width: 65px; height: 65px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; float: right; transition: 0.3s;">
-<svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+<button onclick="toggleChat()" style="background: linear-gradient(135deg, #004e92, #000428); width: 65px; height: 65px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
 </button>
 </div>
 
 <script>
-// SLIDER
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-setInterval(() => {
-slides[currentSlide].classList.remove('active');
-currentSlide = (currentSlide + 1) % slides.length;
-slides[currentSlide].classList.add('active');
-}, 5000);
-
-// ANALOG SAAT
-setInterval(() => {
-const now = new Date();
-document.getElementById('hour').style.transform = `rotate(${now.getHours() * 30 + now.getMinutes() / 2}deg)`;
-document.getElementById('min').style.transform = `rotate(${now.getMinutes() * 6}deg)`;
-document.getElementById('sec').style.transform = `rotate(${now.getSeconds() * 6}deg)`;
-}, 1000);
-
-// HESAPLAMA
-function calculate() {
-const base = parseInt(document.getElementById('carType').value);
-const extra = parseInt(document.getElementById('serviceType').value);
-document.getElementById('total-price').innerText = "Tahmini Tutar: " + (base + extra) + " TL";
-}
-
-// ASİSTAN KONTROLÜ
 function toggleChat() {
-const win = document.getElementById('ai-chat-window');
-win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
-}
-
-function aiReply(type) {
-const content = document.getElementById('chat-content');
-let msg = type === 'fiyat' ? "🚗 <b>Fiyatlarımız:</b><br>Binek Yıkama: 600 TL'den başlar.<br>Detaylı Temizlik: 1200 TL'den başlar." : "📍 <b>Hizmet Alanımız:</b><br>İstanbul geneline mobil ekiplerimizle geliyoruz. Adresinizde yıkama yapıyoruz!";
-const div = document.createElement('div');
-div.style.cssText = "background: #e3f2fd; padding: 12px; border-radius: 15px 15px 0 15px; margin-top: 15px; color: #333; line-height: 1.4; box-shadow: 0 2px 5px rgba(0,0,0,0.05); align-self: flex-end;";
-div.innerHTML = msg;
-content.appendChild(div);
-content.scrollTop = content.scrollHeight;
+var x = document.getElementById('ai-chat-window');
+x.style.display = (x.style.display === 'none' || x.style.display === '') ? 'flex' : 'none';
 }
 </script>
-</body>
-</html>
 
