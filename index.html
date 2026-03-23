@@ -3,111 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MobilWash İstanbul | Premium Kapıda Yıkama</title>
+<title>MobilWash İstanbul | Kapınızda Lüks Araç Yıkama</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 body { font-family: 'Inter', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; }
 
-/* HEADER SLIDER */
-.slider-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-.slide-item {
+/* --- HAREKETLİ LÜKS HEADER SLIDER --- */
+.header-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.header-slide {
 position: absolute; width: 100%; height: 100%; opacity: 0;
 transition: opacity 2s ease-in-out; background-size: cover; background-position: center;
 }
-.slide-item.active { opacity: 1; }
-.overlay-dark {
+.header-slide.active { opacity: 1; }
+.overlay {
 position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.3)); z-index: 1;
+background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.3)); z-index: 1;
 }
 
-/* ANALOG SAAT - TAM GÖRSELDEKİ TASARIM */
-.premium-clock {
+/* --- ANALOG SAAT (Sağ Üst Sabit) --- */
+.clock {
 width: 95px; height: 95px; border: 6px solid #1a1a1a; border-radius: 50%;
-background: white; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 position: absolute; top: 25px; right: 25px; z-index: 50;
 }
-.premium-clock::after { content: ''; width: 6px; height: 6px; background: #ef4444; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; }
+.clock::after { content: ''; width: 6px; height: 6px; background: #ef4444; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; }
 .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; border-radius: 5px; z-index: 5; }
-.h-hand { width: 4px; height: 24px; background: #1a1a1a; }
-.m-hand { width: 3px; height: 34px; background: #1a1a1a; }
-.s-hand { width: 1.5px; height: 40px; background: #ef4444; }
-.num { position: absolute; color: #1a1a1a; font-size: 11px; font-weight: 900; }
-.n12 { top: 5%; left: 38%; } .n3 { top: 42%; left: 85%; } .n6 { top: 80%; left: 45%; } .n9 { top: 42%; left: 8%; }
+.hour-hand { width: 4px; height: 24px; background: #1a1a1a; }
+.min-hand { width: 3px; height: 34px; background: #1a1a1a; }
+.sec-hand { width: 1.5px; height: 40px; background: #ef4444; }
+.number { position: absolute; color: #1a1a1a; font-size: 11px; font-weight: 900; }
+.n12 { top: 5%; left: 40%; } .n3 { top: 42%; left: 85%; } .n6 { top: 80%; left: 45%; } .n9 { top: 42%; left: 8%; }
 
-/* ROZET VE KARTLAR */
-.premium-badge {
+/* --- ROZET VE PREMIUM KARTLAR --- */
+.tag-badge {
 background: rgba(0,0,0,0.85); border: 2px solid white; color: white;
 padding: 8px 18px; border-radius: 50px; font-size: 10px; font-weight: 900;
 text-transform: uppercase; font-style: italic; position: absolute;
-bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10; letter-spacing: 1px;
+bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10;
 }
-.premium-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 2.5rem; }
+.premium-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 3rem; }
 .premium-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
 
-#toast-msg {
-position: fixed; bottom: 30px; left: -450px; background: white; padding: 18px 28px;
-border-radius: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.2); z-index: 100;
-transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); border-left: 8px solid #3b82f6;
+/* --- BİLDİRİM TOAST --- */
+#notif-toast {
+position: fixed; bottom: 30px; left: -450px; background: white; padding: 20px 30px;
+border-radius: 30px; box-shadow: 0 20px 45px rgba(0,0,0,0.2); z-index: 100;
+transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); border-left: 10px solid #3b82f6;
 display: flex; align-items: center;
 }
-#toast-msg.active { left: 30px; }
+#notif-toast.active { left: 30px; }
 </style>
 </head>
 <body>
 
-<div id="toast-msg">
+<div id="notif-toast">
 <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-600"><i class="fas fa-magic"></i></div>
-<div><p id="toast-text" class="text-sm font-bold text-slate-800"></p><p class="text-[10px] text-blue-500 font-black uppercase italic">Vip Hizmet Hattı</p></div>
+<div>
+<p id="notif-text" class="text-sm font-bold text-slate-800"></p>
+<p class="text-[10px] text-blue-500 font-black uppercase italic">MobilWash Memnuniyeti</p>
+</div>
 </div>
 
-<header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-<div class="slider-wrap">
-<div class="slide-item active" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1500');">
-<div class="premium-badge">Dış Parlatma</div>
+<header class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+<div class="header-slider">
+<div class="header-slide active" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1500');">
+<div class="tag-badge">Dış Parlatma</div>
 </div>
-<div class="slide-item" style="background-image: url('https://images.unsplash.com/photo-1618237936173-95b078a63f2d?q=80&w=1500');">
-<div class="premium-badge">Seramik Kaplama Etkisi</div>
+<div class="header-slide" style="background-image: url('https://images.unsplash.com/photo-1618237936173-95b078a63f2d?q=80&w=1500');">
+<div class="tag-badge">Premium Detay</div>
 </div>
-<div class="slide-item" style="background-image: url('https://images.unsplash.com/photo-1549488344-1f19d261e444?q=80&w=1500');">
-<div class="premium-badge">Detaylı Hijyen</div>
+<div class="header-slide" style="background-image: url('https://images.unsplash.com/photo-1549488344-1f19d261e444?q=80&w=1500');">
+<div class="tag-badge">Seramik Etkili Koruma</div>
 </div>
 </div>
-<div class="overlay-dark"></div>
+<div class="overlay"></div>
 
-<div class="premium-clock">
-<div class="num n12">12</div><div class="num n3">3</div><div class="num n6">6</div><div class="num n9">9</div>
-<div id="hr-ptr" class="hand h-hand"></div><div id="min-ptr" class="hand m-hand"></div><div id="sec-ptr" class="hand s-hand"></div>
+<div class="clock">
+<div class="number n12">12</div><div class="number n3">3</div><div class="number n6">6</div><div class="number n9">9</div>
+<div id="hr-ptr" class="hand hour-hand"></div><div id="min-ptr" class="hand min-hand"></div><div id="sec-ptr" class="hand sec-hand"></div>
 </div>
 
 <div class="relative z-10 text-center text-white px-6">
-<div class="bg-white text-black inline-block p-3 rounded-3xl shadow-2xl mb-8">
-<div id="m-name" class="text-[10px] bg-red-600 text-white rounded-t-xl py-1 font-black px-6">MART</div>
-<div id="d-num" class="text-5xl font-black py-2 text-slate-900">19</div>
-<div class="text-[10px] text-slate-400 font-bold uppercase italic">Canlı Takvim</div>
+<div class="bg-white text-black inline-block p-4 rounded-[2.5rem] shadow-2xl mb-10">
+<div id="cal-m" class="text-[11px] bg-red-600 text-white rounded-t-2xl py-1 font-black px-6">MART</div>
+<div id="cal-d" class="text-6xl font-black py-2 text-slate-900">23</div>
+<div class="text-[10px] text-slate-400 font-bold uppercase italic tracking-widest">Canlı Takvim</div>
 </div>
-<h1 class="text-7xl md:text-[11rem] font-black italic uppercase leading-none tracking-tighter drop-shadow-2xl">
+<h1 class="text-8xl md:text-[12rem] font-black italic uppercase leading-none tracking-tighter drop-shadow-2xl">
 Mobil<span class="text-blue-500">Wash</span>
 </h1>
-<div id="night-alert" class="hidden bg-yellow-400 text-black px-10 py-3 rounded-full font-black text-xs mt-8 animate-bounce shadow-xl">
+<div id="night-banner" class="hidden bg-yellow-400 text-black px-12 py-4 rounded-full font-black text-sm mt-10 animate-bounce shadow-2xl">
 🌙 GECE TARİFESİ AKTİF (+%30)
 </div>
 </div>
 </header>
 
-<section class="max-w-5xl mx-auto -mt-24 relative z-30 bg-slate-900 p-12 rounded-[3.5rem] shadow-2xl text-white mx-6 border-b-[10px] border-blue-600">
-<div class="grid md:grid-cols-2 gap-12">
+<section class="max-w-6xl mx-auto -mt-28 relative z-30 bg-slate-900 p-14 rounded-[4rem] shadow-2xl text-white mx-6 border-b-[12px] border-blue-600">
+<div class="grid md:grid-cols-2 gap-14">
 <div>
-<label class="block text-[11px] font-black text-slate-500 uppercase mb-5 italic tracking-widest">📍 LOKASYON SEÇİN</label>
-<select id="loc-select" class="w-full bg-slate-800 p-6 rounded-2xl outline-none font-bold text-sm border border-slate-700 focus:border-blue-500" onchange="recalc()">
-<option value="0">Merkezi İlçeler (Ücretsiz Mobil)</option>
+<label class="block text-[12px] font-black text-slate-500 uppercase mb-6 italic tracking-widest">📍 SERVİS KONUMU</label>
+<select id="sel-loc" class="w-full bg-slate-800 p-6 rounded-2xl outline-none font-bold text-sm border border-slate-700 focus:border-blue-500" onchange="runCalc()">
+<option value="0">Merkezi İlçeler (Ücretsiz Kapıda Hizmet)</option>
 <option value="350">Uzak İlçeler (+350 TL Mobil Ücret)</option>
 </select>
 </div>
 <div>
-<label class="block text-[11px] font-black text-slate-500 uppercase mb-5 italic tracking-widest">🚗 ARAÇ SEGMENTİ</label>
-<select id="type-select" class="w-full bg-slate-800 p-6 rounded-2xl outline-none font-bold text-sm border border-slate-700 focus:border-blue-500" onchange="recalc()">
+<label class="block text-[12px] font-black text-slate-500 uppercase mb-6 italic tracking-widest">🚗 ARAÇ SINIFI</label>
+<select id="sel-car" class="w-full bg-slate-800 p-6 rounded-2xl outline-none font-bold text-sm border border-slate-700 focus:border-blue-500" onchange="runCalc()">
 <option value="binek">Binek Araç</option>
 <option value="suv">SUV / VIP / Büyük Araç</option>
 </select>
@@ -115,90 +119,97 @@ Mobil<span class="text-blue-500">Wash</span>
 </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-12 my-28">
-<div class="premium-card bg-white p-12 text-center border-t-[14px] border-blue-500 shadow-xl">
-<h3 class="font-black italic text-2xl mb-2">STANDART</h3>
-<p class="text-[10px] text-slate-400 font-black mb-12 italic uppercase">DIŞ YIKAMA + LASTİK PARLATMA</p>
-<div class="text-6xl font-black text-blue-600 mb-14"><span id="val-std">1600</span> TL</div>
-<button onclick="book('Standart')" class="bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2rem] font-black transition-all shadow-lg shadow-green-100">RANDEVU AL</button>
+<section class="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-14 my-32">
+<div class="premium-card bg-white p-14 text-center border-t-[16px] border-blue-500 shadow-xl">
+<h3 class="font-black italic text-3xl mb-3">STANDART</h3>
+<p class="text-[11px] text-slate-400 font-black mb-12 italic uppercase">DIŞ YIKAMA + LASTİK PARLATMA</p>
+<div class="text-7xl font-black text-blue-600 mb-16"><span id="val-s">1600</span> TL</div>
+<button onclick="whatsappOrder('Standart')" class="bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2.5rem] font-black transition-all shadow-xl shadow-green-100">RANDEVU AL</button>
 </div>
-<div class="premium-card bg-white p-12 text-center border-t-[14px] border-purple-600 scale-110 z-10 ring-[15px] ring-purple-50 shadow-2xl">
-<span class="bg-purple-600 text-white text-[9px] px-8 py-2.5 rounded-full font-black uppercase mb-10 inline-block italic tracking-widest">POPÜLER PAKET</span>
-<h3 class="font-black italic text-2xl mb-2">VIP PAKET</h3>
-<p class="text-[10px] text-slate-400 font-black mb-12 italic uppercase">İÇ-DIŞ + CİLA + OZON HİJYEN</p>
-<div class="text-6xl font-black text-purple-600 mb-14"><span id="val-vip">2300</span> TL</div>
-<button onclick="book('VIP Paket')" class="bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2rem] font-black transition-all shadow-lg shadow-green-100">RANDEVU AL</button>
+<div class="premium-card bg-white p-14 text-center border-t-[16px] border-purple-600 scale-110 z-10 ring-[20px] ring-purple-50 shadow-2xl">
+<span class="bg-purple-600 text-white text-[10px] px-10 py-3 rounded-full font-black uppercase mb-12 inline-block italic tracking-widest">EN ÇOK TERCİH EDİLEN</span>
+<h3 class="font-black italic text-3xl mb-3">VIP PAKET</h3>
+<p class="text-[11px] text-slate-400 font-black mb-12 italic uppercase">İÇ-DIŞ + CİLA + OZON HİJYEN</p>
+<div class="text-7xl font-black text-purple-600 mb-16"><span id="val-v">2300</span> TL</div>
+<button onclick="whatsappOrder('VIP Paket')" class="bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2.5rem] font-black transition-all shadow-xl shadow-green-100">RANDEVU AL</button>
 </div>
-<div class="premium-card bg-white p-12 text-center border-t-[14px] border-slate-900 shadow-xl">
-<h3 class="font-black italic text-2xl mb-2">ULTRA DETAY</h3>
-<p class="text-[10px] text-slate-400 font-black mb-12 italic uppercase">MOTOR + DETAYLI İÇ TEMİZLİK</p>
-<div class="text-6xl font-black text-slate-900 mb-14"><span id="val-ult">3250</span> TL</div>
-<button onclick="book('Ultra Detay')" class="bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2rem] font-black transition-all shadow-lg shadow-slate-100">RANDEVU AL</button>
+<div class="premium-card bg-white p-14 text-center border-t-[16px] border-slate-900 shadow-xl">
+<h3 class="font-black italic text-3xl mb-3">ULTRA DETAY</h3>
+<p class="text-[11px] text-slate-400 font-black mb-12 italic uppercase">MOTOR + DETAYLI İÇ TEMİZLİK</p>
+<div class="text-7xl font-black text-slate-900 mb-16"><span id="val-u">3250</span> TL</div>
+<button onclick="whatsappOrder('Ultra Detay')" class="bg-green-500 hover:bg-green-600 text-white w-full py-6 rounded-[2.5rem] font-black transition-all shadow-xl shadow-slate-100">RANDEVU AL</button>
 </div>
 </section>
 
-<footer class="bg-white border-t border-slate-100 py-24 text-center">
-<div class="flex justify-center gap-14 mb-14 text-7xl">
+<footer class="bg-white border-t border-slate-100 py-28 text-center">
+<div class="flex justify-center gap-16 mb-16 text-8xl">
 <a href="https://www.instagram.com/mericyurdusen" target="_blank" class="text-pink-600 hover:scale-125 transition-transform"><i class="fab fa-instagram"></i></a>
 <a href="tel:+905307366945" class="text-blue-600 hover:scale-125 transition-transform"><i class="fas fa-phone-square"></i></a>
 </div>
-<p class="text-slate-300 text-[11px] uppercase tracking-[15px] font-black italic">© 2026 MERIC YURDUŞEN | MOBIL WASH</p>
+<p class="text-slate-300 text-[12px] uppercase tracking-[20px] font-black italic">© 2026 MERIC YURDUŞEN | MOBIL WASH ISTANBUL</p>
 </footer>
 
 <script>
-function syncClock() {
-const time = new Date();
-const h = time.getHours(); const m = time.getMinutes(); const s = time.getSeconds();
+// Saat ve Takvim
+function updateAllTime() {
+const now = new Date();
+const h = now.getHours(); const m = now.getMinutes(); const s = now.getSeconds();
 document.getElementById('hr-ptr').style.transform = `translateX(-50%) rotate(${(h % 12) * 30 + m / 2}deg)`;
 document.getElementById('min-ptr').style.transform = `translateX(-50%) rotate(${m * 6}deg)`;
 document.getElementById('sec-ptr').style.transform = `translateX(-50%) rotate(${s * 6}deg)`;
 const months = ["OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK"];
-document.getElementById('m-name').innerText = months[time.getMonth()];
-document.getElementById('d-num').innerText = time.getDate();
+document.getElementById('cal-m').innerText = months[now.getMonth()];
+document.getElementById('cal-d').innerText = now.getDate();
 }
-setInterval(syncClock, 1000); syncClock();
+setInterval(updateAllTime, 1000); updateAllTime();
 
-let sIdx = 0;
-const sItems = document.querySelectorAll('.slide-item');
+// Header Slider
+let slideCount = 0;
+const slides = document.querySelectorAll('.header-slide');
 setInterval(() => {
-sItems[sIdx].classList.remove('active');
-sIdx = (sIdx + 1) % sItems.length;
-sItems[sIdx].classList.add('active');
+slides[slideCount].classList.remove('active');
+slideCount = (slideCount + 1) % slides.length;
+slides[slideCount].classList.add('active');
 }, 5000);
 
-const pricing = { binek: { s: 1600, v: 2300, u: 3250 }, suv: { s: 2100, v: 2950, u: 4100 } };
-function recalc() {
-const car = document.getElementById('type-select').value;
-const extra = parseInt(document.getElementById('loc-select').value);
-const isNight = (new Date().getHours() >= 21 || new Date().getHours() < 7);
-let mult = isNight ? 1.30 : 1;
-document.getElementById('night-alert').classList.toggle('hidden', !isNight);
-document.getElementById('val-std').innerText = Math.round((pricing[car].s * mult) + extra);
-document.getElementById('val-vip').innerText = Math.round((pricing[car].v * mult) + extra);
-document.getElementById('val-ult').innerText = Math.round((pricing[car].u * mult) + extra);
+// Fiyatlandırma Mantığı
+const baseRates = {
+binek: { s: 1600, v: 2300, u: 3250 },
+suv: { s: 2100, v: 2950, u: 4100 }
+};
+function runCalc() {
+const car = document.getElementById('sel-car').value;
+const loc = parseInt(document.getElementById('sel-loc').value);
+const hour = new Date().getHours();
+let nightMult = (hour >= 21 || hour < 7) ? 1.30 : 1;
+document.getElementById('night-banner').classList.toggle('hidden', nightMult === 1);
+document.getElementById('val-s').innerText = Math.round((baseRates[car].s * nightMult) + loc);
+document.getElementById('val-v').innerText = Math.round((baseRates[car].v * nightMult) + loc);
+document.getElementById('val-u').innerText = Math.round((baseRates[car].u * nightMult) + loc);
 }
-recalc();
+runCalc();
 
-const cities = ["Etiler", "Beşiktaş", "Nişantaşı", "Florya", "Kadıköy"];
-const cars = ["Porsche", "Mercedes", "BMW", "Audi"];
-function showToast() {
-const l = cities[Math.floor(Math.random() * cities.length)];
-const c = cars[Math.floor(Math.random() * cars.length)];
-document.getElementById('toast-text').innerText = `${l}'de bir ${c} parlatıldı! ✨`;
-document.getElementById('toast-msg').classList.add('active');
-setTimeout(() => document.getElementById('toast-msg').classList.remove('active'), 7000);
+// Bildirimler
+const districts = ["Etiler", "Beşiktaş", "Kadıköy", "Florya", "Nişantaşı"];
+const carModels = ["Porsche", "Mercedes", "BMW", "Audi"];
+function pushToast() {
+const d = districts[Math.floor(Math.random() * districts.length)];
+const m = carModels[Math.floor(Math.random() * carModels.length)];
+document.getElementById('notif-text').innerText = `${d}'de bir ${m} parlatıldı! ✨`;
+document.getElementById('notif-toast').classList.add('active');
+setTimeout(() => document.getElementById('notif-toast').classList.remove('active'), 7000);
 }
-setTimeout(showToast, 3000); setInterval(showToast, 28000);
+setTimeout(pushToast, 4000); setInterval(pushToast, 30000);
 
-function book(pkg) {
-const carName = document.getElementById('type-select').selectedOptions[0].text;
-const locName = document.getElementById('loc-select').selectedOptions[0].text;
-let price = (pkg==='Standart')?document.getElementById('val-std').innerText:(pkg==='VIP Paket'?document.getElementById('val-vip').innerText:document.getElementById('val-ult').innerText);
-const msg = `Merhaba MobilWash! 👋%0A📦 Paket: ${pkg}%0A🚗 Araç: ${carName}%0A📍 Bölge: ${locName}%0A💰 Tutar: ${price} TL%0AMüsaitlik durumunuz nedir?`;
-window.open(`https://wa.me/905307366945?text=${msg}`, '_blank');
+// WhatsApp Entegrasyonu
+function whatsappOrder(pkg) {
+const cName = document.getElementById('sel-car').selectedOptions[0].text;
+const lName = document.getElementById('sel-loc').selectedOptions[0].text;
+let price = (pkg==='Standart')?document.getElementById('val-s').innerText:(pkg==='VIP Paket'?document.getElementById('val-v').innerText:document.getElementById('val-u').innerText);
+const text = `Merhaba MobilWash! 👋%0A📦 Paket: ${pkg}%0A🚗 Araç: ${cName}%0A📍 Konum: ${lName}%0A💰 Net Tutar: ${price} TL%0ARandevu oluşturabilir miyiz?`;
+window.open(`https://wa.me/905307366945?text=${text}`, '_blank');
 }
 </script>
 </body>
 </html>
-
 
