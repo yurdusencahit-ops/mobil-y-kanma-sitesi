@@ -8,32 +8,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root { --ocean-blue: #003366; --electric-blue: #0077ff; --platin: #e0e0e0; --premium-black: #050505; }
-body { background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%); font-family: 'Georgia', serif; overflow-x: hidden; }
+body { background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%); font-family: 'Georgia', serif; overflow-x: hidden; color: white; }
 
-/* PÜRÜZSÜZ SLIDER AYARLARI */
+/* PREMIUM SLIDER */
 .slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; }
-.slide {
-position: absolute;
-width: 100%;
-height: 100%;
-opacity: 0;
-transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
-background-size: cover;
-background-position: center;
-}
+.slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 3s ease-in-out; background-size: cover; background-position: center; }
 .slide.active { opacity: 0.45; }
 
 .platin-text { background: linear-gradient(to right, #ffffff 0%, #a0a0a0 50%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .ocean-border { border: 2px solid transparent; border-image: linear-gradient(to right, var(--electric-blue), #00c3ff, var(--electric-blue)); border-image-slice: 1; }
 .ocean-button { background: linear-gradient(45deg, var(--electric-blue), #00c3ff, var(--electric-blue)); color: white; font-weight: 900; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4); }
-.ocean-button:hover { box-shadow: 0 0 25px rgba(0, 195, 255, 0.7); transform: scale(1.03); }
 .header-widget { backdrop-filter: blur(15px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 119, 255, 0.2); }
 
-/* VIP BİLDİRİM POPUP */
-#vip-popup { position: fixed; bottom: 30px; right: 30px; background: rgba(5, 5, 5, 0.95); border: 1px solid var(--electric-blue); padding: 15px 25px; border-radius: 20px; z-index: 1000; display: flex; align-items: center; gap: 12px; transform: translateX(120%); transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); box-shadow: 0 10px 40px rgba(0,0,0,0.8); backdrop-filter: blur(10px); }
+/* VIP BİLDİRİM */
+#vip-popup { position: fixed; bottom: 30px; left: 30px; background: rgba(5, 5, 5, 0.95); border: 1px solid var(--electric-blue); padding: 12px 20px; border-radius: 15px; z-index: 1000; display: flex; align-items: center; gap: 10px; transform: translateX(-150%); transition: transform 0.6s ease; backdrop-filter: blur(10px); }
 #vip-popup.active { transform: translateX(0); }
 
-/* ASİSTAN PULSE ANİMASYONU */
+/* ASİSTAN ANİMASYONU */
 @keyframes assistant-glow {
 0% { box-shadow: 0 0 0 0 rgba(0, 119, 255, 0.7); }
 70% { box-shadow: 0 0 0 15px rgba(0, 119, 255, 0); }
@@ -42,59 +33,56 @@ background-position: center;
 .assistant-pulse { animation: assistant-glow 2s infinite; }
 </style>
 </head>
-<body class="text-white">
+<body>
 
 <div id="vip-popup">
 <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-<p id="vip-msg" class="text-xs font-bold platin-text uppercase tracking-tight"></p>
+<p id="vip-msg" class="text-xs font-bold platin-text uppercase tracking-tight italic"></p>
 </div>
 
 <header class="flex justify-between items-start p-6 md:p-10 relative z-20">
 <div class="header-widget rounded-2xl p-4 text-center w-24 border-b-4 border-[#00c3ff]">
-<div id="cal-month" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">MART</div>
+<div id="cal-month" class="text-[10px] font-bold text-gray-400 uppercase">MART</div>
 <div id="cal-day" class="text-3xl font-black platin-text">23</div>
-<div class="text-[9px] text-gray-500 font-bold">2026</div>
 </div>
 <div class="header-widget rounded-full px-4 py-2 mt-4 flex items-center gap-3">
 <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
-<span class="text-[10px] font-bold platin-text tracking-widest uppercase italic">Saha Ekibi Aktif</span>
+<span class="text-[10px] font-bold platin-text uppercase italic">Ekip Aktif</span>
 </div>
 <div class="header-widget rounded-2xl px-6 py-4 text-right border-r-4 border-[#00c3ff]">
 <div id="digital-clock" class="text-4xl font-black platin-text tracking-tighter">00:00</div>
-<div class="text-[9px] font-bold text-gray-500 uppercase tracking-[3px]">VIP Servis</div>
+<div class="text-[9px] font-bold text-gray-500 uppercase tracking-[2px]">VIP Servis</div>
 </div>
 </header>
 
-<main class="relative h-[75vh] flex flex-col items-center justify-center text-center px-4">
+<main class="relative h-[70vh] flex flex-col items-center justify-center text-center px-4">
 <div class="slider-container">
 <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1500');"></div>
 <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1500');"></div>
 <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1500');"></div>
-<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=1500');"></div>
-<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1500');"></div>
 </div>
 
-<h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-4 platin-text">MOTO<span class="platin-text">WASH</span></h1>
-<p class="text-gray-400 tracking-[10px] uppercase text-[10px] mb-10">Ultra Premium Detailing At Your Door</p>
-<div id="gece-uyari" class="hidden bg-red-950/40 border border-red-500 text-red-300 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">🌙 GECE TARİFESİ AKTİF</div>
-<button onclick="konumAt()" class="ocean-button px-12 py-6 rounded-full text-xl flex items-center gap-4 italic font-black uppercase tracking-widest">
+<h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase platin-text">MOTO<span class="platin-text">WASH</span></h1>
+<p class="text-gray-400 tracking-[10px] uppercase text-[10px] mb-8 mt-2">Ultra Premium Detailing At Your Door</p>
+<div id="gece-uyari" class="hidden bg-red-950/40 border border-red-500 text-red-300 px-6 py-2 rounded-full text-[10px] font-bold animate-pulse mb-6">🌙 GECE TARİFESİ (%30)</div>
+<button onclick="window.open('https://wa.me/905307366945?text=Konum paylaşıyorum, servis bekliyorum.', '_blank')" class="ocean-button px-12 py-5 rounded-full text-xl flex items-center gap-4 italic font-black uppercase tracking-widest">
 <i class="fas fa-motorcycle"></i> KONUM AT GELELİM!
 </button>
 </main>
 
-<section class="max-w-4xl mx-auto mb-20 px-6 relative z-30 -mt-10">
-<div class="bg-[#050505]/90 backdrop-blur-xl p-8 rounded-[3rem] ocean-border shadow-2xl">
+<section class="max-w-4xl mx-auto mb-16 px-6 relative z-30 -mt-10">
+<div class="bg-[#050505]/90 backdrop-blur-xl p-8 rounded-[2.5rem] ocean-border shadow-2xl">
 <div class="grid md:grid-cols-2 gap-8">
 <div>
-<label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Hizmet Bölgesi</label>
-<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold outline-none transition-all">
+<label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Bölge</label>
+<select id="bolge" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-xl text-white font-bold outline-none">
 <option value="0">Merkezi Bölgeler</option>
 <option value="350">Uzak Bölgeler (+350 TL)</option>
 </select>
 </div>
 <div>
 <label class="block text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Araç Tipi</label>
-<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-2xl text-white font-bold outline-none transition-all">
+<select id="arac" onchange="hesapla()" class="w-full bg-black border border-gray-800 p-4 rounded-xl text-white font-bold outline-none">
 <option value="binek">Premium Binek</option>
 <option value="suv">Luxury SUV / VIP</option>
 </select>
@@ -107,42 +95,37 @@ background-position: center;
 <div class="bg-[#111]/80 backdrop-blur-sm p-10 rounded-[2rem] border-t-4 border-gray-800 text-center transition hover:border-[#00c3ff]">
 <h3 class="text-xl font-bold mb-2 platin-text">Silver Detay</h3>
 <div class="text-4xl font-black text-white mb-8"><span id="price-standart">950</span> TL</div>
-<button onclick="whatsapp('Silver')" class="w-full py-4 rounded-xl border border-[#00c3ff] text-[#00c3ff] font-bold uppercase text-xs tracking-widest transition hover:bg-[#00c3ff] hover:text-white">Randevu</button>
+<button onclick="window.open('https://wa.me/905307366945?text=Silver Paketi randevusu istiyorum.', '_blank')" class="w-full py-4 rounded-xl border border-[#00c3ff] text-[#00c3ff] font-bold uppercase text-xs tracking-widest hover:bg-[#00c3ff] hover:text-white transition">Randevu</button>
 </div>
 <div class="bg-black p-10 rounded-[2.5rem] ocean-border text-center transform scale-110 shadow-[0_0_50px_rgba(0,119,255,0.3)]">
-<div class="ocean-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-white font-bold uppercase tracking-widest">EN ÇOK TERCİH EDİLEN</div>
+<div class="ocean-button text-[9px] py-1 px-4 rounded-full inline-block mb-4 text-white font-bold tracking-widest">POPÜLER</div>
 <h3 class="text-2xl font-bold mb-2 platin-text italic">GOLD VIP</h3>
 <div class="text-5xl font-black text-white mb-8"><span id="price-vip">1600</span> TL</div>
-<button onclick="whatsapp('Gold VIP')" class="ocean-button w-full py-4 rounded-xl shadow-lg uppercase text-xs tracking-widest">WhatsApp Randevu</button>
+<button onclick="window.open('https://wa.me/905307366945?text=Gold VIP randevusu istiyorum.', '_blank')" class="ocean-button w-full py-4 rounded-xl shadow-lg uppercase text-xs tracking-widest">Hemen Çağır</button>
 </div>
 <div class="bg-[#111]/80 backdrop-blur-sm p-10 rounded-[2rem] border-t-4 border-gray-800 text-center transition hover:border-[#00c3ff]">
 <h3 class="text-xl font-bold mb-2 platin-text">Platinum</h3>
 <div class="text-4xl font-black text-white mb-8"><span id="price-ultra">2400</span> TL</div>
-<button onclick="whatsapp('Platinum')" class="w-full py-4 rounded-xl border border-[#00c3ff] text-[#00c3ff] font-bold uppercase text-xs tracking-widest transition hover:bg-[#00c3ff] hover:text-white">Randevu</button>
+<button onclick="window.open('https://wa.me/905307366945?text=Platinum Paketi randevusu istiyorum.', '_blank')" class="w-full py-4 rounded-xl border border-[#00c3ff] text-[#00c3ff] font-bold uppercase text-xs tracking-widest hover:bg-[#00c3ff] hover:text-white transition">Randevu</button>
 </div>
 </section>
 
-<div id="smart-ai-assistant" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: sans-serif;">
-<div id="ai-bubble" style="display: none; background: white; color: #333; padding: 12px 18px; border-radius: 15px 15px 0 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 12px; width: 200px; position: relative; border: 1px solid #0077ff;">
-<button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 4px; right: 6px; background: none; border: none; color: #999; cursor: pointer;">✕</button>
+<div id="ai-asistan" style="position: fixed; bottom: 25px; right: 25px; z-index: 9999;">
+<div id="ai-bubble" style="display: none; background: white; color: #333; padding: 12px 18px; border-radius: 15px 15px 0 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-bottom: 12px; width: 210px; position: relative; border: 1px solid #0077ff;">
+<button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 4px; right: 6px; background: none; border: none; color: #aaa; cursor: pointer;">✕</button>
 <p style="margin: 0; font-size: 13px; font-weight: bold; line-height: 1.4;">Bir sorunuz mu var? Size yardıma hazırız!</p>
 </div>
 <div onclick="window.open('https://wa.me/905307366945', '_blank')" class="assistant-pulse" style="cursor: pointer; width: 75px; height: 75px; border-radius: 50%; border: 3px solid #0077ff; overflow: hidden; background: white; float: right; position: relative;">
-<img src="https://i.imgur.com/vHqB3K8.png" alt="Asistan" style="width: 100%; height: 100%; object-fit: cover;">
+<img src="https://i.imgur.com/vHqB3K8.png" alt="Sanal Asistan" style="width: 100%; height: 100%; object-fit: cover;">
 <div style="position: absolute; bottom: 5px; right: 5px; width: 14px; height: 14px; background: #22c55e; border-radius: 50%; border: 2px solid white;"></div>
 </div>
 </div>
 
-<footer class="bg-black py-20 text-center border-t border-gray-900 relative z-30">
-<div class="flex justify-center gap-10 mb-10">
-<a href="https://www.instagram.com/mericyurdusen" class="text-4xl platin-text transition hover:scale-110"><i class="fab fa-instagram"></i></a>
-<a href="https://wa.me/905307366945" class="text-4xl text-green-500 transition hover:scale-110"><i class="fab fa-whatsapp"></i></a>
-</div>
+<footer class="bg-black py-16 text-center border-t border-gray-900 relative z-30">
 <p class="text-[10px] tracking-[5px] text-gray-700 font-bold uppercase italic">© 2026 MOTO WASH MOBIL | 0530 736 69 45</p>
 </footer>
 
 <script>
-// DİJİTAL SAAT VE TAKVİM
 function updateClock() {
 const now = new Date();
 document.getElementById('digital-clock').innerText = String(now.getHours()).padStart(2, '0') + ":" + String(now.getMinutes()).padStart(2, '0');
@@ -152,7 +135,6 @@ document.getElementById('cal-day').innerText = now.getDate();
 }
 setInterval(updateClock, 1000); updateClock();
 
-// PÜRÜZSÜZ SLIDER
 let sIdx = 0;
 const slides = document.querySelectorAll('.slide');
 function nextSlide() {
@@ -162,21 +144,19 @@ slides[sIdx].classList.add('active');
 }
 setInterval(nextSlide, 5000);
 
-// FİYAT HESAPLAMA MOTORU
 const prices = { binek: { s: 950, v: 1600, u: 2400 }, suv: { s: 1250, v: 1950, u: 2900 } };
 function hesapla() {
 const a = document.getElementById('arac').value;
 const b = parseInt(document.getElementById('bolge').value);
 const h = new Date().getHours();
-let m = (h >= 21 || h < 7) ? 1.3 : 1; // Gece tarifesi %30 zam
+let m = (h >= 21 || h < 7) ? 1.3 : 1;
 h >= 21 || h < 7 ? document.getElementById('gece-uyari').classList.remove('hidden') : document.getElementById('gece-uyari').classList.add('hidden');
 document.getElementById('price-standart').innerText = Math.round(prices[a].s * m + b);
 document.getElementById('price-vip').innerText = Math.round(prices[a].v * m + b);
 document.getElementById('price-ultra').innerText = Math.round(prices[a].u * m + b);
 }
 
-// VIP POPUP BİLDİRİMLERİ
-const notifications = ["Beşiktaş'ta VIP hizmet bitti", "Porsche Taycan teslim edildi", "Nişantaşı'nda showroom parlaklığı sağlandı", "Florya'da lüks araç işlemi bitti"];
+const notifications = ["Beşiktaş'ta BMW M4 bitti", "Nişantaşı'nda parlaklık sağlandı", "Porsche Taycan teslim edildi", "Florya'da VIP işlem tamam"];
 function showPopup() {
 const popup = document.getElementById('vip-popup');
 const msg = document.getElementById('vip-msg');
@@ -185,14 +165,7 @@ popup.classList.add('active');
 setTimeout(() => popup.classList.remove('active'), 5000);
 }
 setInterval(showPopup, 15000); setTimeout(showPopup, 3000);
-
-// WHATSAPP YÖNLENDİRMELERİ
-function whatsapp(p) { window.open(`https://wa.me/905307366945?text=Merhaba, ${p} paketi için randevu istiyorum.`, '_blank'); }
-function konumAt() { window.open(`https://wa.me/905307366945?text=Konum paylaşıyorum, mobil servis bekliyorum.`, '_blank'); }
-
-// ASİSTAN BALONU OTOMATİK AÇILIŞ
 setTimeout(() => { document.getElementById('ai-bubble').style.display = 'block'; }, 4000);
-
 hesapla();
 </script>
 </body>
