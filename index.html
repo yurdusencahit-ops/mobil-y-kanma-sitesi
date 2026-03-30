@@ -60,22 +60,21 @@ border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
 .btn-randevu { background: var(--gold); color: #000; }
 .btn-whatsapp { background: var(--whatsapp-color); color: #fff; }
 
-/* FOTOĞRAFTAKİ BİLGİLENDİRME PANELİ */
-.info-box {
-background: rgba(255, 255, 255, 0.05);
-border: 1px dashed rgba(255, 215, 0, 0.5);
-padding: 20px;
-border-radius: 12px;
-margin-top: 30px;
-}
-.info-box h4 { color: var(--gold); margin-bottom: 12px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
-.info-box p { font-size: 12.5px; color: #ccc; margin-bottom: 6px; line-height: 1.5; }
+/* ÖDEME VE BİLGİ KUTULARI */
+.info-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.info-box { background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255, 215, 0, 0.5); padding: 15px; border-radius: 12px; }
+.info-box h4 { color: var(--gold); margin-bottom: 10px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+.info-box p { font-size: 11px; color: #ccc; line-height: 1.4; margin-bottom: 5px; }
+
+/* IBAN VE QR ALANI */
+.iban-text { background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; font-family: monospace; font-size: 11px; color: var(--gold); border: 1px solid #333; word-break: break-all; margin-top: 5px; }
+.qr-placeholder { width: 60px; height: 60px; background: white; margin-top: 10px; padding: 5px; border-radius: 5px; }
 
 .op-center { background: var(--card); border: 1px solid #444; border-radius: 25px; padding: 25px; height: fit-content; position: sticky; top: 100px; }
 .log-item { padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
 .status-badge { font-weight: bold; border: 1px solid; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
 
-@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .header-contacts { flex-direction: column; } }
+@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .info-wrapper { grid-template-columns: 1fr; } .header-contacts { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -103,7 +102,6 @@ margin-top: 30px;
 <div class="card">
 <h3>GLOSS-LIGHT</h3>
 <div class="price">950 TL</div>
-<p style="color:#aaa; font-size:14px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
 <a href="https://wa.me/905307366945?text=Light Paket Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
@@ -114,7 +112,6 @@ margin-top: 30px;
 <div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:3px 10px; font-weight:900; border-radius:5px;">EN POPÜLER</div>
 <h3>FORZA-TOUCH</h3>
 <div class="price">1.450 TL</div>
-<p style="color:#aaa; font-size:14px;">İç-Dış Detaylı Temizlik + Nano Cila</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
 <a href="https://wa.me/905307366945?text=Forza-Touch Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
@@ -124,17 +121,25 @@ margin-top: 30px;
 <div class="card">
 <h3>ELITE-SHINE</h3>
 <div class="price">2.850 TL</div>
-<p style="color:#aaa; font-size:14px;">Buharlı Koltuk Yıkama + Motor Temizliği</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
 <a href="https://wa.me/905307366945?text=Elite Shine Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
 </div>
 </div>
 
+<div class="info-wrapper">
 <div class="info-box">
 <h4><i class="fas fa-thumbtack"></i> BİLGİLENDİRME</h4>
-<p>🌙 Gece Tarifesi: 21:00 sonrası işlemlerde %25 ek ücret uygulanır.</p>
+<p>🌙 Gece Tarifesi: 21:00 sonrası %25 ek ücret.</p>
 <p>📍 Uzak mesafe lokasyonlarda servis ücreti eklenir.</p>
+</div>
+
+<div class="info-box">
+<h4><i class="fas fa-credit-card"></i> VIP ÖDEME HATTI</h4>
+<p>Hızlı transfer için IBAN & QR:</p>
+<div class="iban-text">TR650006200076500006870504</div>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" class="qr-placeholder" alt="Ödeme QR">
+</div>
 </div>
 </div>
 
@@ -146,7 +151,7 @@ margin-top: 30px;
 </div>
 
 <script>
-const semtler = ["Etiler", "Bebek", "Nişantaşı", "Maslak", "Acarkent", "Bostancı", "Florya", "Zekeriyaköy"];
+const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Bostancı", "Florya", "Zekeriyaköy"];
 const araclar = ["Range Rover", "Mercedes G63", "Porsche", "Tesla", "BMW X7", "Audi Q8"];
 const islemler = [
 { t: "iç temizliği yapılıyor", s: "İŞLEMDE", c: "#ffd700" },
