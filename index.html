@@ -60,8 +60,16 @@ border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
 .btn-randevu { background: var(--gold); color: #000; }
 .btn-whatsapp { background: var(--whatsapp-color); color: #fff; }
 
-.extra-fees { background: rgba(255, 215, 0, 0.1); border: 1px dashed var(--gold); padding: 20px; border-radius: 15px; margin-top: 20px; }
-.extra-fees li { list-style: none; font-size: 13px; color: #ccc; margin-bottom: 8px; }
+/* FOTOĞRAFTAKİ BİLGİLENDİRME PANELİ */
+.info-box {
+background: rgba(255, 255, 255, 0.05);
+border: 1px dashed rgba(255, 215, 0, 0.5);
+padding: 20px;
+border-radius: 12px;
+margin-top: 30px;
+}
+.info-box h4 { color: var(--gold); margin-bottom: 12px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.info-box p { font-size: 12.5px; color: #ccc; margin-bottom: 6px; line-height: 1.5; }
 
 .op-center { background: var(--card); border: 1px solid #444; border-radius: 25px; padding: 25px; height: fit-content; position: sticky; top: 100px; }
 .log-item { padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
@@ -95,10 +103,10 @@ border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
 <div class="card">
 <h3>GLOSS-LIGHT</h3>
 <div class="price">950 TL</div>
-<p style="color:#aaa; font-size:14px; margin-bottom:10px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
+<p style="color:#aaa; font-size:14px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Gloss-Light İçin Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
+<a href="https://wa.me/905307366945?text=Light Paket Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
 </div>
 </div>
 
@@ -106,29 +114,27 @@ border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
 <div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:3px 10px; font-weight:900; border-radius:5px;">EN POPÜLER</div>
 <h3>FORZA-TOUCH</h3>
 <div class="price">1.450 TL</div>
-<p style="color:#aaa; font-size:14px; margin-bottom:10px;">İç-Dış Detaylı Temizlik + Nano Cila</p>
+<p style="color:#aaa; font-size:14px;">İç-Dış Detaylı Temizlik + Nano Cila</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Forza-Touch İçin Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
+<a href="https://wa.me/905307366945?text=Forza-Touch Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
 </div>
 </div>
 
 <div class="card">
 <h3>ELITE-SHINE</h3>
 <div class="price">2.850 TL</div>
-<p style="color:#aaa; font-size:14px; margin-bottom:10px;">Buharlı Koltuk Yıkama + Motor Temizliği</p>
+<p style="color:#aaa; font-size:14px;">Buharlı Koltuk Yıkama + Motor Temizliği</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Elite Paket İçin Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
+<a href="https://wa.me/905307366945?text=Elite Shine Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
 </div>
 </div>
 
-<div class="extra-fees">
-<h4 style="color:var(--gold); margin-bottom:10px;">📌 BİLGİLENDİRME</h4>
-<ul>
-<li>🌙 Gece Tarifesi: 21:00 sonrası işlemlerde %25 ek ücret uygulanır.</li>
-<li>📍 Uzak mesafe lokasyonlarda servis ücreti eklenir.</li>
-</ul>
+<div class="info-box">
+<h4><i class="fas fa-thumbtack"></i> BİLGİLENDİRME</h4>
+<p>🌙 Gece Tarifesi: 21:00 sonrası işlemlerde %25 ek ücret uygulanır.</p>
+<p>📍 Uzak mesafe lokasyonlarda servis ücreti eklenir.</p>
 </div>
 </div>
 
@@ -140,12 +146,12 @@ border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
 </div>
 
 <script>
-const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Bostancı", "Çekmeköy", "Nişantaşı", "Tarabya", "Zekeriyaköy", "Göktürk"];
+const semtler = ["Etiler", "Bebek", "Nişantaşı", "Maslak", "Acarkent", "Bostancı", "Florya", "Zekeriyaköy"];
 const araclar = ["Range Rover", "Mercedes G63", "Porsche", "Tesla", "BMW X7", "Audi Q8"];
 const islemler = [
 { t: "iç temizliği yapılıyor", s: "İŞLEMDE", c: "#ffd700" },
-{ t: "koltukları buhar makinesi ile temizleniyor", s: "AKTİF", c: "#00bfff" },
-{ t: "parlatıldı ve bitti", s: "BİTTİ", c: "#00ff00" }
+{ t: "buharlı temizlik yapılıyor", s: "AKTİF", c: "#00bfff" },
+{ t: "tamamlandı ve parlatıldı", s: "BİTTİ", c: "#00ff00" }
 ];
 
 function logEkle() {
@@ -160,5 +166,4 @@ setInterval(logEkle, 8000); logEkle(); logEkle();
 </script>
 </body>
 </html>
-
 
