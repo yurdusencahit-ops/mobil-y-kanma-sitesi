@@ -3,259 +3,411 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glossgo Mobil Oto Yıkama | İstanbul VIP Temizlik</title>
+<title>Glossgo Mobil Oto Yıkama - VIP Hizmetler</title>
 <style>
-/* --- GLOSSGO PREMİUM TEMASI (Siyah, Sarı & Beyaz) --- */
+/* --- GLOSSGO GLOBAL STİLLER --- */
 :root {
---bg-color: #121212; /* Premium Siyah Zemin */
---acc-color: #FFD700; /* Alıcı Sarı Vurgu */
---text-color: #FFFFFF; /* Temiz Beyaz Metin */
---sub-text: #E0E0E0; /* Hafif Gri Alt Metin */
---card-bg: #1E1E1E; /* Paket Kartları Zemin */
---notif-bg: #FFFFFF; /* Bildirim Balonu Zemin (Sarı Yazı ile) */
+--bg-color: #121212; /* Derin Siyah */
+--card-bg: #1A1A1A; /* Koyu Gri Kartlar */
+--acc-color: #FFD700; /* Parlak Altın Sarısı */
+--text-color: #FFFFFF; /* Saf Beyaz */
+--sub-text: #E0E0E0; /* Hafif Gri */
+--notif-bg: #FFFFFF; /* Bildirim Balonu Beyazı */
+--shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 body {
 font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0; padding: 0;
-background-color: var(--bg-color); color: var(--text-color);
-overflow-x: hidden; scroll-behavior: smooth;
+margin: 0;
+padding: 0;
+background-color: var(--bg-color);
+color: var(--text-color);
+overflow-x: hidden;
+line-height: 1.6;
 }
 
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; padding: 0; }
-.btn {
-display: inline-block; padding: 12px 25px;
-background: var(--acc-color); color: var(--bg-color);
-font-weight: bold; border-radius: 5px; cursor: pointer; text-transform: uppercase;
-transition: 0.3s;
-}
-.btn:hover { background: white; transform: scale(1.05); }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; padding: 0; margin: 0; }
 
-/* --- HEADER & NAVİGASYON --- */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+/* --- ÜST MENÜ VE LOGO (HEADER) --- */
 header {
 background-color: rgba(18, 18, 18, 0.95);
-padding: 20px 50px; position: fixed; width: 100%; top: 0; z-index: 1000;
-display: flex; justify-content: space-between; align-items: center;
-border-bottom: 2px solid var(--acc-color); box-sizing: border-box;
-}
-.logo { font-size: 28px; font-weight: bold; color: var(--acc-color); letter-spacing: 2px; }
-.contact-top { color: var(--acc-color); font-weight: bold; font-size: 18px; }
-
-/* --- HERO SLIDER (KAYAR RESİMLER & KAHVE VURGUSU) --- */
-.hero {
-height: 100vh; display: flex; align-items: center; padding: 0 10%;
-background-size: cover; background-position: center; position: relative; margin-top: 80px;
-animation: sliderChange 15s infinite; /* Kayar resim animasyonu */
-}
-.hero::before {
-content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: rgba(0,0,0,0.6); z-index: 1;
-}
-.hero-content { z-index: 2; max-width: 600px; text-align: left; }
-.hero-content h1 { font-size: 48px; margin-bottom: 20px; line-height: 1.1; }
-.hero-content h1 span { color: var(--acc-color); }
-.hero-content p { font-size: 18px; color: var(--sub-text); margin-bottom: 30px; }
-
-/* Kayar Resimler (Temsili) */
-@keyframes sliderChange {
-0%, 33.33% { background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=1920'); } /* Kahve içen kadın + Range Rover */
-33.33%, 66.66% { background-image: url('https://images.unsplash.com/photo-1563804868-80927c956976?w=1920'); } /* Honda Forza ile karşılama */
-66.66%, 100% { background-image: url('https://images.unsplash.com/photo-1582264426613-68d59187e14a?w=1920'); } /* Etiler sokaklarında Forza */
+padding: 20px 0;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+border-bottom: 2px solid var(--acc-color);
+box-sizing: border-box;
 }
 
-/* --- VİZYON & MİSYON (Senin İstediğin) --- */
-.mission { padding: 80px 10%; text-align: center; border-y: 1px solid #333; }
-.mission h2 { font-size: 32px; color: var(--acc-color); margin-bottom: 30px; }
-.mission-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; text-align: left; }
-.mission-item h3 { border-left: 3px solid var(--acc-color); padding-left: 15px; }
-
-/* --- HİZMET PAKETLERİ VE FİYATLAR (Senin Belirlediğin) --- */
-.packages { padding: 80px 10%; text-align: center; }
-.section-title { font-size: 36px; margin-bottom: 50px; color: var(--text-color); }
-.section-title span { border-bottom: 3px solid var(--acc-color); }
-
-.package-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-.card {
-background: var(--card-bg); padding: 40px; border-radius: 15px; width: 300px;
-border: 1px solid #333; transition: 0.3s; position: relative;
+.header-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
-.card:hover { border-color: var(--acc-color); transform: translateY(-10px); }
-.card h3 { color: var(--acc-color); margin-top: 0; }
-.card .price { font-size: 32px; font-weight: bold; margin: 20px 0; }
-.card ul { text-align: left; color: var(--sub-text); font-size: 15px; margin-bottom: 30px; }
-.card ul li::before { content: "✓ "; color: var(--acc-color); }
 
-/* --- CANLI BİLDİRİM VE BOT SİSTEMİ (En Önemli Kısım) --- */
+.logo {
+font-size: 28px;
+font-weight: bold;
+color: var(--acc-color);
+letter-spacing: 2px;
+text-transform: uppercase;
+}
+
+.nav-links {
+display: flex;
+gap: 25px;
+font-size: 14px;
+font-weight: 500;
+}
+
+.nav-links a:hover {
+color: var(--acc-color);
+}
+
+.contact-top {
+color: var(--acc-color);
+font-weight: bold;
+font-size: 18px;
+}
+
+/* --- ANA İÇERİK BÖLÜMÜ --- */
+main {
+margin-top: 100px; /* Header yüksekliği kadar boşluk */
+padding-bottom: 100px;
+}
+
+.grid-layout {
+display: grid;
+grid-template-columns: 2fr 1fr;
+gap: 40px;
+align-items: start;
+}
+
+/* --- SOL TARAF: HİZMET SEÇENEKLERİ --- */
+.services-section h1 {
+font-size: 24px;
+margin-bottom: 30px;
+font-weight: 600;
+}
+
+.package-container {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+.package-card {
+background-color: var(--card-bg);
+padding: 25px;
+border-radius: 10px;
+width: calc(33.33% - 14px);
+box-sizing: border-box;
+border: 1px solid #333;
+transition: 0.3s;
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.package-card:hover {
+border-color: var(--acc-color);
+transform: translateY(-5px);
+}
+
+.card-header {
+color: var(--acc-color);
+font-size: 16px;
+font-weight: bold;
+margin-bottom: 10px;
+text-transform: uppercase;
+}
+
+.price {
+font-size: 28px;
+font-weight: bold;
+margin-bottom: 15px;
+}
+
+.details {
+font-size: 13px;
+color: var(--sub-text);
+margin-bottom: 25px;
+min-height: 40px;
+}
+
+.select-btn {
+background-color: var(--acc-color);
+color: var(--bg-color);
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+font-weight: bold;
+cursor: pointer;
+transition: 0.3s;
+text-transform: uppercase;
+width: 100%;
+}
+
+.select-btn:hover {
+background-color: white;
+color: black;
+}
+
+/* --- SAĞ TARAF: CANLI BİLDİRİM BOTU --- */
 .bot-container {
-position: fixed; bottom: 30px; right: 30px; z-index: 1001;
-display: flex; flex-direction: column; align-items: flex-end;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+position: relative;
 }
 
-/* Bildirim Balonu (Range Rover vb.) */
+/* Bildirim Balonu */
 .notification-bubble {
-background: var(--notif-bg); color: #333; padding: 12px 20px; border-radius: 20px 20px 0 20px;
-margin-bottom: 10px; font-size: 14px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-display: none; animation: popUp 0.5s ease-out;
-border-left: 4px solid var(--acc-color); font-weight: 500;
+background: var(--notif-bg);
+color: #333;
+padding: 15px 25px;
+border-radius: 30px 30px 0 30px;
+margin-bottom: 20px;
+font-size: 14px;
+box-shadow: var(--shadow);
+display: none; /* JS ile açılır */
+animation: popUp 0.5s ease-out;
+border-left: 4px solid var(--acc-color);
+position: relative;
+max-width: 300px;
 }
-.notification-bubble b { color: #d4af37; } /* Sarı vurgulu araç/semt ismi */
 
-/* Müşteri Temsilcisi (Gönderdiğin Fotoğraf) */
+.notification-bubble b { color: #d4af37; } /* Altın sarısı Range Rover vb. */
+
+/* Müşteri Temsilcisi (Görseldeki Fotoğraf) */
 .bot-avatar {
-width: 70px; height: 70px; border-radius: 50%;
-border: 3px solid var(--acc-color); overflow: hidden;
-cursor: pointer; transition: 0.3s; background: #fff;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+border: 4px solid var(--acc-color);
+overflow: hidden;
+background: #fff;
+cursor: pointer;
+transition: 0.3s;
+box-shadow: var(--shadow);
 }
-.bot-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.bot-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
 .bot-avatar:hover { transform: scale(1.1); }
+
+/* Bot Altı Detay Metni */
+.bot-details-text {
+font-size: 16px;
+color: var(--text-color);
+margin-top: 15px;
+text-align: right;
+max-width: 250px;
+line-height: 1.4;
+}
 
 @keyframes popUp {
 from { opacity: 0; transform: translateY(20px); }
 to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- FOOTER & GİZLİ FİYAT PANELİ --- */
-footer { background: var(--card-bg); padding: 50px 10%; border-top: 1px solid #333; text-align: center; }
-.footer-info p { margin: 5px 0; color: #555; font-size: 12px; }
-
-/* Gizli Fiyat Değiştirme Butonu */
-.admin-link {
-font-size: 10px; color: #333; cursor: pointer; text-decoration: underline;
-margin: 0 10px;
+/* --- CANLI REFERANSLAR (ALT KISIM) --- */
+.referans-section {
+margin-top: 60px;
 }
 
-/* --- MOBİL UYUMLULUK (Mobile-First) --- */
+.referans-section h2 {
+font-size: 20px;
+margin-bottom: 25px;
+}
+
+.referans-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+}
+
+.ref-item {
+background-color: var(--card-bg);
+padding: 15px 20px;
+border-radius: 8px;
+border: 1px solid #333;
+font-size: 12px;
+color: var(--sub-text);
+line-height: 1.5;
+}
+
+.ref-item b {
+color: var(--acc-color);
+}
+
+/* --- ALT BİLGİ (FOOTER) --- */
+footer {
+background-color: #000000;
+padding: 15px 0;
+font-size: 12px;
+color: #555;
+text-align: center;
+border-top: 1px solid #333;
+position: fixed;
+bottom: 0;
+width: 100%;
+z-index: 999;
+}
+
+.footer-content {
+display: flex;
+justify-content: center;
+gap: 30px;
+}
+
+.footer-link:hover { color: var(--acc-color); }
+
+/* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
+@media (max-width: 992px) {
+.grid-layout { grid-template-columns: 1fr; gap: 60px; }
+.bot-container { align-items: center; text-align: center; }
+.bot-details-text { text-align: center; margin-left: auto; margin-right: auto; }
+.package-card { width: calc(50% - 10px); }
+}
+
 @media (max-width: 768px) {
-header { padding: 15px 20px; }
-.logo { font-size: 22px; }
-.hero-content h1 { font-size: 32px; }
-.mission-grid { grid-template-columns: 1fr; }
-.package-container { gap: 20px; }
-.hero { padding: 0 5%; }
+header { padding: 15px 0; }
+.nav-links { display: none; } /* Basitlik için mobilde menüyü gizle */
+.contact-top { font-size: 16px; }
+.hero-text h1 { font-size: 32px; }
+.package-card { width: 100%; }
+.referans-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
 <header>
+<div class="container header-content">
 <div class="logo">GLOSSGO</div>
-<div class="contact-top">0530 736 69 45</div>
+<nav class="nav-links">
+<a href="#packages">Hizmetlerimiz</a>
+<a href="#hakkimizda">Hakkımızda</a>
+<a href="#contact">İletişim</a>
+</nav>
+<a href="tel:05307366945" class="contact-top">0530 736 69 45</a>
+</div>
 </header>
 
-<section class="hero">
-<div class="hero-content">
-<h1>Siz Kahvenizi İçin,<br>Biz Aracınızı <span>Parlatalım</span>.</h1>
-<p>İstanbul'un lüks semtlerinde kuyruk beklemenize gerek yok. Honda Forza hızıyla, kapınızda VIP araç temizliği.</p>
-<a href="tel:05307366945" class="btn">Hemen Randevu Al</a>
-</div>
-</section>
+<main class="container">
+<div class="grid-layout">
 
-<section class="mission">
-<h2>Kim Olduğumuzu Bilin</h2>
-<div class="mission-grid">
-<div class="mission-item">
-<h3>Vizyonumuz</h3>
-<p>Türkiye'nin motosikletli mobil araç yıkama sektöründe, lüks segment araçların dilinden anlayan en prestijli markası olmak.</p>
-</div>
-<div class="mission-item">
-<h3>Misyonumuz</h3>
-<p>Zamanın en değerli varlık olduğu İstanbul'da, konforlu bir yıkama deneyimi sunarak araç sahiplerinin hayatını kolaylaştırmak.</p>
-</div>
-</div>
-</section>
-
-<section class="packages">
-<h2 class="section-title">VIP <span>Hizmet Paketlerimiz</span></h2>
+<section id="packages" class="services-section">
+<h1>Hizmet Seçenekleri</h1>
 
 <div class="package-container">
-<div class="card">
-<h3>GLOSS-LIGHT</h3>
-<p>Dış Yıkama & Jant Bakımı</p>
-<div class="price">950 TL</div>
-<ul>
-<li>Çizilmeyen Dış Yıkama</li>
-<li>Nano Jant Temizliği</li>
-<li>Lastik Parlatma</li>
-<li>Cam Temizliği</li>
-</ul>
-<a href="tel:05307366945" class="btn">RANDEVU</a>
-</div>
-
-<div class="card" style="border-color: var(--acc-color);">
-<h3>FORZA-TOUCH</h3>
-<p>Premium İç-Dış & Cila</p>
-<div class="price">1.450 TL</div>
-<ul>
-<li>Gloss-Light Dahil</li>
-<li>Detaylı İç Temizlik</li>
-<li>Nano Hızlı Cila</li>
-<li>Koku & Torpido Bakımı</li>
-</ul>
-<a href="tel:05307366945" class="btn" style="background-color: var(--acc-color);">RANDEVU</a>
-</div>
-
-<div class="card">
-<h3>ELITE-SHINE</h3>
-<p>VIP Buharlı Sterilizasyon</p>
+<div class="package-card">
+<div>
+<div class="card-header">ELITE-SHINE</div>
 <div class="price">2.850 TL</div>
-<ul>
-<li>Forza-Touch Dahil</li>
-<li>Koltuk Buharlı Temizlik</li>
-<li>Motor Temizliği</li>
-<li>Detaylı Jant Bakımı</li>
-</ul>
-<a href="tel:05307366945" class="btn">RANDEVU</a>
+<div class="details">VIP Buharlı Detaylı Temizlik</div>
+</div>
+<button class="select-btn">SEÇ</button>
+</div>
+
+<div class="package-card" style="border-color: var(--acc-color);">
+<div>
+<div class="card-header">FORZA-TOUCH</div>
+<div class="price">1.450 TL</div>
+<div class="details">İç-Dış & Nano Cila Detaylı Temizlik</div>
+</div>
+<button class="select-btn" style="background-color: var(--acc-color); color: #000;">SEÇ</button>
+</div>
+
+<div class="package-card">
+<div>
+<div class="card-header">GLOSS-LIGHT</div>
+<div class="price">950 TL</div>
+<div class="details">Dış Yıkama Detaylı Temizlik</div>
+</div>
+<button class="select-btn">SEÇ</button>
 </div>
 </div>
+
+<div class="referans-section">
+<h2>Canlı Referanslar</h2>
+<div class="referans-grid">
+<div class="ref-item"><b>Levent:</b> bir Range Rover yıkandı!</div>
+<div class="ref-item"><b>Bebek:</b> bir Porsche parlatıldı!</div>
+<div class="ref-item"><b>Zekeriyaköy:</b> bir Land Rover temizlendi!</div>
+</div>
+</div>
+
 </section>
 
-<div class="bot-container">
+<aside class="bot-container">
 <div id="bubble" class="notification-bubble"></div>
+
 <div class="bot-avatar" onclick="window.location.href='tel:05307366945'">
 <img src="https://i.ibb.co/vz6WvR8/customer-service.png" alt="Glossgo Asistan">
 </div>
+
+<div class="bot-details-text">VIP Buharlı Detaylı Temizlik</div>
+</aside>
+
 </div>
+</main>
 
 <footer>
-<div class="logo" style="font-size: 24px;">GLOSSGO</div>
-<div class="footer-info">
-<p>© 2026 Glossgo. İstanbul Geneli Mobil VIP Temizlik.</p>
-<p>
-<span class="admin-link" onclick="prompt('Gizli Fiyat Paneli Şifresi:')">Gizli Fiyat Paneli</span>
-<span>0530 736 69 45</span>
-</div>
+<div class="container footer-content">
+<span>© 2026 Glossgo.</span>
+<a href="tel:05307366945" class="footer-link">İletişim</a>
+<span class="footer-link" style="cursor: pointer;" onclick="alert('Gizli Fiyat Paneli Şifresi Gerekli')">Gizli Fiyat Paneli</span>
+<a href="tel:05307366945" class="contact-top" style="font-size: 14px;">0530 736 69 45</a>
 </div>
 </footer>
 
 <script>
-// --- CANLI BİLDİRİM BOT SİSTEMİ (İstediğin Dinamik Özellik) ---
+// --- CANLI BİLDİRİM BOT SİSTEMİ (JS) ---
+// Görseldeki "Etiler'de bir Range Rover yıkandı" yapısını kurar.
+
 const notifications = [
 "📍 <b>Etiler'de</b> bir Range Rover yıkandı!",
 "📍 <b>Bebek'te</b> bir Porsche parlatıldı!",
-"📍 <b>Ataşehir'de</b> Mercedes S-Serisi temizlendi!",
-"📍 <b>Zekeriyaköy'de</b> Land Rover teslim edildi!",
-"📍 <b>Sarıyer'de</b> Audi Q8 parlıyor!"
+"📍 <b>Zekeriyaköy'de</b> Land Rover temizlendi!",
+"📍 <b>Sarıyer'de</b> bir Audi teslim edildi!",
+"📍 <b>Bağdat Caddesi'nde</b> bir Mercedes parlıyor!"
 ];
 
 let index = 0;
 const bubble = document.getElementById('bubble');
 
 function showNotification() {
+// Balonun içini değiştir
 bubble.innerHTML = notifications[index];
 bubble.style.display = 'block';
 
 // 4 saniye sonra bildirim kaybolur
 setTimeout(() => {
 bubble.style.display = 'none';
-// Sıradaki bildirime geç
+// Sıradaki bildirime geç (döngüsel)
 index = (index + 1) % notifications.length;
 }, 4000);
 }
 
 // Her 8 saniyede bir yeni bildirim çıkar
 setInterval(showNotification, 8000);
-// İlk bildirim 3 saniye sonra başlasın
+
+// İlk bildirim 3 saniye sonra başlasın (Hemen açılmasın)
 setTimeout(showNotification, 3000);
 </script>
 
