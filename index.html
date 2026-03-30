@@ -18,7 +18,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* ARKA PLAN SLIDER */
 .bg-slider {
 position: fixed; width: 100vw; height: 100vh; z-index: -1;
 background-size: cover; background-position: center;
@@ -43,19 +42,11 @@ position: sticky; top: 0; z-index: 1000;
 color: var(--gold); font-weight: bold; text-decoration: none;
 display: flex; align-items: center; gap: 8px; font-size: 1.1rem;
 border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
-transition: 0.3s;
 }
-.call-btn:hover { background: var(--gold); color: #000; }
 
-/* RENKLİ SOSYAL MEDYA İKONLARI */
-.social-links a { color: #fff; font-size: 1.8rem; margin-left: 15px; transition: 0.3s; display: inline-block; }
+.social-links a { color: #fff; font-size: 1.8rem; margin-left: 15px; display: inline-block; transition: 0.3s; }
 .social-links .fa-whatsapp { color: var(--whatsapp-color); }
-.social-links .fa-instagram {
-background: var(--instagram-gradient);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
-.social-links a:hover { transform: scale(1.2); }
+.social-links .fa-instagram { background: var(--instagram-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 .container { max-width: 1400px; margin: auto; padding: 40px 5%; }
 .section-title { font-size: 24px; margin: 40px 0 20px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; }
@@ -64,23 +55,19 @@ background: var(--instagram-gradient);
 .card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 30px; margin-bottom: 20px; position: relative; }
 .price { font-size: 32px; font-weight: 700; margin: 15px 0; color: #fff; }
 
-/* BUTON GRUBU VE RENKLİ WHATSAPP BUTONU */
 .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 .btn { padding: 15px; border-radius: 10px; font-weight: 800; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; transition: 0.3s; }
 .btn-randevu { background: var(--gold); color: #000; }
 .btn-whatsapp { background: var(--whatsapp-color); color: #fff; }
-.btn:hover { transform: scale(1.03); filter: brightness(1.1); }
 
-/* CANLI AKIŞ PANELİ */
+.extra-fees { background: rgba(255, 215, 0, 0.1); border: 1px dashed var(--gold); padding: 20px; border-radius: 15px; margin-top: 20px; }
+.extra-fees li { list-style: none; font-size: 13px; color: #ccc; margin-bottom: 8px; }
+
 .op-center { background: var(--card); border: 1px solid #444; border-radius: 25px; padding: 25px; height: fit-content; position: sticky; top: 100px; }
 .log-item { padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
 .status-badge { font-weight: bold; border: 1px solid; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
 
-/* BİLGİLENDİRME PANELİ */
-.extra-fees { background: rgba(255, 215, 0, 0.1); border: 1px dashed var(--gold); padding: 20px; border-radius: 15px; margin-top: 20px; }
-.extra-fees li { list-style: none; font-size: 13px; color: #ccc; margin-bottom: 8px; }
-
-@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .header-contacts { flex-direction: column; gap: 10px; } }
+@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .header-contacts { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -103,20 +90,33 @@ background: var(--instagram-gradient);
 <div class="container">
 <div class="main-layout">
 <div>
-<h2 class="section-title">VIP Hizmet Paketlerimiz</h2>
+<h2 class="section-title">VIP Paketler</h2>
 
 <div class="card">
-<h3>FORZA-TOUCH</h3>
-<div class="price">1.450 TL</div>
+<h3>GLOSS-LIGHT</h3>
+<div class="price">950 TL</div>
+<p style="color:#aaa; font-size:14px; margin-bottom:10px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
+<a href="https://wa.me/905307366945?text=Gloss-Light İçin Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
+</div>
+</div>
+
+<div class="card" style="border-color: var(--gold);">
+<div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:3px 10px; font-weight:900; border-radius:5px;">EN POPÜLER</div>
+<h3>FORZA-TOUCH</h3>
+<div class="price">1.450 TL</div>
+<p style="color:#aaa; font-size:14px; margin-bottom:10px;">İç-Dış Detaylı Temizlik + Nano Cila</p>
+<div class="btn-group">
+<a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
+<a href="https://wa.me/905307366945?text=Forza-Touch İçin Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
 </div>
 </div>
 
 <div class="card">
 <h3>ELITE-SHINE</h3>
 <div class="price">2.850 TL</div>
+<p style="color:#aaa; font-size:14px; margin-bottom:10px;">Buharlı Koltuk Yıkama + Motor Temizliği</p>
 <div class="btn-group">
 <a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
 <a href="https://wa.me/905307366945?text=Elite Paket İçin Konum Atıyorum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
@@ -140,7 +140,7 @@ background: var(--instagram-gradient);
 </div>
 
 <script>
-const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Bostancı", "Çekmeköy", "Nişantaşı", "Tarabya"];
+const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Bostancı", "Çekmeköy", "Nişantaşı", "Tarabya", "Zekeriyaköy", "Göktürk"];
 const araclar = ["Range Rover", "Mercedes G63", "Porsche", "Tesla", "BMW X7", "Audi Q8"];
 const islemler = [
 { t: "iç temizliği yapılıyor", s: "İŞLEMDE", c: "#ffd700" },
