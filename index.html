@@ -8,89 +8,64 @@
 <style>
 :root {
 --gold: #FFD700;
---dark-gold: #B8860B;
 --bg: #050505;
---card: rgba(20, 20, 20, 0.9);
+--card: rgba(20, 20, 20, 0.95);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* --- DINAMIK ARKA PLAN (Lüks Araçlar & Eleman) --- */
+/* ARKA PLAN SLIDER */
 .bg-slider {
 position: fixed; width: 100vw; height: 100vh; z-index: -1;
 background-size: cover; background-position: center;
 animation: masterSlider 20s infinite ease-in-out;
-filter: brightness(0.35);
-transition: 2s;
+filter: brightness(0.3);
 }
-
 @keyframes masterSlider {
-0%, 25% { background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1920'); } /* Buharlı Temizlik */
-26%, 50% { background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1920'); } /* Yelekli Uzman */
-51%, 75% { background-image: url('https://images.unsplash.com/photo-1552933529-e359b2477252?q=80&w=1920'); } /* Köpüklü VIP Bakım */
-76%, 100% { background-image: url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920'); } /* Final Parlaklık */
+0%, 33% { background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1920'); }
+34%, 66% { background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1920'); }
+67%, 100% { background-image: url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920'); }
 }
 
-/* --- ÜST MENÜ --- */
 header {
 padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-background: rgba(0,0,0,0.85); border-bottom: 2px solid var(--gold);
-position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+background: rgba(0,0,0,0.9); border-bottom: 2px solid var(--gold);
+position: sticky; top: 0; z-index: 1000;
 }
-.logo { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--gold); letter-spacing: 3px; }
-.phone { font-weight: 700; color: var(--gold); font-size: 1.2rem; }
+.logo { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); letter-spacing: 2px; }
 
-/* --- ANA PANEL --- */
-.container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; padding: 40px 5%; max-width: 1400px; margin: auto; }
+.container { max-width: 1200px; margin: auto; padding: 40px 5%; }
+.section-title { font-size: 24px; margin: 40px 0 20px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; }
 
-.section-title { font-size: 22px; margin-bottom: 25px; border-left: 5px solid var(--gold); padding-left: 15px; text-transform: uppercase; }
+/* BİZ KİMİZ - MİSYON - VİZYON KARTLARI */
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
+.info-card { background: var(--card); border: 1px solid #333; padding: 25px; border-radius: 15px; transition: 0.3s; }
+.info-card:hover { border-color: var(--gold); }
+.info-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 18px; }
+.info-card p { font-size: 14px; color: #ccc; line-height: 1.6; }
 
-/* --- PAKET KARTLARI --- */
-.package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.card {
-background: var(--card); border: 1px solid #333; border-radius: 20px; padding: 30px;
-transition: 0.4s; position: relative; overflow: hidden;
+/* PAKETLER VE CANLI PANEL */
+.main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+.card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 30px; margin-bottom: 20px; position: relative; }
+.price { font-size: 32px; font-weight: 700; margin: 15px 0; color: #fff; }
+
+/* BUTONLAR */
+.btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.btn {
+padding: 15px; border-radius: 10px; font-weight: 800; text-align: center;
+text-decoration: none; display: block; font-size: 13px; transition: 0.3s;
 }
-.card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1); }
-.card h3 { color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; }
-.price { font-size: 36px; font-weight: 700; margin: 15px 0; color: #fff; }
-.features { font-size: 14px; color: #bbb; margin-bottom: 25px; line-height: 1.8; list-style: none; }
-.features li::before { content: "✦ "; color: var(--gold); }
+.btn-randevu { background: var(--gold); color: #000; }
+.btn-konum { background: #25D366; color: #fff; } /* WhatsApp Yeşili */
+.btn:hover { transform: scale(1.03); filter: brightness(1.1); }
 
-.btn-randevu {
-background: var(--gold); color: #000; padding: 15px; width: 100%; border-radius: 10px;
-font-weight: 800; text-align: center; text-decoration: none; display: block;
-transition: 0.3s; text-transform: uppercase;
-}
-.btn-randevu:hover { background: #fff; letter-spacing: 1px; }
+/* CANLI OPERASYON PANELİ */
+.op-center { background: var(--card); border: 1px solid #444; border-radius: 25px; padding: 25px; height: fit-content; position: sticky; top: 100px; }
+.log-item { padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; display: flex; justify-content: space-between; }
+.status { color: var(--gold); font-weight: bold; }
 
-/* --- CANLI OPERASYON PANELİ --- */
-.op-center { background: var(--card); border: 1px solid #444; border-radius: 25px; padding: 30px; position: sticky; top: 110px; }
-.live-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.live-indicator { background: #ff0000; color: #fff; padding: 4px 12px; border-radius: 5px; font-size: 10px; font-weight: 900; animation: pulse 1.5s infinite; }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-
-.log-list { max-height: 400px; overflow: hidden; }
-.log-entry {
-display: flex; align-items: center; gap: 15px; padding: 15px;
-border-bottom: 1px solid #222; animation: slideIn 0.6s ease-out;
-}
-@keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-
-.car-icon { font-size: 24px; filter: drop-shadow(0 0 5px var(--gold)); }
-.log-text { font-size: 14px; line-height: 1.4; }
-.log-text b { color: var(--gold); }
-.status-pill { margin-left: auto; font-size: 9px; padding: 4px 8px; border-radius: 50px; font-weight: 700; border: 1px solid; }
-
-/* --- ASİSTAN BÖLÜMÜ --- */
-.ai-status {
-margin-top: 25px; background: rgba(255,215,0,0.05); padding: 20px;
-border-radius: 15px; border: 1px dashed var(--gold); display: flex; align-items: center; gap: 15px;
-}
-.ai-img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--gold); }
-
-@media (max-width: 1000px) { .container { grid-template-columns: 1fr; } .package-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .info-grid, .main-layout { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -99,95 +74,75 @@ border-radius: 15px; border: 1px dashed var(--gold); display: flex; align-items:
 
 <header>
 <div class="logo">GLOSSGO</div>
-<div class="phone">0530 736 69 45</div>
+<div style="color: var(--gold); font-weight: bold;">0530 736 69 45</div>
 </header>
 
 <div class="container">
-<div class="main-content">
-<h2 class="section-title">VIP Hizmet Paketleri</h2>
-<div class="package-grid">
+
+<div class="info-grid">
+<div class="info-card">
+<h3>Biz Kimiz?</h3>
+<p>Glossgo, İstanbul'un yoğun temposunda aracına değer verenler için kurulmuş, Honda Forza hızı ve VIP hizmet kalitesini birleştiren mobil bir teknoloji girişimidir.</p>
+</div>
+<div class="info-card">
+<h3>Misyonumuz</h3>
+<p>Müşterilerimizin en değerli varlığı olan "zamanı" onlara geri kazandırırken, lüks segment araçların hak ettiği kusursuz temizliği kapılarına götürmektir.</p>
+</div>
+<div class="info-card">
+<h3>Vizyonumuz</h3>
+<p>Mobil araç bakımında Türkiye'nin en prestijli markası olmak ve teknolojiyi kullanarak müşteri deneyimini her geçen gün bir üst seviyeye taşımaktır.</p>
+</div>
+</div>
+
+<div class="main-layout">
+<div>
+<h2 class="section-title">VIP Operasyon Paketleri</h2>
 <div class="card">
+<div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:3px 10px; font-weight:900; border-radius:5px;">EN ÇOK TERCİH EDİLEN</div>
 <h3>FORZA-TOUCH</h3>
 <div class="price">1.450 TL</div>
-<ul class="features">
-<li>İç-Dış Detaylı Temizlik</li>
-<li>Nano Cila Uygulaması</li>
-<li>Jant & Lastik Bakımı</li>
-<li>Torpido Sterilizasyonu</li>
-</ul>
-<a href="https://wa.me/905307366945" class="btn-randevu">ANINDA RANDEVU AL</a>
+<p style="color:#aaa; font-size:14px;">İç-Dış Detaylı Temizlik + Nano Cila + Jant Bakımı</p>
+<div class="btn-group">
+<a href="https://wa.me/905307366945?text=Merhaba, Randevu Almak İstiyorum" class="btn btn-randevu">RANDEVU AL</a>
+<a href="https://wa.me/905307366945?text=Konum Atıyorum, Gelebilir Misiniz?" class="btn btn-konum">KONUM AT GELELİM</a>
 </div>
-<div class="card" style="border-color: var(--gold);">
-<div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:3px 10px; font-weight:900; border-radius:5px;">PREMIUM</div>
+</div>
+
+<div class="card">
 <h3>ELITE-SHINE</h3>
 <div class="price">2.850 TL</div>
-<ul class="features">
-<li>Buharlı Sterilizasyon</li>
-<li>Koltuk Leke Çıkarma</li>
-<li>Motor Blok Temizliği</li>
-<li>Full Deri/Kumaş Bakımı</li>
-</ul>
-<a href="https://wa.me/905307366945" class="btn-randevu">ANINDA RANDEVU AL</a>
+<p style="color:#aaa; font-size:14px;">Buharlı Sterilizasyon + Koltuk Temizliği + Motor Bakımı</p>
+<div class="btn-group">
+<a href="https://wa.me/905307366945?text=Elite Shine Paketi İçin Randevu Almak İstiyorum" class="btn btn-randevu">RANDEVU AL</a>
+<a href="https://wa.me/905307366945?text=Elite Paket İçin Konum Atıyorum" class="btn btn-konum">KONUM AT GELELİM</a>
 </div>
 </div>
 </div>
 
-<div class="side-content">
 <div class="op-center">
-<div class="live-header">
-<h3 style="font-size: 16px;">CANLI OPERASYONLAR</h3>
-<span class="live-indicator">CANLI YAYIN</span>
+<h3 style="font-size: 16px; margin-bottom: 20px; color: var(--gold);">CANLI AKIŞ</h3>
+<div id="log-list">
 </div>
-
-<div id="log-list" class="log-list">
-</div>
-
-<div class="ai-status">
-<img src="https://i.ibb.co/vz6WvR8/customer-service.png" class="ai-img">
-<div style="font-size: 12px;">
-<b style="color:var(--gold)">Sistem Mesajı:</b><br>
-<span id="ai-msg">Ekiplerimiz lüks semtlerde aktif!</span>
-</div>
+<div style="margin-top: 20px; padding: 15px; background: rgba(255,215,0,0.1); border-radius: 10px; font-size: 12px; text-align: center;">
+🚀 <b>Sistem:</b> Mobil ekiplerimiz şu an <b>Etiler/Ulus</b> bölgesinde aktif!
 </div>
 </div>
 </div>
 </div>
 
 <script>
-const semtler = ["Etiler", "Bebek", "Nişantaşı", "Ulus", "Tarabya", "Zekeriyaköy", "Göktürk", "Florya", "Acarkent", "Maslak"];
-const araclar = ["Range Rover", "Mercedes G-Serisi", "Porsche Taycan", "BMW X7", "Audi Q8", "Tesla Model X"];
-const islemler = [
-{ t: "iç temizliği yapıldı", s: "TAMAMLANDI", c: "#00ff00" },
-{ t: "detaylı parlatıldı", s: "TAMAMLANDI", c: "#00ff00" },
-{ t: "şuan temizleniyor", s: "İŞLEMDE", c: "#ffd700" },
-{ t: "buharlı temizlik yapılıyor", s: "AKTİF", c: "#00bfff" }
-];
+const semtler = ["Etiler", "Bebek", "Nişantaşı", "Ulus", "Tarabya", "Zekeriyaköy", "Göktürk", "Acarkent", "Maslak"];
+const araclar = ["Range Rover", "Mercedes G", "Porsche", "BMW X7", "Audi Q8", "Tesla"];
 
-function yeniLogEkle() {
+function logEkle() {
 const logList = document.getElementById('log-list');
 const s = semtler[Math.floor(Math.random() * semtler.length)];
 const a = araclar[Math.floor(Math.random() * araclar.length)];
-const i = islemler[Math.floor(Math.random() * islemler.length)];
-
-const html = `
-<div class="log-entry">
-<div class="car-icon">🚗</div>
-<div class="log-text">
-<b>${s}'de</b> bir ${a}<br>
-${i.t}.
-</div>
-<div class="status-pill" style="color:${i.c}; border-color:${i.c}">${i.s}</div>
-</div>
-`;
-
+const html = `<div class="log-item"><span>📍 ${s} / ${a}</span> <span class="status">BİTTİ</span></div>`;
 logList.insertAdjacentHTML('afterbegin', html);
-if (logList.children.length > 5) logList.lastElementChild.remove();
+if (logList.children.length > 6) logList.lastElementChild.remove();
 }
-
-// Başlangıçta birkaç tane ekle
-for(let i=0; i<4; i++) setTimeout(yeniLogEkle, i * 1000);
-// Her 12 saniyede bir yeni işlem ekle
-setInterval(yeniLogEkle, 12000);
+setInterval(logEkle, 10000); logEkle(); logEkle();
 </script>
 
 </body>
