@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOSSGO | VIP Elite v4 Operasyon Merkezi</title>
+<title>GLOSSGO | VIP Full Operasyon Merkezi v5</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -11,29 +11,23 @@
 --gold: #FFD700;
 --whatsapp-color: #25D366;
 --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-/* Varsayılan Gece Modu Renkleri */
 --bg: #050505;
 --card: rgba(20, 20, 20, 0.95);
 --text: #ffffff;
 --border: #222;
 }
 
-/* Gündüz Modu Değişkenleri (JavaScript ile tetiklenecek) */
 body.light-mode {
---bg: #f4f4f4;
+--bg: #f8f8f8;
 --card: #ffffff;
 --text: #1a1a1a;
 --border: #ddd;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
+* { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s; }
 body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-.bg-slider {
-position: fixed; width: 100vw; height: 100vh; z-index: -1;
-background-size: cover; background-position: center;
-filter: brightness(0.15);
-}
+.bg-slider { position: fixed; width: 100vw; height: 100vh; z-index: -1; background-size: cover; background-position: center; filter: brightness(0.15); }
 
 header {
 padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
@@ -41,48 +35,52 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold);
 position: sticky; top: 0; z-index: 1000;
 }
 .logo { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold); letter-spacing: 2px; }
-
-.header-contacts { display: flex; align-items: center; gap: 15px; }
 .call-btn { color: var(--gold); font-weight: bold; text-decoration: none; border: 2px solid var(--gold); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem; }
 
-.container { max-width: 1400px; margin: auto; padding: 30px 5%; }
-.section-title { font-size: 22px; margin: 40px 0 20px; border-left: 4px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; }
+.container { max-width: 1400px; margin: auto; padding: 20px 5%; }
+.section-title { font-size: 20px; margin: 30px 0 15px; border-left: 4px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; }
 
-/* KURUMSAL BÖLÜM */
-.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
-.about-card { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 15px; }
-.about-card h4 { color: var(--gold); margin-bottom: 10px; font-size: 14px; }
+/* KURUMSAL */
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.about-card { background: var(--card); border: 1px solid var(--border); padding: 15px; border-radius: 12px; }
+.about-card h4 { color: var(--gold); margin-bottom: 8px; font-size: 13px; }
+.about-card p { font-size: 12px; opacity: 0.8; line-height: 1.4; }
 
-.main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 20px; position: relative; }
-.price { font-size: 30px; font-weight: 700; color: var(--gold); margin: 10px 0; }
+.weather-panel {
+background: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(40,40,40,1) 100%);
+border: 1px solid var(--gold); padding: 10px 20px; border-radius: 50px;
+margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;
+}
 
-.btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-.btn { padding: 12px; border-radius: 10px; font-weight: 800; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; cursor: pointer; }
-.btn-randevu { background: var(--gold); color: #000; border: none; }
-.btn-whatsapp { background: var(--whatsapp-color); color: #fff; border: none; }
+.main-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 20px; margin-bottom: 15px; position: relative; }
+.price { font-size: 28px; font-weight: 700; color: var(--gold); margin: 5px 0; }
 
-/* YENİ: İLETİŞİM FORMU */
-.contact-form { background: var(--card); border: 2px solid var(--gold); padding: 30px; border-radius: 20px; margin-top: 30px; }
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; margin-bottom: 5px; font-size: 12px; color: var(--gold); }
-.form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); border-radius: 8px; }
+.btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
+.btn { padding: 10px; border-radius: 8px; font-weight: 800; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; cursor: pointer; border: none; }
+.btn-randevu { background: var(--gold); color: #000; }
+.btn-whatsapp { background: var(--whatsapp-color); color: #fff; }
 
-/* YENİ: GALERİ */
-.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 20px 0; }
-.gallery-item { width: 100%; height: 120px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border); }
+.brand-logos { margin: 20px 0; text-align: center; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid var(--border); }
+.logo-strip { display: flex; justify-content: center; align-items: center; gap: 25px; flex-wrap: wrap; }
+.logo-strip img { height: 35px; width: auto; object-fit: contain; }
 
-.brand-logos { margin: 25px 0; text-align: center; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 15px; border: 1px solid var(--border); }
-.logo-strip img { height: 35px; margin: 0 15px; filter: grayscale(0.5); transition: 0.3s; }
-.logo-strip img:hover { filter: grayscale(0); }
+/* FORM */
+.contact-form { background: var(--card); border: 2px solid var(--gold); padding: 20px; border-radius: 15px; margin: 20px 0; }
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; margin-bottom: 4px; font-size: 11px; color: var(--gold); }
+.form-group input, .form-group select { width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); border-radius: 6px; font-size: 12px; }
 
-.op-center { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 20px; height: fit-content; position: sticky; top: 100px; }
-.log-item { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 11px; display: flex; justify-content: space-between; }
-.status-badge { font-weight: bold; border: 1px solid; padding: 2px 6px; border-radius: 4px; font-size: 9px; }
+.op-center { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 15px; height: fit-content; position: sticky; top: 90px; }
+.log-item { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 11px; display: flex; justify-content: space-between; }
+.status-badge { font-weight: bold; border: 1px solid; padding: 1px 5px; border-radius: 4px; font-size: 9px; }
 
-.review-card { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 15px; margin-bottom: 15px; font-style: italic; }
+.review-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-bottom: 10px; font-style: italic; font-size: 12px; }
+.reviewer { display: block; margin-top: 5px; color: var(--gold); font-weight: bold; font-size: 10px; font-style: normal; }
 
-@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr 1fr; } }
+.qr-frame { background: white; padding: 5px; display: inline-block; border-radius: 6px; margin-top: 5px; }
+
+@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -93,9 +91,9 @@ position: sticky; top: 0; z-index: 1000;
 <div class="logo">GLOSSGO</div>
 <div class="header-contacts">
 <a href="tel:05307366945" class="call-btn"><i class="fas fa-phone-alt"></i> 0530 736 69 45</a>
-<div class="social-links">
-<a href="https://wa.me/905307366945" style="color: var(--whatsapp-color);"><i class="fab fa-whatsapp"></i></a>
-<a href="https://instagram.com/glossgo" style="background: var(--instagram-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><i class="fab fa-instagram"></i></a>
+<div style="margin-left:10px; display:flex; gap:10px;">
+<a href="https://wa.me/905307366945" style="color:var(--whatsapp-color); font-size:1.5rem;"><i class="fab fa-whatsapp"></i></a>
+<a href="https://instagram.com/glossgo" style="color:var(--gold); font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
 </div>
 </div>
 </header>
@@ -103,136 +101,125 @@ position: sticky; top: 0; z-index: 1000;
 <div class="container">
 
 <div class="about-grid">
-<div class="about-card"><h4>Biz Kimiz?</h4><p>İstanbul'un her noktasında VIP mobil araç bakım hizmeti sunan profesyonel çözüm ortağınız.</p></div>
-<div class="about-card"><h4>Misyonumuz</h4><p>Maksimum hijyen ve parlaklık ile aracınızın değerini kapınızda korumak.</p></div>
-<div class="about-card"><h4>Vizyonumuz</h4><p>Mobil detailing sektöründe Türkiye'nin en güvenilir ve lüks markası olmak.</p></div>
+<div class="about-card"><h4>Biz Kimiz?</h4><p>İstanbul genelinde VIP mobil araç bakım ve detailing hizmeti sunan profesyonel ekibiz.</p></div>
+<div class="about-card"><h4>Misyonumuz</h4><p>Zamanınız size kalsın, aracınız kapınızda lüks bir bakımla parlasın.</p></div>
+<div class="about-card"><h4>Vizyonumuz</h4><p>Türkiye'nin en seçkin butik mobil yıkama ve koruma markası olmak.</p></div>
+</div>
+
+<div class="weather-panel">
+<div style="display: flex; align-items: center; gap: 10px;">
+<i class="fas fa-sun" style="color: var(--gold);"></i>
+<span>İSTANBUL: 18°C GÜNEŞLİ</span>
+</div>
+<div style="color: var(--gold); font-weight: bold;">UYGULAMA DURUMU: NANO CİLA İÇİN MÜKEMMEL!</div>
 </div>
 
 <div class="main-layout">
 <div>
-<div id="mode-info" style="text-align: center; margin-bottom: 15px; font-size: 12px; font-weight: bold; color: var(--gold);">SİSTEM: MOD OTOMATİK AYARLANIYOR...</div>
+<div id="mode-info" style="text-align: center; margin-bottom: 10px; font-size: 11px; color: var(--gold); font-weight: bold;"></div>
 
-<h2 class="section-title">Hizmet Paketleri</h2>
+<h2 class="section-title">Hizmet Paketlerimiz</h2>
 
 <div class="card">
 <h3>GLOSS-LIGHT</h3>
 <div class="price">950 TL</div>
-<p style="color:#888; font-size:13px;">Dış Yıkama + Jant Bakımı + Lastik Parlatma</p>
+<p style="opacity:0.7; font-size:12px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
-<a href="#randevu" class="btn btn-randevu">RANDEVU</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
+<a href="#randevu-form" class="btn btn-randevu"><i class="fas fa-calendar-check"></i> RANDEVU AL</a>
+<a href="https://wa.me/905307366945" class="btn btn-whatsapp"><i class="fas fa-location-arrow"></i> KONUM AT</a>
 </div>
 </div>
 
 <div class="card" style="border-color: var(--gold);">
+<div style="position:absolute; top:10px; right:10px; background:var(--gold); color:#000; font-size:9px; padding:2px 8px; font-weight:bold; border-radius:4px;">POPÜLER</div>
 <h3>FORZA-TOUCH</h3>
 <div class="price">1.450 TL</div>
-<p style="color:#888; font-size:13px;">İç-Dış Detaylı Temizlik + Nano Cila</p>
+<p style="opacity:0.7; font-size:12px;">İç-Dış Detaylı Temizlik + Nano Cila Kaplama</p>
 <div class="btn-group">
-<a href="#randevu" class="btn btn-randevu">RANDEVU</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
+<a href="#randevu-form" class="btn btn-randevu"><i class="fas fa-calendar-check"></i> RANDEVU AL</a>
+<a href="https://wa.me/905307366945" class="btn btn-whatsapp"><i class="fas fa-location-arrow"></i> KONUM AT</a>
 </div>
 </div>
 
 <div class="brand-logos">
-<h4 style="font-size:11px; margin-bottom:15px; opacity:0.6;">UZMANLIK ALANIMIZ</h4>
+<h4 style="font-size:10px; margin-bottom:12px; opacity:0.5;">UZMANLIK ALANIMIZ</h4>
 <div class="logo-strip">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Mercedes-Benz_Logo_%282011-present%29.svg/2560px-Mercedes-Benz_Logo_%282011-present%29.svg.png" alt="Mercedes">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_Logo_v2.svg/2048px-BMW_Logo_v2.svg.png" alt="BMW">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Porsche_Crest_%282023%29.svg/2560px-Porsche_Crest_%282023%29.svg.png" alt="Porsche">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Land_Rover_logo_202x.svg/1200px-Land_Rover_logo_202x.svg.png" alt="Range Rover">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Audi_logo_detail.svg/2560px-Audi_logo_detail.svg.png" alt="Audi">
 </div>
 </div>
 
-<h2 class="section-title">Uygulama Karelerimiz</h2>
-<div class="gallery-grid">
-<img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=400" class="gallery-item" alt="Araç 1">
-<img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=400" class="gallery-item" alt="Araç 2">
-<img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=400" class="gallery-item" alt="Araç 3">
-</div>
-
-<div class="contact-form" id="randevu">
-<h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;">VIP RANDEVU TALEBİ</h3>
-<form onsubmit="alert('Randevu talebiniz merkezimize iletildi. En kısa sürede aranacaksınız.'); return false;">
-<div class="form-group"><label>Adınız Soyadınız</label><input type="text" placeholder="Örn: Ahmet Yılmaz" required></div>
-<div class="form-group"><label>Telefon Numaranız</label><input type="tel" placeholder="05XX XXX XX XX" required></div>
-<div class="form-group"><label>Araç Markası & Model</label><input type="text" placeholder="Örn: Mercedes S400" required></div>
+<div class="contact-form" id="randevu-form">
+<h3 style="color: var(--gold); text-align: center; margin-bottom: 15px; font-size: 16px;">VIP RANDEVU TALEBİ</h3>
+<form onsubmit="alert('Talebiniz alındı patron! Sizi hemen arıyoruz.'); return false;">
+<div class="form-group"><label>Ad Soyad</label><input type="text" required></div>
+<div class="form-group"><label>Telefon</label><input type="tel" placeholder="05XX" required></div>
+<div class="form-group"><label>Araç Markası</label><input type="text" required></div>
 <div class="form-group">
-<label>Bulunduğunuz Semt</label>
-<select required>
-<option value="">Semt Seçiniz...</option>
-<option>Etiler / Bebek</option>
-<option>Maslak / Sarıyer</option>
-<option>Acarkent / Beykoz</option>
-<option>Diğer</option>
-</select>
+<label>Semt Seçin</label>
+<select required><option>Etiler</option><option>Bebek</option><option>Maslak</option><option>Zekeriyaköy</option><option>Acarkent</option></select>
 </div>
-<button type="submit" class="btn btn-randevu" style="width: 100%; font-size: 16px;">TALEBİ GÖNDER</button>
+<button type="submit" class="btn btn-randevu" style="width:100%; font-size:14px;">TALEBİ GÖNDER</button>
 </form>
 </div>
 
-<div class="info-wrapper" style="margin-top: 30px;">
-<div class="info-box"><h4>GÜVENLİ ÖDEME</h4><div class="qr-frame"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" style="width:80px;"></div></div>
-<div class="info-box"><h4>REFERANS</h4><p style="font-size:11px; font-style:italic;">"Etiler'de kapımın önünde mucize yarattılar." - Ahmet K.</p></div>
+<h2 class="section-title">Referanslarımız</h2>
+<div class="review-card">"Etiler'de kapımın önünde 40 dakikada aracımı fabrikadan çıktığı güne döndürdüler."<span class="reviewer">— Ahmet K. (Mercedes G63)</span></div>
+<div class="review-card">"Gece yarısı Maslak'ta acil yıkama gerekiyordu, hemen geldiler. Kalite tartışılmaz."<span class="reviewer">— Selin Y. (Porsche Taycan)</span></div>
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-top:20px;">
+<div class="about-card" style="text-align:center;"><h4>GÜVENLİ ÖDEME</h4><div class="qr-frame"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" style="width:80px;"></div></div>
+<div class="about-card"><h4>NOTLAR</h4><p style="font-size:10px;">🌙 21:00 sonrası %25 ek ücret. <br> 📍 Uzak mesafe servis ücreti uygulanır.</p></div>
 </div>
 </div>
 
 <div class="op-center">
-<h3 style="font-size: 15px; margin-bottom: 15px; color: var(--gold);">CANLI AKIŞ</h3>
+<h3 style="font-size: 14px; margin-bottom: 15px; color: var(--gold);">CANLI OPERASYON</h3>
 <div id="log-list"></div>
 </div>
 </div>
 </div>
 
 <script>
-// GECE/GÜNDÜZ MODU OTOMASYONU
-function updateMode() {
-const hour = new Date().getHours();
-const body = document.body;
-const info = document.getElementById('mode-info');
+// OTOMATİK GECE/GÜNDÜZ MODU
+function setMode() {
+const h = new Date().getHours();
+const b = document.body;
+const i = document.getElementById('mode-info');
 const bg = document.getElementById('bg-slider');
 
-if (hour >= 7 && hour < 19) {
-body.classList.add('light-mode');
-info.innerHTML = "☀️ GÜNDÜZ MODU AKTİF (07:00 - 19:00)";
+if (h >= 7 && h < 19) {
+b.classList.add('light-mode');
+i.innerHTML = "☀️ GÜNDÜZ MODU AKTİF";
 bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1920')";
-bg.style.filter = "brightness(0.8)";
+bg.style.filter = "brightness(0.7)";
 } else {
-body.classList.remove('light-mode');
-info.innerHTML = "🌙 GECE MODU AKTİF (19:00 - 07:00)";
+b.classList.remove('light-mode');
+i.innerHTML = "🌙 GECE MODU AKTİF";
 bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920')";
 bg.style.filter = "brightness(0.15)";
 }
 }
-updateMode();
-setInterval(updateMode, 60000); // Her dakika kontrol et
+setMode();
 
-// CANLI LOG SİSTEMİ
-const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Zekeriyaköy"];
+// CANLI AKIŞ SİSTEMİ
+const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Zekeriyaköy", "Tarabya"];
 const aksiyonlar = [
-{txt: "İşlem Tamamlandı", badge: "BİTTİ", color: "#00ff00"},
-{txt: "Ekip Yola Çıktı", badge: "YOLDA", color: "#00bfff"},
-{txt: "Konuma Varıldı", badge: "VARDI", color: "#ff00ff"}
+{t: "İşlem Tamamlandı", b: "BİTTİ", c: "#00ff00"},
+{t: "Ekip Yola Çıktı", b: "YOLDA", c: "#00bfff"},
+{t: "Konuma Varıldı", b: "VARDI", c: "#ff00ff"}
 ];
-
 function logEkle() {
-const logList = document.getElementById('log-list');
+const l = document.getElementById('log-list');
 const s = semtler[Math.floor(Math.random() * semtler.length)];
 const a = aksiyonlar[Math.floor(Math.random() * aksiyonlar.length)];
-logList.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${a.txt}</span> <span class="status-badge" style="color:${a.color}; border-color:${a.color}">${a.badge}</span></div>`);
-if (logList.children.length > 10) logList.lastElementChild.remove();
+l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${a.t}</span> <span class="status-badge" style="color:${a.c}; border-color:${a.c}">${a.b}</span></div>`);
+if (l.children.length > 10) l.lastElementChild.remove();
 }
 setInterval(logEkle, 5000); logEkle();
-
-// GERİ SAYIM
-function startTimer(duration, display) {
-var timer = duration, hours, minutes, seconds;
-setInterval(function () {
-hours = parseInt(timer / 3600, 10); minutes = parseInt((timer % 3600) / 60, 10); seconds = parseInt(timer % 60, 10);
-display.textContent = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-if (--timer < 0) timer = duration;
-}, 1000);
-}
-// Öylesine bir sayaç başlatalım
 </script>
 </body>
 </html>
