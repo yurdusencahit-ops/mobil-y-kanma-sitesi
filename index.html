@@ -5,125 +5,150 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GLOSSGO | VIP Mobil Detailing</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-:root { --gold: #FFD700; --whatsapp: #25D366; --bg-dark: rgba(0,0,0,0.9); }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; color: #fff; font-family: 'Inter', sans-serif; }
+/* EKRAN GÖRÜNTÜLERİNDEKİ ORİJİNAL RENKLER VE TASARIM */
+:root { --gold: #FFCC00; --green: #2ECC71; --dark: #1A1D23; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+body { background-color: #1A1D23; color: white; }
 
-/* ARKA PLAN - HAREKETLİ GERÇEKÇİ YIKAMA GÖRSELİ EKLENDİ */
-.bg-video {
-position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920');
-background-size: cover; background-position: center;
-animation: zoomEffect 20s infinite alternate;
-}
-@keyframes zoomEffect { from { transform: scale(1); } to { transform: scale(1.1); } }
-
+/* HEADER */
 header {
 padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000;
+border-bottom: 2px solid var(--gold); background: #000;
 }
-.logo { font-family: 'Playfair Display'; font-size: 28px; color: var(--gold); font-weight: 900; }
-
-/* EKLEME: SOSYAL MEDYA İKONLARI */
-.social-nav { display: flex; gap: 15px; align-items: center; }
-.social-nav a { color: #fff; font-size: 22px; text-decoration: none; }
-.fa-whatsapp { color: var(--whatsapp); }
-
-.container { max-width: 1400px; margin: auto; padding: 40px 5%; }
-
-/* GİDER PUSULASI BANDI - KORUNDU */
-.legal-banner {
-background: rgba(255,215,0,0.1); border: 1px solid var(--gold); padding: 20px;
-border-radius: 10px; margin-bottom: 40px; text-align: center; color: var(--gold); font-weight: 800;
+.logo { font-size: 24px; font-weight: bold; color: var(--gold); letter-spacing: 2px; }
+.phone-box {
+border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
+color: var(--gold); font-weight: bold; text-decoration: none;
 }
 
-.main-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; }
+.container { max-width: 1200px; margin: auto; padding: 20px; }
 
+/* GİDER PUSULASI BANDI */
+.banner {
+background: rgba(255, 204, 0, 0.1); border: 1px solid var(--gold);
+padding: 15px; border-radius: 10px; margin-bottom: 30px;
+display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 13px; font-weight: bold;
+}
+
+.main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+
+/* PAKET KARTLARI */
 .card {
-background: var(--bg-dark); border: 1px solid #333; border-radius: 25px; padding: 35px;
-margin-bottom: 30px; position: relative;
+background: white; border-radius: 20px; padding: 30px; color: #333; margin-bottom: 20px;
 }
-.price { font-size: 40px; font-weight: 900; color: #fff; margin: 15px 0; display: block; }
+.card h3 { font-size: 20px; margin-bottom: 10px; color: #000; }
+.price { font-size: 36px; font-weight: 900; color: var(--gold); margin: 10px 0; display: block; }
+.card p { color: #666; font-size: 14px; margin-bottom: 20px; }
 
-.btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
-.btn { padding: 18px; border-radius: 12px; font-weight: 900; text-align: center; text-decoration: none; text-transform: uppercase; }
+.btn-group { display: flex; gap: 10px; }
+.btn { flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; text-decoration: none; text-transform: uppercase; }
 .btn-yellow { background: var(--gold); color: #000; }
-.btn-green { background: var(--whatsapp); color: #fff; }
+.btn-green { background: #2ECC71; color: #fff; }
 
-/* EKLEME: BİZ KİMİZ / MİSYON / VİZYON */
-.about-box { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; margin-top: 30px; border: 1px solid #222; }
-.about-box h2 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
-.about-box p { color: #ccc; font-size: 14px; line-height: 1.6; }
+/* VIP FORM */
+.form-box { background: white; padding: 30px; border-radius: 20px; color: #333; margin-top: 20px; }
+.form-box h2 { color: var(--gold); text-align: center; margin-bottom: 20px; font-size: 18px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; color: var(--gold); font-weight: bold; margin-bottom: 5px; font-size: 12px; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
 
-/* CANLI AKIŞ - OTOMATİK SEMT VE ARAÇ YAZILARI EKLENDİ */
-.op-center {
-background: rgba(10,10,10,0.95); border: 1px solid var(--gold); padding: 30px;
-border-radius: 30px; height: fit-content; position: sticky; top: 120px;
-}
-.log-item { border-bottom: 1px solid #222; padding: 15px 0; font-size: 14px; display: flex; justify-content: space-between; }
+/* CANLI OPERASYON */
+.op-panel { background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 20px; padding: 20px; height: fit-content; }
+.log-item { border-bottom: 1px solid #333; padding: 12px 0; font-size: 13px; display: flex; justify-content: space-between; }
 .log-item b { color: var(--gold); }
+.status-badge { background: rgba(46, 204, 113, 0.2); color: #2ecc71; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
 
-@media (max-width: 1000px) { .main-grid { grid-template-columns: 1fr; } }
+/* YENİ EKLENEN SOSYAL MEDYA VE KURUMSAL [SADECE EKLEME] */
+.social-header { display: flex; gap: 15px; margin-right: 20px; }
+.social-header a { color: #fff; font-size: 20px; }
+.about-section { margin-top: 30px; padding: 20px; border-top: 1px solid #333; font-size: 14px; color: #ccc; line-height: 1.6; }
+
+@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<div class="bg-video"></div>
-
 <header>
 <div class="logo">GLOSSGO</div>
-<div class="social-nav">
-<a href="https://wa.me/905307366945"><i class="fab fa-whatsapp"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="tel:05307366945" class="btn btn-yellow" style="padding: 10px 20px; font-size: 12px;">0530 736 69 45</a>
+<div style="display: flex; align-items: center;">
+<div class="social-header">
+<a href="#"><i class="fab fa-whatsapp" style="color: #25D366;"></i></a>
+<a href="#"><i class="fab fa-instagram" style="color: #E1306C;"></i></a>
+</div>
+<a href="tel:05307366945" class="phone-box">0530 736 69 45</a>
 </div>
 </header>
 
 <div class="container">
-<div class="legal-banner">
-GİDER PUSULASI İLE BELGELENDİRME YAPILIR.
+<div class="banner">
+<span>💰</span> KURUMSAL TALEPLER İÇİN GİDER PUSULASI İLE BELGELENDİRME YAPILIR.
 </div>
 
-<div class="main-grid">
+<div class="main-layout">
 <div>
+<div class="card">
+<h3>GLOSS-LIGHT</h3>
+<span class="price">950 TL</span>
+<p>Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
+<div class="btn-group">
+<a href="#form" class="btn btn-yellow">RANDEVU AL</a>
+<a href="#" class="btn btn-green">KONUM AT</a>
+</div>
+</div>
+
 <div class="card">
 <h3>FORZA-TOUCH</h3>
 <span class="price">1.450 TL</span>
 <p>İç-Dış Detaylı Temizlik + Nano Cila Koruma</p>
 <div class="btn-group">
-<a href="#" class="btn btn-yellow">RANDEVU AL</a>
+<a href="#form" class="btn btn-yellow">RANDEVU AL</a>
 <a href="#" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
-<div class="about-box">
-<h2>BİZ KİMİZ?</h2>
-<p>İstanbul'un lüks semtlerinde hizmet veren profesyonel mobil detailing ekibiyiz. Misyonumuz, aracınızı kapınızda yenileyerek size zaman kazandırmaktır.</p>
+<div class="form-box" id="form">
+<h2>VIP RANDEVU TALEBİ</h2>
+<form>
+<div class="form-group"><label>AD SOYAD</label><input type="text" placeholder="İsminizi Giriniz"></div>
+<div class="form-group"><label>TELEFON</label><input type="text" placeholder="05XX XXX XX XX"></div>
+<div class="form-group">
+<label>ARAÇ MARKASI</label>
+<select>
+<option>PORSCHE</option>
+<option>BMW</option>
+<option>MERCEDES</option>
+</select>
+</div>
+<button type="submit" class="btn btn-yellow" style="width: 100%; border:none; cursor:pointer;">TALEBİ GÖNDER</button>
+</form>
+</div>
+
+<div class="about-section">
+<h4 style="color: var(--gold); margin-bottom: 10px;">BİZ KİMİZ?</h4>
+<p>GlossGo, İstanbul'un seçkin semtlerinde mobil araç detailing hizmeti veren profesyonel bir ekiptir. Misyonumuz lüks araç sahiplerine yerinde ve kaliteli hizmet sunmaktır.</p>
 </div>
 </div>
 
-<div class="op-center">
-<h3 style="color:var(--gold); margin-bottom: 20px;">CANLI OPERASYON</h3>
-<div id="live-logs"></div>
+<div class="op-panel">
+<h3 style="color: var(--gold); font-size: 14px; margin-bottom: 20px; text-transform: uppercase;">CANLI OPERASYON AKIŞI</h3>
+<div id="logs"></div>
 </div>
 </div>
 </div>
 
 <script>
 const semtler = ["Etiler", "Bebek", "Acarkent", "Zekeriyaköy", "Maslak"];
-const araclar = ["PORSCHE", "BMW", "MERCEDES", "AUDI"];
+const aksiyonlar = ["Ekip Yola Çıktı", "Konuma Varış Yapıldı", "İşlem Tamamlandı"];
 
 function addLog() {
-const list = document.getElementById('live-logs');
+const l = document.getElementById('logs');
 const s = semtler[Math.floor(Math.random()*semtler.length)];
-const a = araclar[Math.floor(Math.random()*araclar.length)];
-list.insertAdjacentHTML('afterbegin', `<div class="log-item">📍 <b>${s}</b> / ${a} Yıkandı ✅</div>`);
-if(list.children.length > 8) list.lastElementChild.remove();
+const a = aksiyonlar[Math.floor(Math.random()*aksiyonlar.length)];
+l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${a}</span> <span class="status-badge">AKTİF</span></div>`);
+if(l.children.length > 8) l.lastElementChild.remove();
 }
-setInterval(addLog, 5000); addLog();
+setInterval(addLog, 4000); addLog();
 </script>
 </body>
 </html>
