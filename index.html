@@ -3,172 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOSSGO | VIP Mobil Operasyon Merkezi</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<title>GLOSSGO VIP | İstanbul Geneli Mobil Bakım</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
---gold: #FFD700;
---bg: #050505;
---card: rgba(20, 20, 20, 0.95);
---whatsapp-color: #25D366;
---instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+--primary-red: #E31C25;
+--bg-white: #FFFFFF;
+--text-dark: #111111;
+--card-gray: #F5F5F5;
+--border-light: #EEEEEE;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+body { background: var(--bg-white); color: var(--text-dark); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
-.bg-slider {
-position: fixed; width: 100vw; height: 100vh; z-index: -1;
-background-size: cover; background-position: center;
-animation: masterSlider 20s infinite ease-in-out;
-filter: brightness(0.3);
+/* ÜST BANT */
+.scrolling-bar {
+background: var(--primary-red); color: #fff; padding: 12px 0; font-size: 11px; font-weight: bold;
+position: fixed; top: 0; width: 100%; z-index: 2000; overflow: hidden; white-space: nowrap;
 }
-@keyframes masterSlider {
-0%, 33% { background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1920'); }
-34%, 66% { background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1920'); }
-67%, 100% { background-image: url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920'); }
-}
+.scroll-content { display: inline-block; animation: scroll 45s linear infinite; }
+@keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
 header {
-padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-background: rgba(0,0,0,0.9); border-bottom: 2px solid var(--gold);
-position: sticky; top: 0; z-index: 1000;
+position: fixed; top: 43px; width: 100%; z-index: 1000; padding: 20px 8%;
+background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-light);
+display: flex; justify-content: space-between; align-items: center;
 }
-.logo { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); letter-spacing: 2px; }
+.logo { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--primary-red); font-style: italic; font-weight: 700; }
 
-.header-contacts { display: flex; align-items: center; gap: 20px; }
-.call-btn {
-color: var(--gold); font-weight: bold; text-decoration: none;
-display: flex; align-items: center; gap: 8px; font-size: 1.1rem;
-border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
+/* HERO BÖLÜMÜ - ARKA PLAN RESMİ BURADA */
+.hero {
+height: 90vh; display: flex; flex-direction: column; justify-content: center;
+padding: 0 10%;
+/* Lüks araç ve köpük temalı profesyonel görsel */
+background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.2)),
+url('https://images.unsplash.com/photo-1552933529-e359b2477252?q=80&w=1920&auto=format&fit=crop');
+background-size: cover;
+background-position: center;
+margin-top: 80px;
 }
+.hero p.tagline { color: var(--primary-red); font-weight: bold; font-size: 14px; letter-spacing: 2px; margin-bottom: 15px; }
+.hero h1 { font-size: clamp(32px, 5vw, 60px); line-height: 1.1; color: var(--text-dark); margin-bottom: 25px; }
+.hero h1 span { color: var(--primary-red); }
+.hero p.desc { color: #444; font-size: 18px; max-width: 550px; margin-bottom: 40px; font-weight: 500; }
 
-.social-links a { color: #fff; font-size: 1.8rem; margin-left: 15px; display: inline-block; transition: 0.3s; }
-.social-links .fa-whatsapp { color: var(--whatsapp-color); }
-.social-links .fa-instagram { background: var(--instagram-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+/* BUTON */
+.wa-btn {
+display: inline-block; background: var(--primary-red); color: #fff; padding: 15px 35px;
+border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 16px;
+transition: 0.3s; box-shadow: 0 10px 20px rgba(227, 28, 37, 0.2);
+}
+.wa-btn:hover { transform: translateY(-3px); background: #c1161d; }
 
-.container { max-width: 1400px; margin: auto; padding: 40px 5%; }
-.section-title { font-size: 24px; margin: 40px 0 20px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; }
+/* ALT BİLGİ */
+footer { text-align: center; padding: 40px; color: #888; font-size: 10px; letter-spacing: 1px; }
 
-.main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
-.card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 30px; margin-bottom: 20px; position: relative; }
-.price { font-size: 32px; font-weight: 700; margin: 15px 0; color: #fff; }
-
-.btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-.btn { padding: 15px; border-radius: 10px; font-weight: 800; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; transition: 0.3s; }
-.btn-randevu { background: var(--gold); color: #000; }
-.btn-whatsapp { background: var(--whatsapp-color); color: #fff; }
-
-/* ÖDEME VE BİLGİ KUTULARI */
-.info-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-.info-box { background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255, 215, 0, 0.5); padding: 15px; border-radius: 12px; }
-.info-box h4 { color: var(--gold); margin-bottom: 10px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
-.info-box p { font-size: 11px; color: #ccc; line-height: 1.4; margin-bottom: 5px; }
-
-/* IBAN VE QR ALANI */
-.iban-text { background: rgba(0,0,0,0.5); padding: 8px; border-radius: 5px; font-family: monospace; font-size: 11px; color: var(--gold); border: 1px solid #333; word-break: break-all; margin-top: 5px; }
-.qr-placeholder { width: 60px; height: 60px; background: white; margin-top: 10px; padding: 5px; border-radius: 5px; }
-
-.op-center { background: var(--card); border: 1px solid #444; border-radius: 25px; padding: 25px; height: fit-content; position: sticky; top: 100px; }
-.log-item { padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
-.status-badge { font-weight: bold; border: 1px solid; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
-
-@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .info-wrapper { grid-template-columns: 1fr; } .header-contacts { flex-direction: column; } }
+@media (max-width: 768px) {
+.hero { background-position: 70% center; text-align: center; align-items: center; }
+header { padding: 15px 5%; }
+}
 </style>
 </head>
 <body>
 
-<div class="bg-slider"></div>
+<div class="scrolling-bar">
+<div class="scroll-content">
+ACARKENT • ZEKERİYAKÖY • ETİLER • BEBEK • GÖKTÜRK • FLORYA • KEMERBURGAZ • YEŞİLYURT • BAĞDAT CADDESİ • KANDİLLİ • ÇENGELKÖY • MASLAK • LEVENT • ULUS • MASLAK PLAZALAR • NİŞANTAŞI • ATAŞEHİR • TARABYA • İSTİNYE
+</div>
+</div>
 
 <header>
 <div class="logo">GLOSSGO</div>
-<div class="header-contacts">
-<a href="tel:05307366945" class="call-btn">
-<i class="fas fa-phone-alt"></i> 0530 736 69 45 <span style="font-size: 0.8rem; margin-left: 5px; background: #000; color: var(--gold); padding: 2px 8px; border-radius: 4px;">HEMEN ARA</span>
-</a>
-<div class="social-links">
-<a href="https://wa.me/905307366945" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<a href="https://instagram.com/glossgo" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-</div>
+<div style="font-weight: bold; font-size: 14px;">0530 736 69 45</div>
 </header>
 
-<div class="container">
-<div class="main-layout">
-<div>
-<h2 class="section-title">VIP Paketler</h2>
+<section class="hero">
+<p class="tagline">— İSTANBUL VIP MOBİL SİSTEM</p>
+<h1>Tüm Şehir<br><span>Parlıyor.</span></h1>
+<p class="desc">Avrupa'dan Anadolu'ya, lüks araçlarınızı kapınızda 150°C buhar teknolojisi ve Honda Forza hızıyla temizliyoruz.</p>
+<a href="https://wa.me/905307366945" class="wa-btn">Hemen Konum Gönder</a>
+</section>
 
-<div class="card">
-<h3>GLOSS-LIGHT</h3>
-<div class="price">950 TL</div>
-<div class="btn-group">
-<a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Light Paket Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
-</div>
-</div>
+<footer>
+<p>GLOSSGO METROPOL VIP SYSTEMS • 2026</p>
+<p>PROFESYONEL EKİPMAN: 40M TAM BAKIR SİSTEM & SANAYİ TİPİ BUHAR</p>
+</footer>
 
-<div class="card" style="border-color: var(--gold);">
-<div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:3px 10px; font-weight:900; border-radius:5px;">EN POPÜLER</div>
-<h3>FORZA-TOUCH</h3>
-<div class="price">1.450 TL</div>
-<div class="btn-group">
-<a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Forza-Touch Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
-</div>
-</div>
-
-<div class="card">
-<h3>ELITE-SHINE</h3>
-<div class="price">2.850 TL</div>
-<div class="btn-group">
-<a href="tel:05307366945" class="btn btn-randevu"><i class="fas fa-phone"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945?text=Elite Shine Konum" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> KONUM AT GELELİM</a>
-</div>
-</div>
-
-<div class="info-wrapper">
-<div class="info-box">
-<h4><i class="fas fa-thumbtack"></i> BİLGİLENDİRME</h4>
-<p>🌙 Gece Tarifesi: 21:00 sonrası %25 ek ücret.</p>
-<p>📍 Uzak mesafe lokasyonlarda servis ücreti eklenir.</p>
-</div>
-
-<div class="info-box">
-<h4><i class="fas fa-credit-card"></i> VIP ÖDEME HATTI</h4>
-<p>Hızlı transfer için IBAN & QR:</p>
-<div class="iban-text">TR650006200076500006870504</div>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" class="qr-placeholder" alt="Ödeme QR">
-</div>
-</div>
-</div>
-
-<div class="op-center">
-<h3 style="font-size: 16px; margin-bottom: 20px; color: var(--gold);">CANLI AKIŞ</h3>
-<div id="log-list"></div>
-</div>
-</div>
-</div>
-
-<script>
-const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Bostancı", "Florya", "Zekeriyaköy"];
-const araclar = ["Range Rover", "Mercedes G63", "Porsche", "Tesla", "BMW X7", "Audi Q8"];
-const islemler = [
-{ t: "iç temizliği yapılıyor", s: "İŞLEMDE", c: "#ffd700" },
-{ t: "buharlı temizlik yapılıyor", s: "AKTİF", c: "#00bfff" },
-{ t: "tamamlandı ve parlatıldı", s: "BİTTİ", c: "#00ff00" }
-];
-
-function logEkle() {
-const logList = document.getElementById('log-list');
-const s = semtler[Math.floor(Math.random() * semtler.length)];
-const a = araclar[Math.floor(Math.random() * araclar.length)];
-const i = islemler[Math.floor(Math.random() * islemler.length)];
-logList.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${a} ${i.t}</span> <span class="status-badge" style="color:${i.c}; border-color:${i.c}">${i.s}</span></div>`);
-if (logList.children.length > 10) logList.lastElementChild.remove();
-}
-setInterval(logEkle, 8000); logEkle(); logEkle();
-</script>
 </body>
 </html>
 
