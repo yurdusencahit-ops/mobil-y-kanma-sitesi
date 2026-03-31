@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOSSGO | Mega VIP v6 Tam Sürüm</title>
+<title>GLOSSGO | VIP Elite v7 (Fatura & Kurumsal)</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -17,7 +17,6 @@
 --border: #222;
 }
 
-/* Gündüz Modu Stilleri */
 body.light-mode {
 --bg: #f5f5f5;
 --card: #ffffff;
@@ -36,19 +35,16 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold);
 position: sticky; top: 0; z-index: 1000;
 }
 .logo { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold); letter-spacing: 2px; }
-.header-contacts { display: flex; align-items: center; gap: 15px; }
 .call-btn { color: var(--gold); font-weight: bold; text-decoration: none; border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px; font-size: 1rem; }
 
 .container { max-width: 1400px; margin: auto; padding: 30px 5%; }
-.section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--gold); text-transform: uppercase; }
 
-/* KURUMSAL BÖLÜM (BİZ KİMİZ) */
+/* KURUMSAL BÖLÜM */
 .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
-.about-card { background: var(--card); border: 1px solid var(--border); padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.about-card { background: var(--card); border: 1px solid var(--border); padding: 25px; border-radius: 15px; }
 .about-card h4 { color: var(--gold); margin-bottom: 12px; font-size: 14px; text-transform: uppercase; }
-.about-card p { font-size: 13px; line-height: 1.6; opacity: 0.8; }
 
-/* HAVA DURUMU VE MOD BİLGİSİ */
 .status-bar {
 background: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(40,40,40,1) 100%);
 border: 1px solid var(--gold); padding: 12px 25px; border-radius: 50px;
@@ -57,41 +53,36 @@ margin-bottom: 30px; display: flex; align-items: center; justify-content: space-
 
 .main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
 
-/* PAKETLER VE FİYATLAR */
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-bottom: 20px; position: relative; overflow: hidden; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-bottom: 20px; position: relative; }
 .price { font-size: 32px; font-weight: 700; color: var(--gold); margin: 10px 0; display: block; }
 .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 .btn { padding: 15px; border-radius: 10px; font-weight: 800; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; cursor: pointer; border: none; }
 .btn-randevu { background: var(--gold); color: #000; }
 .btn-whatsapp { background: var(--whatsapp-color); color: #fff; }
 
-.promo-timer { background: #700; color: #fff; padding: 10px; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: bold; border: 2px solid var(--gold); animation: pulse 2s infinite; font-size: 13px; }
+/* YENİ: FATURA VE KURUMSAL İKONU */
+.invoice-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,215,0,0.1); color: var(--gold); padding: 5px 12px; border-radius: 5px; font-size: 11px; font-weight: bold; margin-bottom: 15px; border: 1px solid rgba(255,215,0,0.3); }
 
-/* LÜKS MARKA LOGOLARI */
 .brand-logos { margin: 30px 0; text-align: center; padding: 25px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid var(--border); }
-.logo-strip { display: flex; justify-content: center; align-items: center; gap: 35px; flex-wrap: wrap; }
-.logo-strip img { height: 45px; width: auto; object-fit: contain; }
+.logo-strip img { height: 40px; margin: 0 15px; }
 
-/* İLETİŞİM FORMU */
 .contact-form { background: var(--card); border: 2px solid var(--gold); padding: 30px; border-radius: 20px; margin-top: 30px; }
 .form-group { margin-bottom: 15px; }
-.form-group label { display: block; margin-bottom: 6px; font-size: 12px; color: var(--gold); font-weight: bold; }
+.form-group label { display: block; margin-bottom: 6px; font-size: 12px; color: var(--gold); }
 .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); border-radius: 8px; }
 
-/* CANLI OPERASYON PANELİ */
 .op-center { background: var(--card); border: 1px solid var(--border); border-radius: 25px; padding: 25px; height: fit-content; position: sticky; top: 100px; }
-.log-item { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
-.status-badge { font-weight: bold; border: 1px solid; padding: 2px 8px; border-radius: 4px; font-size: 10px; min-width: 65px; text-align: center; }
+.log-item { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+.status-badge { font-weight: bold; border: 1px solid; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
 
-/* MÜŞTERİ YORUMLARI */
-.review-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 25px; border-radius: 15px; margin-bottom: 20px; font-style: italic; line-height: 1.5; }
-.reviewer { display: block; margin-top: 10px; color: var(--gold); font-weight: bold; font-style: normal; font-size: 13px; }
+.review-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 25px; border-radius: 15px; margin-bottom: 20px; font-style: italic; }
 
-/* QR ÖDEME */
-.qr-section { background: rgba(255,215,0,0.05); padding: 20px; border-radius: 15px; text-align: center; border: 1px dashed var(--gold); }
-.qr-frame { background: white; padding: 10px; display: inline-block; border-radius: 10px; margin-top: 10px; }
+/* ÖDEME & FATURA BİLGİSİ */
+.info-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; margin-top: 30px; }
+.payment-box { background: rgba(255,215,0,0.05); padding: 20px; border-radius: 15px; text-align: center; border: 1px dashed var(--gold); }
+.qr-frame { background: white; padding: 8px; display: inline-block; border-radius: 10px; margin-top: 10px; }
 
-@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .about-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .info-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -112,164 +103,133 @@ margin-bottom: 30px; display: flex; align-items: center; justify-content: space-
 <div class="container">
 
 <div class="about-grid">
-<div class="about-card">
-<h4>Biz Kimiz?</h4>
-<p>GlossGo, İstanbul'un en seçkin semtlerinde mobil VIP araç bakım hizmeti sunan profesyonel bir ekiptir. Lüksü kapınıza getiriyoruz.</p>
-</div>
-<div class="about-card">
-<h4>Misyonumuz</h4>
-<p>Zamanı kısıtlı araç sahiplerine, bulundukları noktada ödün vermeyen bir temizlik ve koruma deneyimi yaşatmak.</p>
-</div>
-<div class="about-card">
-<h4>Vizyonumuz</h4>
-<p>Türkiye'nin 1 numaralı mobil butik detailing markası olarak, her aracı birer sanat eserine dönüştürmek.</p>
-</div>
+<div class="about-card"><h4>Biz Kimiz?</h4><p>İstanbul'un seçkin semtlerinde mobil VIP araç bakım hizmeti sunan profesyonel ekibiz.</p></div>
+<div class="about-card"><h4>Misyonumuz</h4><p>Zamanınız size kalsın, aracınız kapınızda lüks bir bakımla her an parlasın.</p></div>
+<div class="about-card"><h4>Vizyonumuz</h4><p>Mobil detailing sektöründe güvenin ve kalitenin tek adresi olmak.</p></div>
 </div>
 
 <div class="status-bar">
 <div style="display: flex; align-items: center; gap: 15px;">
-<i class="fas fa-sun" style="color: var(--gold); font-size: 20px;"></i>
-<span>İSTANBUL: 18°C GÜNEŞLİ / <span id="mode-text">GECE MODU</span></span>
+<i class="fas fa-certificate" style="color: var(--gold);"></i>
+<span>RESMİ KAYITLI İŞLETME / <span id="mode-text">MOD AKTİF</span></span>
 </div>
-<div style="color: var(--gold); font-weight: bold; letter-spacing: 1px;">NANO CİLA İÇİN MÜKEMMEL ZAMAN!</div>
+<div style="color: var(--gold); font-weight: bold;">NANO CİLA İÇİN %100 UYGUN HAVA!</div>
 </div>
 
 <div class="main-layout">
 <div>
-<div class="promo-timer">⚠️ GECE TARİFESİNE KALAN SÜRE: <span id="countdown">02:45:12</span></div>
+<div class="invoice-badge">
+<i class="fas fa-file-invoice-dollar"></i> KURUMSAL VE ŞAHIS FATURASI KESİLİR
+</div>
 
-<h2 class="section-title">VIP Paketler</h2>
+<h2 class="section-title">Hizmet Paketleri</h2>
 
 <div class="card">
 <h3>GLOSS-LIGHT</h3>
 <span class="price">950 TL</span>
-<p style="opacity: 0.7; font-size: 14px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
+<p style="opacity: 0.7; font-size: 13px;">Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
-<a href="#randevu" class="btn btn-randevu"><i class="fas fa-calendar-alt"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp"><i class="fas fa-map-marker-alt"></i> KONUM AT</a>
+<a href="#randevu" class="btn btn-randevu">RANDEVU AL</a>
+<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
 </div>
 </div>
 
 <div class="card" style="border-color: var(--gold);">
-<div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:10px; padding:4px 12px; font-weight:900; border-radius:5px;">EN POPÜLER</div>
+<div style="position:absolute; top:15px; right:15px; background:var(--gold); color:#000; font-size:9px; padding:3px 10px; font-weight:900; border-radius:5px;">VIP SEÇİM</div>
 <h3>FORZA-TOUCH</h3>
 <span class="price">1.450 TL</span>
-<p style="opacity: 0.7; font-size: 14px;">İç-Dış Detaylı Temizlik + Nano Cila Koruma</p>
+<p style="opacity: 0.7; font-size: 13px;">İç-Dış Detaylı Temizlik + Nano Cila Koruma</p>
 <div class="btn-group">
-<a href="#randevu" class="btn btn-randevu"><i class="fas fa-calendar-alt"></i> RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp"><i class="fas fa-map-marker-alt"></i> KONUM AT</a>
+<a href="#randevu" class="btn btn-randevu">RANDEVU AL</a>
+<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
 </div>
 </div>
 
 <div class="brand-logos">
-<h4 style="color: #666; font-size: 11px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">Uzmanlık Alanımız</h4>
 <div class="logo-strip">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Mercedes-Benz_Logo_%282011-present%29.svg/2560px-Mercedes-Benz_Logo_%282011-present%29.svg.png" alt="Mercedes">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_Logo_v2.svg/2048px-BMW_Logo_v2.svg.png" alt="BMW">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Porsche_Crest_%282023%29.svg/2560px-Porsche_Crest_%282023%29.svg.png" alt="Porsche">
-<img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Land_Rover_logo_202x.svg/1200px-Land_Rover_logo_202x.svg.png" alt="Range">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Audi_logo_detail.svg/2560px-Audi_logo_detail.svg.png" alt="Audi">
 </div>
 </div>
 
 <div class="contact-form" id="randevu">
-<h3 style="color: var(--gold); text-align: center; margin-bottom: 20px;">VIP RANDEVU FORMU</h3>
-<form onsubmit="alert('Talebiniz merkezimize ulaştı. Ekibimiz sizi arayacaktır.'); return false;">
-<div class="form-group"><label>Ad Soyad</label><input type="text" placeholder="Örn: Ahmet Yılmaz" required></div>
-<div class="form-group"><label>Telefon</label><input type="tel" placeholder="05XX XXX XX XX" required></div>
-<div class="form-group"><label>Araç Markası</label><input type="text" placeholder="Örn: Range Rover Vogue" required></div>
+<h3 style="color: var(--gold); text-align: center; margin-bottom: 20px;">VIP RANDEVU TALEBİ</h3>
+<form onsubmit="alert('Randevu talebiniz alındı. Faturalı işlemler için lütfen belirtiniz.'); return false;">
+<div class="form-group"><label>Ad Soyad</label><input type="text" required></div>
+<div class="form-group"><label>Telefon</label><input type="tel" required></div>
+<div class="form-group"><label>Araç Markası</label><input type="text" required></div>
 <div class="form-group">
-<label>Semt</label>
-<select required>
-<option value="">Semt Seçiniz...</option>
-<option>Etiler / Bebek</option>
-<option>Maslak / Sarıyer</option>
-<option>Acarkent / Beykoz</option>
-<option>Zekeriyaköy</option>
+<label>Fatura İstiyor musunuz?</label>
+<select>
+<option>Hayır, Bireysel Hizmet</option>
+<option>Evet, Kurumsal Fatura İstiyorum</option>
+<option>Evet, Şahıs Faturası İstiyorum</option>
 </select>
 </div>
-<button type="submit" class="btn btn-randevu" style="width: 100%; font-size: 16px;">RANDEVU TALEBİNİ GÖNDER</button>
+<button type="submit" class="btn btn-randevu" style="width: 100%; font-size: 15px;">TALEBİ GÖNDER</button>
 </form>
 </div>
 
 <h2 class="section-title">Referanslarımız</h2>
-<div class="review-card">"Etiler'de kapımın önünde 40 dakikada aracımı fabrikadan çıktığı güne döndürdüler. Muazzam!"<span class="reviewer">— Ahmet K. (Mercedes G63)</span></div>
-<div class="review-card">"Gece yarısı Maslak'ta acil yıkama gerekiyordu, 15 dakikada geldiler. GlossGo tek geçerim."<span class="reviewer">— Selin Y. (Porsche Taycan)</span></div>
+<div class="review-card">"Etiler'de kapımın önünde 40 dakikada aracımı tertemiz yaptılar. Faturalı çalışıyor olmaları harika."<span style="display:block; margin-top:10px; color:var(--gold); font-weight:bold;">— Ahmet K. (Mercedes G63)</span></div>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
-<div class="qr-section">
-<h4>GÜVENLİ QR ÖDEME</h4>
+<div class="info-grid">
+<div class="payment-box">
+<h4>ÖDEME VE FATURA</h4>
+<p style="font-size: 10px; margin-top: 5px;">Tüm işlemlerimiz şeffaftır. Nakit, Havale veya QR ödeme yapabilirsiniz.</p>
 <div class="qr-frame"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TR650006200076500006870504" style="width:100px;"></div>
 </div>
 <div class="about-card">
-<h4>BİLGİLENDİRME</h4>
-<p style="font-size: 11px;">🌙 21:00 sonrası %25 gece tarifesi uygulanır. <br> 📍 Uzak lokasyonlar için servis ücreti alınmaktadır.</p>
+<h4>BİLGİ MERKEZİ</h4>
+<p style="font-size: 11px;">🌙 21:00 sonrası %25 gece tarifesi uygulanır. <br> 📄 Fatura taleplerinizi uygulama öncesi ekibimize bildirmeyi unutmayın.</p>
 </div>
 </div>
 </div>
 
 <div class="op-center">
-<h3 style="font-size: 16px; margin-bottom: 20px; color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 10px;">CANLI OPERASYON</h3>
+<h3 style="font-size: 15px; margin-bottom: 15px; color: var(--gold);">CANLI AKIŞ</h3>
 <div id="log-list"></div>
 </div>
 </div>
 </div>
 
 <script>
-// OTOMATİK GECE/GÜNDÜZ MODU
 function updateTheme() {
-const hour = new Date().getHours();
-const isDay = hour >= 7 && hour < 19;
-const body = document.body;
-const modeText = document.getElementById('mode-text');
+const h = new Date().getHours();
+const isDay = h >= 7 && h < 19;
+const b = document.body;
 const bg = document.getElementById('bg-slider');
-
 if (isDay) {
-body.classList.add('light-mode');
-modeText.innerText = "GÜNDÜZ MODU AKTİF";
+b.classList.add('light-mode');
 bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1920')";
 bg.style.filter = "brightness(0.7)";
 } else {
-body.classList.remove('light-mode');
-modeText.innerText = "GECE MODU AKTİF";
+b.classList.remove('light-mode');
 bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920')";
 bg.style.filter = "brightness(0.15)";
 }
 }
-updateTheme();
-setInterval(updateTheme, 60000);
+updateTheme(); setInterval(updateTheme, 60000);
 
-// CANLI LOG SİSTEMİ
-const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Zekeriyaköy", "Tarabya", "Nişantaşı"];
+const semtler = ["Etiler", "Bebek", "Maslak", "Acarkent", "Zekeriyaköy", "Tarabya"];
 const aksiyonlar = [
 {txt: "VIP İşlem Tamamlandı", badge: "BİTTİ", color: "#00ff00"},
 {txt: "Ekibimiz Yola Çıktı", badge: "YOLDA", color: "#00bfff"},
-{txt: "Detaylı Temizlik Sürüyor", badge: "İŞLEMDE", color: "#ffa500"},
 {txt: "Konuma Varış Yapıldı", badge: "VARDI", color: "#ff00ff"}
 ];
 
 function logEkle() {
-const logList = document.getElementById('log-list');
+const l = document.getElementById('log-list');
 const s = semtler[Math.floor(Math.random() * semtler.length)];
 const a = aksiyonlar[Math.floor(Math.random() * aksiyonlar.length)];
-const logHtml = `<div class="log-item"><span>📍 <b>${s}</b> / ${a.txt}</span> <span class="status-badge" style="color:${a.color}; border-color:${a.color}">${a.badge}</span></div>`;
-logList.insertAdjacentHTML('afterbegin', logHtml);
-if (logList.children.length > 12) logList.lastElementChild.remove();
+l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${a.txt}</span> <span class="status-badge" style="color:${a.color}; border-color:${a.color}">${a.badge}</span></div>`);
+if (l.children.length > 12) l.lastElementChild.remove();
 }
-for(let i=0; i<6; i++) setTimeout(logEkle, i * 400);
-setInterval(logEkle, 5000);
-
-// GERİ SAYIM SAYACI
-function startCountdown(duration, display) {
-var timer = duration, hours, minutes, seconds;
-setInterval(function () {
-hours = parseInt(timer / 3600, 10); minutes = parseInt((timer % 3600) / 60, 10); seconds = parseInt(timer % 60, 10);
-display.textContent = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-if (--timer < 0) timer = duration;
-}, 1000);
-}
-window.onload = function () { startCountdown(60 * 165, document.querySelector('#countdown')); };
+setInterval(logEkle, 5000); logEkle();
 </script>
 </body>
 </html>
+
 
