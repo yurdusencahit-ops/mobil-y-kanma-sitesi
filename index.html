@@ -6,94 +6,94 @@
 <title>GLOSSGO | VIP Mobil Detailing</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* EKRAN GÖRÜNTÜLERİNDEKİ ORİJİNAL TASARIM */
-:root { --gold: #FFCC00; --green: #2ECC71; --dark-bg: #0E1014; }
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background-color: var(--dark-bg); color: white; overflow-x: hidden; }
+/* EKRAN GÖRÜNTÜLERİNDEKİ ORİJİNAL RENKLER VE TASARIM */
+:root { --gold: #FFCC00; --green: #2ECC71; --dark: #1A1D23; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+body { background-color: #1A1D23; color: white; }
 
-/* HEADER & SOSYAL MEDYA */
+/* HEADER */
 header {
 padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
 border-bottom: 2px solid var(--gold); background: #000;
 }
 .logo { font-size: 24px; font-weight: bold; color: var(--gold); letter-spacing: 2px; }
-.nav-right { display: flex; align-items: center; gap: 20px; }
-.social-icons a { color: white; font-size: 22px; margin-left: 15px; text-decoration: none; }
-.phone-btn {
-background: var(--gold); color: black; padding: 8px 20px; border-radius: 50px;
-font-weight: bold; text-decoration: none; font-size: 14px;
+.phone-box {
+border: 2px solid var(--gold); padding: 8px 20px; border-radius: 50px;
+color: var(--gold); font-weight: bold; text-decoration: none;
 }
 
-.container { max-width: 1300px; margin: auto; padding: 20px; }
+.container { max-width: 1200px; margin: auto; padding: 20px; }
 
 /* GİDER PUSULASI BANDI */
-.legal-banner {
+.banner {
 background: rgba(255, 204, 0, 0.1); border: 1px solid var(--gold);
 padding: 15px; border-radius: 10px; margin-bottom: 30px;
-color: var(--gold); font-size: 13px; font-weight: bold; text-align: center;
+display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 13px; font-weight: bold;
 }
 
-.main-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 25px; }
+.main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
 
-/* HİZMET PAKETLERİ */
+/* PAKET KARTLARI */
 .card {
 background: white; border-radius: 20px; padding: 30px; color: #333; margin-bottom: 20px;
 }
-.card h3 { font-size: 20px; margin-bottom: 10px; color: #000; text-transform: uppercase; }
+.card h3 { font-size: 20px; margin-bottom: 10px; color: #000; }
 .price { font-size: 36px; font-weight: 900; color: var(--gold); margin: 10px 0; display: block; }
 .card p { color: #666; font-size: 14px; margin-bottom: 20px; }
 
-.btn-wrap { display: flex; gap: 10px; }
-.btn-yellow { background: var(--gold); color: black; flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; text-decoration: none; }
-.btn-green { background: var(--green); color: white; flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; text-decoration: none; }
+.btn-group { display: flex; gap: 10px; }
+.btn { flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; text-decoration: none; text-transform: uppercase; }
+.btn-yellow { background: var(--gold); color: #000; }
+.btn-green { background: #2ECC71; color: #fff; }
 
-/* FORM */
-.form-container { background: white; padding: 30px; border-radius: 20px; color: #333; margin-top: 20px; }
-.form-container h2 { color: var(--gold); text-align: center; margin-bottom: 25px; font-size: 18px; text-transform: uppercase; }
-.field { margin-bottom: 15px; }
-.field label { display: block; color: var(--gold); font-weight: bold; margin-bottom: 5px; font-size: 12px; }
-.field input, .field select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+/* VIP FORM */
+.form-box { background: white; padding: 30px; border-radius: 20px; color: #333; margin-top: 20px; }
+.form-box h2 { color: var(--gold); text-align: center; margin-bottom: 20px; font-size: 18px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; color: var(--gold); font-weight: bold; margin-bottom: 5px; font-size: 12px; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
 
 /* CANLI OPERASYON */
-.live-panel { background: rgba(0,0,0,0.5); border: 2px solid var(--gold); border-radius: 25px; padding: 25px; height: fit-content; }
-.live-panel h3 { color: var(--gold); font-size: 14px; margin-bottom: 20px; text-transform: uppercase; text-align: center; }
-.log { border-bottom: 1px solid #333; padding: 12px 0; font-size: 13px; display: flex; justify-content: space-between; }
-.log b { color: var(--gold); }
-.dot { color: #2ecc71; font-size: 18px; line-height: 0; }
+.op-panel { background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 20px; padding: 20px; height: fit-content; }
+.log-item { border-bottom: 1px solid #333; padding: 12px 0; font-size: 13px; display: flex; justify-content: space-between; }
+.log-item b { color: var(--gold); }
+.status-badge { background: rgba(46, 204, 113, 0.2); color: #2ecc71; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
 
-/* KURUMSAL BÖLÜM [YENİ EKLEME] */
-.about-us { margin-top: 40px; padding: 25px; border-top: 1px solid #333; color: #aaa; font-size: 14px; line-height: 1.6; }
+/* YENİ EKLENEN SOSYAL MEDYA VE KURUMSAL [SADECE EKLEME] */
+.social-header { display: flex; gap: 15px; margin-right: 20px; }
+.social-header a { color: #fff; font-size: 20px; }
+.about-section { margin-top: 30px; padding: 20px; border-top: 1px solid #333; font-size: 14px; color: #ccc; line-height: 1.6; }
 
-@media (max-width: 1000px) { .main-content { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo">GLOSSGO</div>
-<div class="nav-right">
-<div class="social-icons">
+<div style="display: flex; align-items: center;">
+<div class="social-header">
 <a href="#"><i class="fab fa-whatsapp" style="color: #25D366;"></i></a>
 <a href="#"><i class="fab fa-instagram" style="color: #E1306C;"></i></a>
 </div>
-<a href="tel:05307366945" class="phone-btn">0530 736 69 45</a>
+<a href="tel:05307366945" class="phone-box">0530 736 69 45</a>
 </div>
 </header>
 
 <div class="container">
-<div class="legal-banner">
-⚠️ KURUMSAL TALEPLER İÇİN VUK 234 KAPSAMINDA GİDER PUSULASI İLE BELGELENDİRME YAPILIR.
+<div class="banner">
+<span>💰</span> KURUMSAL TALEPLER İÇİN GİDER PUSULASI İLE BELGELENDİRME YAPILIR.
 </div>
 
-<div class="main-content">
+<div class="main-layout">
 <div>
 <div class="card">
 <h3>GLOSS-LIGHT</h3>
 <span class="price">950 TL</span>
 <p>Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
-<div class="btn-wrap">
-<a href="#form" class="btn-yellow">RANDAVU AL</a>
-<a href="#" class="btn-green">KONUM AT</a>
+<div class="btn-group">
+<a href="#form" class="btn btn-yellow">RANDEVU AL</a>
+<a href="#" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
@@ -101,57 +101,54 @@ background: white; border-radius: 20px; padding: 30px; color: #333; margin-botto
 <h3>FORZA-TOUCH</h3>
 <span class="price">1.450 TL</span>
 <p>İç-Dış Detaylı Temizlik + Nano Cila Koruma</p>
-<div class="btn-wrap">
-<a href="#form" class="btn-yellow">RANDAVU AL</a>
-<a href="#" class="btn-green">KONUM AT</a>
+<div class="btn-group">
+<a href="#form" class="btn btn-yellow">RANDEVU AL</a>
+<a href="#" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
-<div class="form-container" id="form">
+<div class="form-box" id="form">
 <h2>VIP RANDEVU TALEBİ</h2>
 <form>
-<div class="field"><label>AD SOYAD</label><input type="text" placeholder="İsminizi Giriniz"></div>
-<div class="field"><label>TELEFON</label><input type="text" placeholder="05XX XXX XX XX"></div>
-<div class="field">
+<div class="form-group"><label>AD SOYAD</label><input type="text" placeholder="İsminizi Giriniz"></div>
+<div class="form-group"><label>TELEFON</label><input type="text" placeholder="05XX XXX XX XX"></div>
+<div class="form-group">
 <label>ARAÇ MARKASI</label>
 <select>
 <option>PORSCHE</option>
 <option>BMW</option>
 <option>MERCEDES</option>
-<option>AUDI</option>
 </select>
 </div>
-<button type="submit" class="btn-yellow" style="width: 100%; border: none; cursor: pointer; padding: 18px;">TALEBİ GÖNDER</button>
+<button type="submit" class="btn btn-yellow" style="width: 100%; border:none; cursor:pointer;">TALEBİ GÖNDER</button>
 </form>
 </div>
 
-<div class="about-us">
+<div class="about-section">
 <h4 style="color: var(--gold); margin-bottom: 10px;">BİZ KİMİZ?</h4>
-<p>GlossGo, İstanbul'un en prestijli semtlerinde mobil detailing hizmeti veren, profesyonelliği ve müşteri memnuniyetini odağına alan bir ekiptir. Aracınızı olduğu yerde parlatıyoruz.</p>
+<p>GlossGo, İstanbul'un seçkin semtlerinde mobil araç detailing hizmeti veren profesyonel bir ekiptir. Misyonumuz lüks araç sahiplerine yerinde ve kaliteli hizmet sunmaktır.</p>
 </div>
 </div>
 
-<div class="live-panel">
-<h3>CANLI OPERASYON AKIŞI</h3>
-<div id="live-logs"></div>
+<div class="op-panel">
+<h3 style="color: var(--gold); font-size: 14px; margin-bottom: 20px; text-transform: uppercase;">CANLI OPERASYON AKIŞI</h3>
+<div id="logs"></div>
 </div>
 </div>
 </div>
 
 <script>
-const locations = ["Etiler", "Bebek", "Zekeriyaköy", "Maslak", "Tarabya", "Acarkent", "Kemerburgaz"];
-const actions = ["Ekip Yola Çıktı", "İşlem Devam Ediyor", "Konuma Varış Yapıldı", "VIP İşlem Tamamlandı"];
+const semtler = ["Etiler", "Bebek", "Acarkent", "Zekeriyaköy", "Maslak"];
+const aksiyonlar = ["Ekip Yola Çıktı", "Konuma Varış Yapıldı", "İşlem Tamamlandı"];
 
-function updateLogs() {
-const list = document.getElementById('live-logs');
-const loc = locations[Math.floor(Math.random()*locations.length)];
-const act = actions[Math.floor(Math.random()*actions.length)];
-
-const item = `<div class="log"><span>📍 <b>${loc}</b> / ${act}</span> <span class="dot">•</span></div>`;
-list.insertAdjacentHTML('afterbegin', item);
-if(list.children.length > 10) list.lastElementChild.remove();
+function addLog() {
+const l = document.getElementById('logs');
+const s = semtler[Math.floor(Math.random()*semtler.length)];
+const a = aksiyonlar[Math.floor(Math.random()*aksiyonlar.length)];
+l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${a}</span> <span class="status-badge">AKTİF</span></div>`);
+if(l.children.length > 8) l.lastElementChild.remove();
 }
-setInterval(updateLogs, 4000); updateLogs();
+setInterval(addLog, 4000); addLog();
 </script>
 </body>
 </html>
