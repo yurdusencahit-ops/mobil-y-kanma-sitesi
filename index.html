@@ -3,72 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOSSGO | VIP Mobil Detailing</title>
+<title>GLOSSGO | VIP Mobil Detailing - İstanbul Geneli Hizmet</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-:root { --gold: #FFCC00; --dark: #000000; --card: #111111; --white: #FFFFFF; }
+:root { --gold: #FFCC00; --green: #2ECC71; --dark: #0A0A0A; --white: #FFFFFF; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-body { background-color: var(--dark); color: var(--white); scroll-behavior: smooth; }
+body {
+background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+url('https://images.unsplash.com/photo-1599256621730-535171e28e50?q=80&w=1920');
+background-attachment: fixed; background-size: cover; color: white;
+}
 
-/* HEADER - SABİT VE ŞIK */
 header {
 padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-background: rgba(0,0,0,0.9); border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000;
+background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000;
 }
 .logo { font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: 3px; }
-.phone-btn { background: var(--gold); color: black; padding: 12px 25px; border-radius: 50px; font-weight: 900; text-decoration: none; font-size: 14px; }
-
-.container { max-width: 1200px; margin: auto; padding: 40px 20px; }
-
-/* GÜVEN BANDI */
-.legal-banner {
-border: 1px solid var(--gold); padding: 15px; border-radius: 10px; margin-bottom: 30px;
-color: var(--gold); font-weight: 800; text-align: center; background: rgba(255,204,0,0.05);
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.phone-btn {
+background: var(--gold); color: black; padding: 12px 25px; border-radius: 50px;
+font-weight: 900; text-decoration: none; font-size: 14px;
+box-shadow: 0 0 20px rgba(255,204,0,0.4); animation: pulse-phone 2s infinite;
 }
 
-.main-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+@keyframes pulse-phone { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-/* PAKET KARTLARI - SİYAH TEMALI */
-.card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 35px; margin-bottom: 25px; transition: 0.3s; }
-.card:hover { border-color: var(--gold); }
-.card h3 { font-size: 22px; color: var(--gold); margin-bottom: 15px; }
-.price { font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 20px; display: block; }
-.card ul { list-style: none; margin-bottom: 25px; color: #aaa; font-size: 14px; }
-.card ul li { margin-bottom: 10px; }
-.card ul li::before { content: "•"; color: var(--gold); font-weight: bold; margin-right: 10px; }
+.container { max-width: 1300px; margin: auto; padding: 40px 20px; }
 
-.btn-group { display: flex; gap: 10px; }
-.btn { flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 12px; }
+.legal-banner {
+background: rgba(255, 204, 0, 0.15); border: 1px solid var(--gold); padding: 18px;
+border-radius: 15px; margin-bottom: 40px; color: var(--gold); font-weight: 800; text-align: center; font-size: 14px;
+}
+
+.main-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 35px; }
+
+/* HİZMET KARTLARI */
+.card { background: var(--white); border-radius: 30px; padding: 40px; color: #333; margin-bottom: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; }
+.card h3 { color: #000; font-weight: 900; font-size: 24px; margin-bottom: 10px; }
+.price { font-size: 45px; font-weight: 900; color: var(--gold); margin-bottom: 20px; display: block; }
+.card ul { list-style: none; margin-bottom: 30px; }
+.card ul li { margin-bottom: 10px; font-weight: 500; color: #555; }
+.card ul li::before { content: '✦'; color: var(--gold); margin-right: 10px; }
+
+.btn-group { display: flex; gap: 15px; }
+.btn { flex: 1; padding: 18px; border-radius: 15px; text-align: center; font-weight: 900; text-decoration: none; text-transform: uppercase; font-size: 13px; transition: 0.3s; }
 .btn-y { background: var(--gold); color: black; }
-.btn-g { background: #25D366; color: white; }
+.btn-g { background: var(--green); color: white; }
 
-/* CANLI AKIŞ PANELİ */
-.live-panel { background: #080808; border: 1px solid #222; border-radius: 20px; padding: 25px; height: fit-content; position: sticky; top: 110px; }
-.live-panel h3 { color: var(--gold); font-size: 14px; margin-bottom: 20px; text-align: center; }
-.log-row { border-bottom: 1px solid #111; padding: 12px 0; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
+/* CANLI OPERASYON AKIŞI */
+.live-panel { background: rgba(0,0,0,0.85); border: 2px solid var(--gold); border-radius: 35px; padding: 30px; height: fit-content; position: sticky; top: 120px; }
+.live-panel h3 { color: var(--gold); text-align: center; font-size: 16px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+.log-row { border-bottom: 1px solid #222; padding: 15px 0; font-size: 12px; display: flex; justify-content: space-between; align-items: center; line-height: 1.4; }
 .log-row b { color: var(--gold); }
-.status-dot { width: 8px; height: 8px; background: #25D366; border-radius: 50%; box-shadow: 0 0 10px #25D366; }
+.status-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse-green 1.5s infinite; }
+@keyframes pulse-green { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-/* KURUMSAL BÖLÜM */
-.about-section { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-.about-box { background: #080808; padding: 25px; border-radius: 15px; text-align: center; border: 1px solid #111; }
-.about-box h4 { color: var(--gold); margin-bottom: 10px; font-size: 14px; }
-.about-box p { font-size: 12px; color: #888; line-height: 1.6; }
+/* BİZ KİMİZ / VİZYON / MİSYON */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 60px; }
+.info-box { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 25px; border: 1px solid #222; text-align: center; }
+.info-box i { font-size: 40px; color: var(--gold); margin-bottom: 20px; }
+.info-box h4 { color: var(--gold); font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
+.info-box p { font-size: 14px; color: #bbb; }
 
 /* MÜŞTERİ YORUMLARI */
-.reviews { margin-top: 40px; padding: 20px; background: #080808; border-radius: 20px; }
-.review-text { font-style: italic; color: #ccc; font-size: 13px; margin-bottom: 10px; }
-.review-author { color: var(--gold); font-weight: bold; font-size: 12px; }
+.reviews-container { display: flex; gap: 20px; overflow-x: auto; padding: 40px 0; scrollbar-width: none; }
+.review-card { min-width: 380px; background: white; color: #333; padding: 35px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.review-card p { font-style: italic; font-size: 15px; }
+.review-card b { color: var(--gold); display: block; margin-top: 20px; font-weight: 900; }
 
-/* WHATSAPP BOT POPUP */
-#wa-bot { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
-.bot-box { background: white; color: black; width: 280px; border-radius: 15px; display: none; margin-bottom: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; }
-.bot-head { background: #25D366; color: white; padding: 15px; font-weight: bold; font-size: 14px; }
-.bot-body { padding: 15px; font-size: 13px; }
-.bot-link { background: #25D366; color: white; text-align: center; display: block; padding: 10px; text-decoration: none; border-radius: 8px; margin-top: 10px; font-weight: bold; }
+/* WHATSAPP BOT */
+#bot-ui { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
+.bot-bubble { background: white; color: #333; width: 320px; border-radius: 25px; display: none; margin-bottom: 15px; box-shadow: 0 15px 50px rgba(0,0,0,0.6); overflow: hidden; }
+.bot-header { background: var(--green); color: white; padding: 20px; font-weight: 900; text-align: center; }
+.bot-body { padding: 25px; font-size: 14px; line-height: 1.6; }
+.bot-link { background: var(--green); color: white; display: block; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; margin-top: 20px; font-weight: 900; text-transform: uppercase; }
 
-@media (max-width: 900px) { .main-layout, .about-section { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } .review-card { min-width: 100%; } }
 </style>
 </head>
 <body>
@@ -76,79 +87,126 @@ color: var(--gold); font-weight: 800; text-align: center; background: rgba(255,2
 <header>
 <div class="logo">GLOSSGO</div>
 <div class="nav-right">
-<a href="tel:05307366945" class="phone-btn">0530 736 69 45</a>
+<a href="#" class="social-link" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+<a href="tel:05307366945" class="phone-btn"><i class="fas fa-phone-alt"></i> 0530 736 69 45</a>
 </div>
 </header>
 
 <div class="container">
 <div class="legal-banner">
-🛡️ KURUMSAL TALEPLER İÇİN GİDER PUSULASI DÜZENLENİR.
+🛡️ TÜM HİZMETLERİMİZ VUK 234 KAPSAMINDA GİDER PUSULASI İLE BELGELENDİRİLİR. ŞİRKET ARACINIZ İÇİN %100 YASAL GİDER.
 </div>
 
 <div class="main-layout">
-<div class="content-left">
+<div class="services">
 <div class="card">
-<h3>VIP ULTIMATE CARE</h3>
-<span class="price">2.850 TL</span>
+<h3>GLOSS-LITE</h3>
+<span class="price">950 TL</span>
 <ul>
-<li>Seramik Katkılı Boya Koruma</li>
-<li>Motor Blok Detaylı Hijyen</li>
-<li>Deri Koltuk Besleme & Bakım</li>
+<li>Dış Detaylı Sterilizasyon</li>
+<li>Jant Kir Arındırma & Bakım</li>
+<li>Lastik Besleme & Koruma</li>
 </ul>
 <div class="btn-group">
-<a href="https://wa.me/905307366945" class="btn btn-y">RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-g">WHATSAPP</a>
+<a href="https://wa.me/905307366945" class="btn btn-y">HEMEN RANDEVU</a>
+<a href="https://wa.me/905307366945" class="btn btn-g">KONUM AT</a>
 </div>
 </div>
 
-<div class="reviews">
-<p class="review-text">"Etiler'de kapıma geldiler, Porsche aracım sıfır gibi oldu. Gider pusulası almaları harika."</p>
-<p class="review-author">- Murat B. / Etiler</p>
+<div class="card" style="border: 3px solid var(--gold);">
+<div style="background: var(--gold); color: black; position: absolute; top: 0; right: 0; padding: 6px 25px; font-size: 11px; font-weight: 900; border-radius: 0 0 0 25px;">EN ÇOK TERCİH EDİLEN</div>
+<h3>VIP ULTIMATE</h3>
+<span class="price">2.850 TL</span>
+<ul>
+<li>Full Seramik Katkılı Boya Koruması</li>
+<li>Detaylı Motor Blok Hijyeni</li>
+<li>Deri Koltuk Besleme & Kondisyoner</li>
+<li>Klima Kanalı Dezenfeksiyonu</li>
+</ul>
+<div class="btn-group">
+<a href="https://wa.me/905307366945" class="btn btn-y">VIP REZERVASYON</a>
+<a href="https://wa.me/905307366945" class="btn btn-g">KONUM AT</a>
+</div>
 </div>
 </div>
 
-<div class="content-right">
+<div class="live-status">
 <div class="live-panel">
-<h3>📍 ANLIK OPERASYONLAR</h3>
-<div id="live-logs"></div>
+<h3>📍 ANLIK VIP OPERASYONLAR</h3>
+<div id="status-logs"></div>
 </div>
 </div>
 </div>
 
-<div class="about-section">
-<div class="about-box"><h4>BİZ KİMİZ?</h4><p>Lüks segment araçlar için profesyonel mobil detailing hizmeti sunan uzman ekibiz.</p></div>
-<div class="about-box"><h4>MİSYONUMUZ</h4><p>Zamanınızı size geri vererek, aracınızı konfor alanınızda yenilemek.</p></div>
-<div class="about-box"><h4>VİZYONUMUZ</h4><p>İstanbul'un en güvenilir mobil detailing markası olmak.</p></div>
+<h2 style="color: var(--gold); text-align: center; margin: 60px 0 20px; font-weight: 900;">PRESTİJLİ REFERANSLARIMIZ</h2>
+<div class="reviews-container">
+<div class="review-card">
+<p>"Bağdat Caddesi'nde Porsche aracımın iç mekanını kusursuz temizlediler. Gider pusulası almaları şirketim için harika oldu."</p>
+<b>- Arda K. / Bağdat Caddesi</b>
+</div>
+<div class="review-card">
+<p>"Kandilli'deki evime tam vaktinde geldiler. Tesla'nın hassas yüzeylerine çok hakimler. Kalite tesadüf değil."</p>
+<b>- Esra V. / Kandilli</b>
+</div>
+<div class="review-card">
+<p>"Etiler'deki ofis otoparkında BMW aracım fabrika çıkışına döndü. Mobil hizmetin bu kadar profesyonelini görmedim."</p>
+<b>- Cemal S. / Etiler</b>
 </div>
 </div>
 
-<div id="wa-bot">
-<div class="bot-box" id="bot-window">
-<div class="bot-head">GlossGo Asistan</div>
+<div class="info-grid">
+<div class="info-box">
+<i class="fas fa-crown"></i>
+<h4>BİZ KİMİZ?</h4>
+<p>İstanbul'un her iki yakasında lüks araçların kapıda bakım standartlarını belirleyen, detay odaklı profesyonel detailing ekibiyiz.</p>
+</div>
+<div class="info-box">
+<i class="fas fa-rocket"></i>
+<h4>MİSYONUMUZ</h4>
+<p>Zamanı en kıymetli hazinesi olan iş dünyasına ve araç tutkunlarına, bulundukları konfor alanından çıkmadan VIP hizmet sunmak.</p>
+</div>
+<div class="info-box">
+<i class="fas fa-gem"></i>
+<h4>VİZYONUMUZ</h4>
+<p>Mobil uygulama ve uzman kadromuzla, Türkiye genelinde premium araç bakımının tek ve en prestijli adresi olmak.</p>
+</div>
+</div>
+</div>
+
+<div id="bot-ui">
+<div class="bot-bubble" id="bot-window">
+<div class="bot-header">GLOSSGO DESTEK 🤖</div>
 <div class="bot-body">
-Merhaba! Şu an <b>Acarkent, Cadde ve Etiler</b> bölgelerinde aktifiz. Randevu ister misiniz?
-<a href="https://wa.me/905307366945" class="bot-link">Hemen Bağlan</a>
+Efendim hoş geldiniz! Ben GlossBot. <br><br>
+Şu an <b>Avrupa Yakası (Etiler/Bebek)</b> ve <b>Anadolu Yakası (Cadde/Ataşehir)</b> bölgelerinde ekiplerimiz sahada. <br><br>
+Hangi yaka için VIP randevu istersiniz?
+<a href="https://wa.me/905307366945?text=Merhaba, Anadolu yakası için randevu istiyorum." class="bot-link">Müşteri Temsilcisine Bağlan</a>
 </div>
 </div>
-<a href="javascript:void(0)" onclick="toggleBot()" style="background:#25D366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; text-decoration:none; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+<a href="javascript:void(0)" onclick="toggleBot()" style="background: var(--green); color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); text-decoration: none;">
 <i class="fab fa-whatsapp"></i>
 </a>
 </div>
 
 <script>
-const op = [
-"📍 <b>Etiler</b> / Porsche Detaylandırıldı ✅",
-"📍 <b>Kandilli</b> / Tesla İşlemi Başladı ⚡",
-"📍 <b>Bağdat Caddesi</b> / BMW Hazır ✅",
-"📍 <b>Acarkent</b> / Ekip Adreste 🚚",
-"📍 <b>Suadiye</b> / Range Rover Parlatıldı ✅"
+// ANADOLU VE AVRUPA YAKASI KARIŞIK OPERASYONLAR
+const opLogs = [
+"💎 <b>Bağdat Caddesi</b> / Porsche 911 Parlatıldı ✅",
+"⚡ <b>Etiler</b> / Tesla Model Y İşlemi Başladı",
+"📍 <b>Kandilli</b> / Sahil Villada Hizmet Tamamlandı ✅",
+"🚚 <b>Ataşehir</b> / Ekibimiz adrese ulaştı",
+"🏁 <b>Bebek</b> / Mercedes S-Class Teslim Edildi",
+"🏡 <b>Zekeriyaköy</b> / Ekip VIP Lokasyona Vardı",
+"✨ <b>Acarkent</b> / Range Rover Detaylandırıldı ✅",
+"🚗 <b>Suadiye</b> / BMW i7 İç Bakımı Sürüyor",
+"💎 <b>Beykoz Konakları</b> / Bentley Detaylandırıldı ✅"
 ];
 
 function runLogs() {
-const box = document.getElementById('live-logs');
-const r = op[Math.floor(Math.random() * op.length)];
+const box = document.getElementById('status-logs');
+const r = opLogs[Math.floor(Math.random() * opLogs.length)];
 box.insertAdjacentHTML('afterbegin', `<div class="log-row"><span>${r}</span> <span class="status-dot"></span></div>`);
-if(box.children.length > 6) box.lastElementChild.remove();
+if(box.children.length > 9) box.lastElementChild.remove();
 }
 setInterval(runLogs, 4000); runLogs();
 
