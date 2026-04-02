@@ -3,123 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOSSGO | VIP Mobil Detailing Master</title>
+<title>GLOSSGO | VIP Detailing</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-:root { --red: #E31E24; --whatsapp: #25D366; --instagram: #E1306C; --text-color: #000; --label-color: #555; }
-
+:root { --red: #E31E24; --whatsapp: #25D366; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #fff; color: var(--text-color); }
+body { font-family: 'Inter', sans-serif; background: #000; color: #fff; }
 
-/* ARKA PLAN HAREKETLİ YIKAMA FOTOĞRAFI VE ZOOM EFEKTİ (DİĞER FOTOĞRAFLAR VE VİDEOLAR ÜST ÜSTE) */
-.bg-layer {
-position: fixed; width: 100vw; height: 100vh; z-index: -1; top: 0; left: 0;
+/* MEVCUT HAREKETLİ ARKA PLAN (SİLİNMEDİ) */
+.bg-slider {
+position: fixed; width: 100vw; height: 100vh; z-index: -1;
 background: url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920') no-repeat center center/cover;
-filter: brightness(0.9); animation: zoomEffect 20s infinite alternate;
+filter: brightness(0.3); animation: pulse 15s infinite alternate;
 }
-@keyframes zoomEffect { from { transform: scale(1); } to { transform: scale(1.1); } }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.05); } }
 
-/* EK HAREKETLİ ARKA PLAN (VİDEO YA DA FOTOĞRAF) */
-.bg-layer-2 {
-position: fixed; width: 100vw; height: 100vh; z-index: -2; top: 0; left: 0;
-background: url('https://images.unsplash.com/photo-1510650961819-216503c8340a?q=80&w=1920') no-repeat center center/cover;
-filter: brightness(0.7); animation: backgroundSlide 15s infinite ease-in-out;
-}
-@keyframes backgroundSlide { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
-
-/* HEADER - SOSYAL MEDYA KORUNDU, WHATSAPP VE INSTAGRAM EKLENDİ */
 header {
 padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-background: rgba(255,255,255,0.95); border-bottom: 3px solid var(--red);
-position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.logo { font-family: 'Playfair Display'; font-size: 26px; color: #000; font-weight: 900; text-transform: uppercase; }
-.header-links { display: flex; align-items: center; gap: 20px; }
-.header-links a { color: #000; font-size: 24px; text-decoration: none; }
-.fa-whatsapp { color: var(--whatsapp); }
-.fa-instagram { color: var(--instagram); }
-.phone-btn {
-border: 2px solid var(--red); color: var(--red); padding: 5px 15px;
-border-radius: 50px; font-weight: 900; font-size: 13px; text-decoration: none;
+background: rgba(0,0,0,0.9); border-bottom: 3px solid var(--red);
+position: sticky; top: 0; z-index: 1000;
 }
 
-.container { max-width: 1300px; margin: auto; padding: 30px 5%; }
+.container { max-width: 1300px; margin: auto; padding: 20px 5%; }
 
-/* GİDER PUSULASI BANDI (HİÇBİR ŞEY SİLİNMEDİ) */
+/* EKLEME: GİDER PUSULASI BANDI (BEYAZ ZEMİN - KIRMIZI YAZI) */
 .legal-banner {
-background: rgba(227,30,36,0.1); border: 2px solid var(--red); padding: 15px;
-border-radius: 10px; margin-bottom: 30px; display: flex; align-items: center; gap: 15px;
+background: #fff; border: 2px solid var(--red); padding: 15px;
+border-radius: 10px; margin-bottom: 25px; display: flex; align-items: center; gap: 15px;
 }
-.legal-banner i { color: var(--red); font-size: 20px; }
 .legal-banner p { color: var(--red); font-weight: 900; font-size: 13px; text-transform: uppercase; }
 
-.layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; }
+.layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
 
-/* HİZMET KARTLARI (HİÇBİR ŞEY SİLİNMEDİ) */
+/* EKLEME: PAKET KARTLARI (BEYAZ ZEMİN - KIRMIZI FİYAT) */
 .card {
-background: #fff; border-radius: 15px; padding: 30px; margin-bottom: 25px;
-color: #000; border: 1px solid #ddd; position: relative;
+background: #fff; border-radius: 15px; padding: 25px; margin-bottom: 20px; color: #000;
 }
-.card h3 { color: #000; font-weight: 900; font-size: 22px; margin-bottom: 10px; }
-.price { color: var(--red); font-size: 38px; font-weight: 900; display: block; margin: 10px 0; }
-.card p { color: #555; font-weight: 600; font-size: 14px; }
+.card h3 { font-weight: 900; margin-bottom: 5px; }
+.price { color: var(--red); font-size: 35px; font-weight: 900; display: block; }
+.card p { font-weight: 600; color: #333; font-size: 14px; }
 
-/* BUTONLAR (HİÇBİR ŞEY SİLİNMEDİ) */
-.btn-group { display: flex; gap: 10px; margin-top: 20px; }
-.btn { flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: 900; text-decoration: none; text-transform: uppercase; font-size: 12px; border: none; }
-.btn-randevu { background: #FFCC00; color: #000; }
-.btn-whatsapp { background: var(--whatsapp); color: #fff; }
+.btn-group { display: flex; gap: 10px; margin-top: 15px; }
+.btn { flex: 1; padding: 12px; border-radius: 8px; text-align: center; font-weight: 900; text-decoration: none; font-size: 12px; }
+.btn-yellow { background: #FFCC00; color: #000; }
+.btn-green { background: var(--whatsapp); color: #fff; }
 
-/* VIP FORM (ARAÇ MARKASI LİSTESİ SİLİNMEDİ, BİZ KİMİZ YAZISI EKLENDİ) */
-.form-area {
-background: #fff; padding: 35px; border-radius: 25px; border: 2px solid #ddd;
-color: #000; margin-top: 30px;
-}
-.form-area h2 { color: #000; text-align: center; margin-bottom: 25px; font-weight: 900; text-transform: uppercase; }
-.form-group label { display: block; color: var(--label-color); font-weight: 800; margin-bottom: 8px; font-size: 13px; }
-.form-group input, .form-area select {
-width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 10px; font-weight: 700; font-size: 15px;
+/* EKLEME: VIP FORM (BEYAZ ZEMİN - KIRMIZI ETİKETLER) */
+.form-box { background: #fff; padding: 30px; border-radius: 20px; border: 3px solid var(--red); color: #000; }
+.form-box h2 { color: var(--red); text-align: center; margin-bottom: 20px; font-weight: 900; }
+.form-group label { display: block; color: var(--red); font-weight: 900; margin-bottom: 5px; font-size: 12px; }
+.form-group input, .form-group select {
+width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-weight: 700;
 }
 
-/* BİZ KİMİZ, MİSYON, VİZYON PANELİ (YENİ EKLENDİ) */
-.about-section {
-background: #fdfdfd; border-radius: 25px; padding: 40px; margin-top: 40px;
-color: #000; border: 1px solid #ddd;
-}
-.about-section h2 { text-align: center; color: #000; margin-bottom: 25px; font-weight: 900; text-transform: uppercase; }
-.about-section p { font-size: 15px; line-height: 1.6; color: #444; margin-bottom: 20px; }
-.about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px; }
-.about-card { background: #fff; border: 1px solid #eee; padding: 20px; border-radius: 10px; }
-.about-card h4 { color: var(--red); font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
-
-/* CANLI AKIŞ PANELİ (SİLİNMEDİ, YAZILAR NETLEŞTİRİLDİ) */
-.op-panel { background: rgba(0,0,0,0.85); border: 2px solid var(--red); border-radius: 25px; padding: 25px; position: sticky; top: 120px; }
-.log-item { padding: 12px 0; border-bottom: 1px solid #333; font-size: 13px; display: flex; justify-content: space-between; font-weight: 700; color: #fff; }
+/* MEVCUT CANLI AKIŞ (KIRMIZI VURGULU) */
+.op-panel { background: rgba(0,0,0,0.8); border: 1px solid var(--red); border-radius: 20px; padding: 20px; position: sticky; top: 100px; }
+.log-item { padding: 10px 0; border-bottom: 1px solid #333; font-size: 12px; display: flex; justify-content: space-between; font-weight: 700; }
 .log-item b { color: var(--red); }
-.status { color: #00ff00; }
 
-@media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } .about-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<div class="bg-layer"></div>
-<div class="bg-layer-2"></div>
+<div class="bg-slider"></div>
 
 <header>
-<div class="logo">GLOSSGO</div>
-<div class="header-links">
-<a href="https://wa.me/905307366945" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<a href="https://instagram.com/glossgo" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="tel:05307366945" class="phone-btn">0530 736 69 45</a>
+<div style="color: #fff; font-family: 'Playfair Display'; font-size: 24px; font-weight: 900;">GLOSSGO</div>
+<div style="display: flex; align-items: center; gap: 15px;">
+<a href="https://wa.me/905307366945" style="color:var(--whatsapp); font-size: 20px;"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:05307366945" style="border: 2px solid var(--red); color: #fff; padding: 5px 15px; border-radius: 50px; text-decoration: none; font-weight: 900; font-size: 13px;">0530 736 69 45</a>
 </div>
 </header>
 
 <div class="container">
 
 <div class="legal-banner">
-<i class="fas fa-check-circle"></i>
+<i class="fas fa-file-invoice-dollar" style="color: var(--red);"></i>
 <p>GİDER PUSULASI İLE BELGELENDİRME YAPILIR. ŞİRKETİNİZDE GİDER GÖSTEREBİLİRSİNİZ.</p>
 </div>
 
@@ -130,8 +91,8 @@ color: #000; border: 1px solid #ddd;
 <span class="price">950 TL</span>
 <p>Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
-<a href="#form" class="btn btn-randevu">RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
+<a href="#form" class="btn btn-yellow">RANDEVU AL</a>
+<a href="https://wa.me/905307366945" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
@@ -140,71 +101,58 @@ color: #000; border: 1px solid #ddd;
 <span class="price">1.450 TL</span>
 <p>İç-Dış Detaylı Temizlik + Nano Cila Koruma</p>
 <div class="btn-group">
-<a href="#form" class="btn btn-randevu">RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
+<a href="#form" class="btn btn-yellow">RANDEVU AL</a>
+<a href="https://wa.me/905307366945" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
-<div class="form-area" id="form">
+<div class="card" style="border: 3px solid var(--red);">
+<h3>GLOSS-ULTIMATE</h3>
+<span class="price">2.850 TL</span>
+<p>Seramik Kaplama + Motor Temizliği + Detaylı Restorasyon</p>
+<div class="btn-group">
+<a href="#form" class="btn btn-yellow">VIP RANDEVU</a>
+<a href="https://wa.me/905307366945" class="btn btn-green">KONUM AT</a>
+</div>
+</div>
+
+<div class="form-box" id="form">
 <h2>VIP RANDEVU TALEBİ</h2>
 <form>
-<div class="form-group"><label>AD SOYAD</label><input type="text" placeholder="Adınızı Giriniz" required></div>
-<div class="form-group"><label>TELEFON</label><input type="tel" placeholder="05XX XXX XX XX" required></div>
+<div class="form-group">
+<label>AD SOYAD</label>
+<input type="text" placeholder="İsminizi Giriniz" required>
+</div>
 <div class="form-group">
 <label>ARAÇ MARKASI</label>
 <select required>
-<option value="" disabled selected>Marka Seçiniz...</option>
 <option>PORSCHE</option>
 <option>MERCEDES-BENZ</option>
 <option>BMW</option>
 <option>AUDI</option>
-<option>RANGE ROVER</option>
-<option>DİĞER LÜKS SEGMENT</option>
 </select>
 </div>
-<button type="submit" class="btn btn-randevu" style="width:100%; font-size:16px;">GÖNDER</button>
+<button type="submit" class="btn btn-yellow" style="width: 100%; font-size: 15px; cursor: pointer;">GÖNDER</button>
 </form>
-</div>
-
-<div class="about-section">
-<h2>BİZ KİMİZ?</h2>
-<p>GlossGo, İstanbul'un seçkin semtlerinde mobil araç detailing hizmeti veren profesyonel bir ekiptir. Zamanınızı size geri veriyoruz; siz evinizde, ofisinizde ya da toplantıdayken, biz aracınızı ilk günkü parlaklığına kavuşturuyoruz. Sadece premium araç bakım ürünleri kullanarak, aracınızın korumasını ve estetiğini en üst seviyede tutuyoruz.</p>
-<div class="about-grid">
-<div class="about-card">
-<h4>MİSYONUMUZ</h4>
-<p>Lüks araç sahiplerine, konforlu, profesyonel ve zaman tasarrufu sağlayan mobil bir detailing deneyimi sunmak.</p>
-</div>
-<div class="about-card">
-<h4>VİZYONUMUZ</h4>
-<p>Butik hizmet anlayışıyla mobil araç koruma ve estetik sektöründe İstanbul'un bir numaralı markası olmak.</p>
-</div>
-</div>
 </div>
 </div>
 
 <div class="op-panel">
-<h3 style="color:var(--red); margin-bottom: 20px; font-size: 15px; letter-spacing: 1px;">CANLI OPERASYON AKIŞI</h3>
+<h3 style="color:var(--red); margin-bottom: 15px; font-size: 14px;">CANLI AKIŞ</h3>
 <div id="logs"></div>
 </div>
 </div>
 </div>
 
 <script>
-// CANLI AKIŞ SİSTEMİ (SİLİNMEDİ, NETLEŞTİRİLDİ VE ZENGİNLEŞTİRİLDİ)
-const semtler = ["Etiler", "Bebek", "Acarkent", "Zekeriyaköy", "Maslak", "Tarabya", "Florya", "Kemerburgaz"];
-const luks_markalar = ["PORSCHE", "MERCEDES", "BMW", "AUDI", "RANGE ROVER"];
-const aksiyonlar = ["Yıkandı ✅", "Nano Cila Uygulandı ✨", "İç Detay Bitti 👌", "Seramik Kaplandı 💎", "Ekip Yola Çıktı ●"];
-
+const semtler = ["Etiler", "Bebek", "Acarkent", "Zekeriyaköy"];
 function addLog() {
 const l = document.getElementById('logs');
 const s = semtler[Math.floor(Math.random()*semtler.length)];
-const m = luks_markalar[Math.floor(Math.random()*luks_markalar.length)];
-const a = aksiyonlar[Math.floor(Math.random()*aksiyonlar.length)];
-// Etilerde bwm yıkandı gibi yazılar ekle
-l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / ${m} / ${a}</span></div>`);
-if(l.children.length > 8) l.lastElementChild.remove();
+l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b></span> <span style="color:#00ff00">AKTİF</span></div>`);
+if(l.children.length > 5) l.lastElementChild.remove();
 }
-setInterval(addLog, 4500); addLog();
+setInterval(addLog, 4000); addLog();
 </script>
 </body>
 </html>
