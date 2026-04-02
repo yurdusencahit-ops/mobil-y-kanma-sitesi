@@ -3,175 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOSSGO | VIP Detailing Master</title>
+<title>GLOSSGO | VIP Mobil Detailing</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-/* SİSTEMİN TEMEL RENKLERİ - İSTEDİĞİN KIRMIZI DOKUNUŞLAR */
-:root {
---gloss-red: #E31E24;
---whatsapp: #25D366;
---gold: #FFD700;
-}
-
+:root { --gold: #FFD700; --whatsapp: #25D366; --bg-dark: rgba(0,0,0,0.85); }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #000; color: #fff; }
+body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* SİLİNMEYEN, HAREKETLİ ARKA PLAN */
-.bg-slider {
-position: fixed; width: 100vw; height: 100vh; z-index: -1;
+/* SİLİNEN ARKA PLAN RESİMLERİ VE HAREKETLİ SLIDER GERİ GELDİ */
+.bg-video-container {
+position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
 background: url('https://images.unsplash.com/photo-1603510825319-a9c15ed99683?q=80&w=1920') no-repeat center center/cover;
-filter: brightness(0.3); transition: 1s; animation: pulse 15s infinite alternate;
+filter: brightness(0.4); animation: zoomEffect 20s infinite alternate;
 }
-@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.05); } }
+@keyframes zoomEffect { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-/* HEADER - WHATSAPP & INSTAGRAM KORUNDU */
 header {
-padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-background: rgba(0,0,0,0.95); border-bottom: 3px solid var(--gloss-red);
-position: sticky; top: 0; z-index: 1000;
+padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+background: rgba(0,0,0,0.9); border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000;
 }
-.logo { font-family: 'Playfair Display'; font-size: 26px; color: #fff; font-weight: 900; }
-.social-icons a { color: #fff; margin-left: 15px; font-size: 20px; text-decoration: none; }
-.fa-whatsapp { color: var(--whatsapp) !important; }
+.logo { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 
-.container { max-width: 1300px; margin: auto; padding: 30px 5%; }
+.container { max-width: 1400px; margin: auto; padding: 40px 5%; }
 
-/* GİDER PUSULASI BANDI - BEYAZ ZEMİN, KIRMIZI YAZI (İSTEDİĞİN GİBİ) */
+/* GİDER PUSULASI BANDI - NET VE KURUMSAL */
 .legal-banner {
-background: #fff; border: 2px solid var(--gloss-red); padding: 20px;
-border-radius: 12px; margin-bottom: 30px; display: flex; align-items: center; gap: 15px;
-box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
+background: rgba(255,215,0,0.15); border: 1px solid var(--gold); padding: 20px;
+border-radius: 15px; margin-bottom: 40px; backdrop-filter: blur(10px);
+text-align: center; font-weight: 800; color: var(--gold); text-transform: uppercase;
 }
-.legal-banner i { color: var(--gloss-red); font-size: 24px; }
-.legal-banner p { color: var(--gloss-red); font-weight: 900; font-size: 14px; text-transform: uppercase; }
 
-.layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; }
+.main-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; }
 
-/* HİZMET KARTLARI - YAZILAR NET, FİYATLAR KIRMIZI */
+/* KARTLARDAKİ YAZI NETLİĞİ ARTIRILDI */
 .card {
-background: rgba(255,255,255,0.98); border-radius: 20px; padding: 30px;
-margin-bottom: 25px; color: #000; position: relative;
+background: var(--bg-dark); border: 1px solid #333; border-radius: 25px; padding: 35px;
+margin-bottom: 30px; backdrop-filter: blur(15px); position: relative; overflow: hidden;
+box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
-.card h3 { color: #000; font-weight: 900; font-size: 22px; margin-bottom: 10px; }
-.price { color: var(--gloss-red); font-size: 38px; font-weight: 900; display: block; margin: 10px 0; }
-.card p { color: #333; font-weight: 600; }
+.card h3 { color: var(--gold); font-size: 24px; margin-bottom: 10px; text-shadow: 1px 1px 2px #000; }
+.price { font-size: 40px; font-weight: 900; color: #fff; margin: 15px 0; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
 
-/* BUTONLAR - SARI VE YEŞİL (DOKUNULMADI) */
-.btn-group { display: flex; gap: 10px; margin-top: 20px; }
-.btn { flex: 1; padding: 15px; border-radius: 10px; text-align: center; font-weight: 900; text-decoration: none; text-transform: uppercase; font-size: 12px; border: none; }
-.btn-randevu { background: #FFCC00; color: #000; }
-.btn-whatsapp { background: var(--whatsapp); color: #fff; }
+/* BUTONLARIN ESKİ CANLI RENKLERİ */
+.btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+.btn {
+padding: 18px; border-radius: 12px; font-weight: 900; text-align: center;
+text-decoration: none; text-transform: uppercase; border: none; cursor: pointer;
+}
+.btn-yellow { background: #FFCC00; color: #000; box-shadow: 0 5px 15px rgba(255,204,0,0.3); }
+.btn-green { background: var(--whatsapp); color: #fff; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
 
-/* VIP FORM - BEYAZ ZEMİN, KIRMIZI ETİKETLER */
-.form-box { background: #fff; padding: 35px; border-radius: 25px; border: 3px solid var(--gloss-red); color: #000; }
-.form-box h2 { color: var(--gloss-red); text-align: center; margin-bottom: 25px; font-weight: 900; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; color: var(--gloss-red); font-weight: 900; margin-bottom: 8px; font-size: 13px; }
+/* VIP FORM - BEYAZ VE NET */
+.form-box { background: #fff; color: #000; padding: 40px; border-radius: 30px; margin-top: 40px; }
+.form-box h2 { text-align: center; color: #000; margin-bottom: 30px; font-weight: 900; }
+.form-group label { display: block; margin-bottom: 10px; font-weight: 800; color: #333; font-size: 14px; }
 .form-group input, .form-group select {
-width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-weight: 700; font-size: 15px;
+width: 100%; padding: 16px; border: 2px solid #eee; border-radius: 12px;
+font-size: 16px; font-weight: 700; margin-bottom: 20px;
 }
 
-/* CANLI AKIŞ PANELİ - NETLİK ARTIRILDI */
-.op-panel { background: rgba(0,0,0,0.85); border: 2px solid var(--gloss-red); border-radius: 25px; padding: 25px; position: sticky; top: 110px; }
-.log-item { padding: 12px 0; border-bottom: 1px solid #333; font-size: 13px; display: flex; justify-content: space-between; font-weight: 700; }
-.log-item b { color: var(--gloss-red); }
+/* CANLI AKIŞ PANELİ */
+.op-center {
+background: rgba(10,10,10,0.95); border: 1px solid var(--gold); padding: 30px;
+border-radius: 30px; height: fit-content; position: sticky; top: 120px;
+}
+.log-item { border-bottom: 1px solid #222; padding: 15px 0; font-size: 14px; display: flex; justify-content: space-between; }
+.log-item b { color: var(--gold); }
 
-@media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .main-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<div class="bg-slider"></div>
+<div class="bg-video-container"></div>
 
 <header>
 <div class="logo">GLOSSGO</div>
-<div class="social-icons">
-<a href="https://wa.me/905307366945" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="tel:05307366945" style="border: 2px solid var(--gloss-red); padding: 5px 15px; border-radius: 50px; font-size: 14px; font-weight: 900;">0530 736 69 45</a>
-</div>
+<a href="tel:05307366945" class="btn btn-yellow" style="padding: 10px 20px; font-size: 12px;">0530 736 69 45</a>
 </header>
 
 <div class="container">
-
 <div class="legal-banner">
 <i class="fas fa-file-invoice-dollar"></i>
-<p>KURUMSAL TALEPLER İÇİN GİDER PUSULASI İLE BELGELENDİRME YAPILIR. ŞİRKETİNİZDE GİDER GÖSTEREBİLİRSİNİZ.</p>
+Kurumsal İşlemlerinizde Gider Pusulası Kesilmektedir
 </div>
 
-<div class="layout">
+<div class="main-grid">
 <div>
 <div class="card">
 <h3>GLOSS-LIGHT</h3>
 <span class="price">950 TL</span>
 <p>Dış Yıkama, Jant Bakımı ve Lastik Parlatma</p>
 <div class="btn-group">
-<a href="#form" class="btn btn-randevu">RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
+<a href="#randevu" class="btn btn-yellow">RANDEVU AL</a>
+<a href="#" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
-<div class="card">
-<div style="position:absolute; top:10px; right:10px; background:var(--gloss-red); color:#fff; padding:3px 10px; border-radius:5px; font-size:10px; font-weight:900;">EN ÇOK TERCİH EDİLEN</div>
+<div class="card" style="border: 2px solid var(--gold);">
 <h3>FORZA-TOUCH</h3>
 <span class="price">1.450 TL</span>
 <p>İç-Dış Detaylı Temizlik + Nano Cila Koruma</p>
 <div class="btn-group">
-<a href="#form" class="btn btn-randevu">RANDEVU AL</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
+<a href="#randevu" class="btn btn-yellow">RANDEVU AL</a>
+<a href="#" class="btn btn-green">KONUM AT</a>
 </div>
 </div>
 
-<div class="card" style="border: 3px solid var(--gloss-red);">
-<h3>GLOSS-ULTIMATE</h3>
-<span class="price">2.850 TL</span>
-<p>Seramik Kaplama + Motor Temizliği + Detaylı Restorasyon</p>
-<div class="btn-group">
-<a href="#form" class="btn btn-randevu">VIP RANDEVU</a>
-<a href="https://wa.me/905307366945" class="btn btn-whatsapp">KONUM AT</a>
-</div>
-</div>
-
-<div class="form-box" id="form">
+<div class="form-box" id="randevu">
 <h2>VIP RANDEVU TALEBİ</h2>
-<form onsubmit="alert('Talebiniz VIP öncelikli olarak alınmıştır.'); return false;">
-<div class="form-group">
-<label>AD SOYAD</label>
-<input type="text" placeholder="Adınızı Soyadınızı Giriniz" required>
-</div>
+<form>
 <div class="form-group">
 <label>ARAÇ MARKASI</label>
-<select required>
+<select>
 <option>PORSCHE</option>
 <option>MERCEDES-BENZ</option>
 <option>BMW</option>
 <option>AUDI</option>
-<option>DİĞER LÜKS SEGMENT</option>
 </select>
 </div>
-<button type="submit" class="btn btn-randevu" style="width: 100%; font-size: 16px; cursor: pointer;">TALEBİ GÖNDER</button>
+<button type="submit" class="btn btn-yellow" style="width: 100%; font-size: 18px;">RANDEVU OLUŞTUR</button>
 </form>
 </div>
 </div>
 
-<div class="op-panel">
-<h3 style="color:var(--gloss-red); margin-bottom: 20px; font-size: 15px;">CANLI OPERASYON AKIŞI</h3>
-<div id="log-list"></div>
+<div class="op-center">
+<h3 style="color:var(--gold); margin-bottom: 20px;">CANLI OPERASYON</h3>
+<div id="live-logs"></div>
 </div>
 </div>
 </div>
 
 <script>
-// CANLI AKIŞ SİSTEMİ (HİÇBİR ŞEY SİLİNMEDİ)
-const semtler = ["Etiler", "Bebek", "Acarkent", "Zekeriyaköy", "Maslak"];
+const semtler = ["Etiler", "Bebek", "Zekeriyaköy", "Maslak", "Acarkent"];
 function addLog() {
-const l = document.getElementById('log-list');
+const list = document.getElementById('live-logs');
 const s = semtler[Math.floor(Math.random()*semtler.length)];
-l.insertAdjacentHTML('afterbegin', `<div class="log-item"><span>📍 <b>${s}</b> / VIP İşlem</span> <span style="color:#00ff00">AKTİF</span></div>`);
-if(l.children.length > 8) l.lastElementChild.remove();
+list.insertAdjacentHTML('afterbegin', `<div class="log-item">📍 <b>${s}</b> / Ekip Yola Çıktı <span style="color:#00ff00">●</span></div>`);
+if(list.children.length > 8) list.lastElementChild.remove();
 }
-setInterval(addLog, 4500); addLog();
+setInterval(addLog, 5000); addLog();
 </script>
 </body>
 </html>
