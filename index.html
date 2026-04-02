@@ -1,3 +1,15 @@
+Öğe seçilmedi
+
+İçeriğe atla
+Gmail ürününü ekran okuyucularla birlikte kullanma
+1 ileti dizisinden 1.
+Mklöö
+Gelen Kutusu
+
+Murat Cahit Yurduşen <yurdusencahit@gmail.com>
+09:58 (0 dakika önce)
+Alıcı: ben
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -21,6 +33,13 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 
 .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
 
+/* GİDER PUSULASI GÜVEN BANDI */
+.legal-banner {
+border: 2px dashed var(--gold); padding: 20px; border-radius: 15px; margin-bottom: 40px;
+color: var(--gold); font-weight: 900; text-align: center; background: rgba(255,204,0,0.05);
+font-size: 14px; text-transform: uppercase;
+}
+
 .main-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; }
 
 /* VIP PAKETLER */
@@ -36,7 +55,7 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 .btn-gold { background: var(--gold); color: black; }
 .btn-whatsapp { background: #25D366; color: white; }
 
-/* CANLI OPERASYON AKIŞI */
+/* CANLI OPERASYON AKIŞI (İKİ YAKA) */
 .live-tracker { background: #050505; border: 1px solid #333; border-radius: 25px; padding: 30px; height: fit-content; position: sticky; top: 120px; }
 .live-tracker h3 { color: var(--gold); font-size: 14px; text-align: center; margin-bottom: 25px; letter-spacing: 2px; }
 .log { border-bottom: 1px solid #111; padding: 15px 0; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
@@ -45,6 +64,12 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 
 @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
+/* KURUMSAL BİLGİ */
+.info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 60px; }
+.info-box { background: #0a0a0a; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid #1a1a1a; }
+.info-box h4 { color: var(--gold); margin-bottom: 15px; font-weight: 900; }
+.info-box p { font-size: 13px; color: #888; line-height: 1.6; }
+
 /* WHATSAPP BOT */
 #bot-ui { position: fixed; bottom: 30px; right: 30px; z-index: 5000; }
 .bot-bubble { background: white; color: black; width: 300px; border-radius: 20px; display: none; margin-bottom: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); overflow: hidden; }
@@ -52,7 +77,7 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 .bot-body { padding: 20px; font-size: 14px; font-weight: 500; }
 .bot-action { background: #25D366; color: white; display: block; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; margin-top: 15px; font-weight: 900; }
 
-@media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .main-grid, .info-section { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -65,6 +90,10 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 </header>
 
 <div class="container">
+<div class="legal-banner">
+⚠️ ŞİRKET ARACINIZ İÇİN GİDER AVANTAJI: TÜM HİZMETLERİMİZDE GİDER PUSULASI KESİLEREK RESMİ BELGELENDİRME YAPILIR.
+</div>
+
 <div class="main-grid">
 <div class="left-side">
 <div class="card">
@@ -83,16 +112,31 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 </div>
 
 <div style="background: #080808; padding: 30px; border-radius: 20px; border-left: 4px solid var(--gold);">
-<p style="font-style: italic; color: #ccc; margin-bottom: 10px;">"Kandilli'deki evime tam vaktinde geldiler. Tesla'nın hassas yüzeylerine çok hakimler. Kalite tesadüf değil."</p>
-<b style="color: var(--gold); font-size: 13px;">- Esra V. / Kandilli</b>
+<p style="font-style: italic; color: #ccc; margin-bottom: 10px;">"Bağdat Caddesi'nde ofisimin otoparkında Porsche aracımı sıfır kondisyonuna getirdiler. Gider pusulası sayesinde masrafı şirketimize işleyebildik. Profesyonel hizmet."</p>
+<b style="color: var(--gold); font-size: 13px;">- Murat B. / İş İnsanı</b>
 </div>
 </div>
 
 <div class="right-side">
 <div class="live-tracker">
-<h3>📍 ANLIK OPERASYONLAR</h3>
+<h3>📍 CANLI OPERASYON AKIŞI</h3>
 <div id="logs-container"></div>
 </div>
+</div>
+</div>
+
+<div class="info-section">
+<div class="info-box">
+<h4>BİZ KİMİZ?</h4>
+<p>İstanbul'un her iki yakasında lüks segment araçların mobil bakım standartlarını belirleyen, detay odaklı butik bir ekibiz.</p>
+</div>
+<div class="info-box">
+<h4>MİSYONUMUZ</h4>
+<p>Zamanı en değerli hazinesi olan müşterilerimize, araçlarını bulunduğu yerde dünyaca ünlü ürünlerle yenileyerek konfor sunmak.</p>
+</div>
+<div class="info-box">
+<h4>VİZYONUMUZ</h4>
+<p>Türkiye'de mobil lüks araç bakımının en güvenilir ve profesyonel adresi olarak kaliteden ödün vermeden büyümek.</p>
 </div>
 </div>
 </div>
@@ -102,8 +146,8 @@ background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold); position: st
 <div class="bot-header">GLOSSGO ASİSTAN</div>
 <div class="bot-body">
 Hoş geldiniz efendim. <br><br>
-Şu an <b>Kandilli, Bağdat Caddesi, Etiler ve Zekeriyaköy</b> bölgelerinde ekiplerimiz aktiftir. <br><br>
-VIP randevu oluşturmak ister misiniz?
+Şu an <b>Kandilli, Bağdat Caddesi, Etiler ve Zekeriyaköy</b> bölgelerinde ekiplerimiz sahada aktiftir. <br><br>
+Size en yakın ekibi yönlendirmemiz için lütfen tıklayın:
 <a href="https://wa.me/905307366945" class="bot-action">CANLI DESTEK AL</a>
 </div>
 </div>
@@ -113,21 +157,25 @@ VIP randevu oluşturmak ister misiniz?
 </div>
 
 <script>
+// İKİ YAKA LÜKS SEMT AKIŞI
 const activities = [
-"💎 <b>Etiler</b> / Porsche 911 Detaylandırıldı ✅",
-"⚡ <b>Kandilli</b> / Tesla İşlemi Başladı",
-"📍 <b>Bağdat Caddesi</b> / BMW Hazır ✅",
-"🚚 <b>Acarkent</b> / Ekip Adreste",
-"✨ <b>Zekeriyaköy</b> / Range Rover Parlatıldı ✅"
+"💎 <b>Kandilli</b> / Porsche 911 Detaylandırıldı ✅",
+"⚡ <b>Bağdat Caddesi</b> / Tesla Model S İşlemi Başladı",
+"📍 <b>Etiler</b> / Mercedes S-Class Teslim Edildi ✅",
+"🚚 <b>Acarkent</b> / Ekibimiz VIP Adrese Ulaştı",
+"✨ <b>Suadiye</b> / BMW i7 Parlatıldı ✅",
+"🏡 <b>Zekeriyaköy</b> / Range Rover Bakımı Sürüyor",
+"🏁 <b>Maslak</b> / Audi RS7 İşlemi Tamam ✅",
+"🚗 <b>Ataşehir</b> / Ferrari Roma Kondisyoner Uygulandı ✅"
 ];
 
 function updateLogs() {
 const container = document.getElementById('logs-container');
 const r = activities[Math.floor(Math.random() * activities.length)];
 container.insertAdjacentHTML('afterbegin', `<div class="log"><span>${r}</span> <span class="dot"></span></div>`);
-if(container.children.length > 7) container.lastElementChild.remove();
+if(container.children.length > 8) container.lastElementChild.remove();
 }
-setInterval(updateLogs, 4000); updateLogs();
+setInterval(updateLogs, 4500); updateLogs();
 
 function toggleBot() {
 const w = document.getElementById('bot-window');
